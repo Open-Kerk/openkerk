@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('nieuwbouw.page_title') }}{% endblock %}
+
+{% block body_class %}page-template-default nieuwbouw-page{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="{{ url_for('index') }}" id="video-close">
+    <i class="fal fa-times"></i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container"></div>
+   </div>
+  </div>
+
+  <div id="main">
+
+   {# ── Hero ── #}
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('nieuwbouw.hero_heading') }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('nieuwbouw.hero_subtitle') | safe }}
+     </div>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/Nieuwbouw-Open-Kerk.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10, 0.5);"></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+   {# ── Waarom we gaan bouwen ── #}
+   <h2 id="waarom">{{ t('nieuwbouw.waarom_heading') }}</h2>
+   <p>
+    {{ t('nieuwbouw.waarom_p1') }}
+   </p>
+   <p>
+    {{ t('nieuwbouw.waarom_p2') }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Nieuwbouw video ── #}
+   <div class="bouw-video">
+    <video
+      class="bouw-video__player"
+      width="1280" height="720"
+      preload="none"
+      controls controlsList="nodownload"
+      playsinline
+      poster="assets/images/openkerk/Nieuwbouw-Open-Kerk.jpg">
+     <source src="assets/video/OPEN_KERK_NIEUWBOUW.mp4" type="video/mp4">
+     {{ t('nieuwbouw.video_fallback') }}
+    </video>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Onze plek aan de Saskesdreef (foto rechts) ── #}
+   <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Nieuwbouw Open Kerk impressie" loading="lazy" src="assets/images/openkerk/Impressie-grote-zaal-zijkant-oost.jpg">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <h2>{{ t('nieuwbouw.stap_heading') }}</h2>
+     <p>
+      {{ t('nieuwbouw.stap_p1') }}
+     </p>
+     <p>
+      {{ t('nieuwbouw.stap_p2') }}
+     </p>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Bouwen in 4 fases ── #}
+   <h2 id="fases">{{ t('nieuwbouw.fases_heading') }}</h2>
+   <p>
+    {{ t('nieuwbouw.fases_intro') }}
+   </p>
+
+   <div class="bouw-fases">
+    <div class="bouw-fase" id="fase-1">
+     <span class="bouw-fase__num">{{ t('nieuwbouw.fase1_num') }}</span>
+     <h3 class="bouw-fase__title">{{ t('nieuwbouw.fase1_title') }}</h3>
+     <p>{{ t('nieuwbouw.fase1_desc') }}</p>
+     <span class="bouw-fase__plan">{{ t('nieuwbouw.fase1_plan') }}</span>
+    </div>
+    <div class="bouw-fase" id="fase-2">
+     <span class="bouw-fase__num">{{ t('nieuwbouw.fase2_num') }}</span>
+     <h3 class="bouw-fase__title">{{ t('nieuwbouw.fase2_title') }}</h3>
+     <p>{{ t('nieuwbouw.fase2_desc') }}</p>
+    </div>
+    <div class="bouw-fase" id="fase-3">
+     <span class="bouw-fase__num">{{ t('nieuwbouw.fase3_num') }}</span>
+     <h3 class="bouw-fase__title">{{ t('nieuwbouw.fase3_title') | safe }}</h3>
+     <p>{{ t('nieuwbouw.fase3_desc') }}</p>
+    </div>
+    <div class="bouw-fase" id="fase-4">
+     <span class="bouw-fase__num">{{ t('nieuwbouw.fase4_num') }}</span>
+     <h3 class="bouw-fase__title">{{ t('nieuwbouw.fase4_title') }}</h3>
+     <p>{{ t('nieuwbouw.fase4_desc') }}</p>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Kinderkerk render (foto links) ── #}
+   <div class="wp-block-media-text alignwide is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Impressie nieuwe kinderkerk" loading="lazy" src="assets/images/openkerk/kinderkerk.png">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <span class="meta-tag">{{ t('nieuwbouw.kinderkerk_meta') }}</span>
+     <h2>{{ t('nieuwbouw.kinderkerk_heading') }}</h2>
+     <p>
+      {{ t('nieuwbouw.kinderkerk_p1') }}
+     </p>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Tijdlijn ── #}
+   <h2 id="tijdlijn">{{ t('nieuwbouw.tijdlijn_heading') }}</h2>
+   <div class="bouw-tijdlijn">
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl1_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl1_titel') }}</h4><p>{{ t('nieuwbouw.tl1_tekst') | safe }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl2_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl2_titel') }}</h4><p>{{ t('nieuwbouw.tl2_tekst') }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl3_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl3_titel') }}</h4><p>{{ t('nieuwbouw.tl3_tekst') }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl4_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl4_titel') }}</h4><p>{{ t('nieuwbouw.tl4_tekst') }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl5_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl5_titel') | safe }}</h4><p>{{ t('nieuwbouw.tl5_tekst') | safe }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl6_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl6_titel') }}</h4><p>{{ t('nieuwbouw.tl6_tekst') }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl7_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl7_titel') | safe }}</h4><p>{{ t('nieuwbouw.tl7_tekst') }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl8_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl8_titel') }}</h4><p>{{ t('nieuwbouw.tl8_tekst') }}</p></div>
+    </div>
+    <div class="tijdlijn-item">
+     <span class="tijdlijn-jaar">{{ t('nieuwbouw.tl9_jaar') }}</span>
+     <div class="tijdlijn-tekst"><h4>{{ t('nieuwbouw.tl9_titel') | safe }}</h4><p>{{ t('nieuwbouw.tl9_tekst') }}</p></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Financiering (foto rechts) ── #}
+   <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile" id="financiering">
+    <figure class="wp-block-media-text__media">
+     <img alt="Buitenaanzicht nieuwbouw Open Kerk" loading="lazy" src="assets/images/openkerk/Fase-4.png">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <span class="meta-tag">{{ t('nieuwbouw.fin_meta') }}</span>
+     <h2>{{ t('nieuwbouw.fin_heading') }}</h2>
+     <p>
+      {{ t('nieuwbouw.fin_p1') }}
+     </p>
+     <p>
+      {{ t('nieuwbouw.fin_p2') }}
+     </p>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Voor wie ── #}
+   <h2 id="voor-wie">{{ t('nieuwbouw.voorwie_heading') }}</h2>
+   <p>
+    {{ t('nieuwbouw.voorwie_p1') }}
+   </p>
+   <p>
+    {{ t('nieuwbouw.voorwie_p2') }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Betrokken zijn ── #}
+   <h2 id="betrokken">{{ t('nieuwbouw.betrokken_heading') }}</h2>
+   <p>
+    {{ t('nieuwbouw.betrokken_p1_before') }}
+    <a href="{{ url_for('geven') }}">{{ t('nieuwbouw.betrokken_link_geven') }}</a> {{ t('nieuwbouw.betrokken_p1_after') }}
+   </p>
+   <p>
+    <a class="gold" href="{{ url_for('contact') }}">{{ t('nieuwbouw.betrokken_contact') }}</a>
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+  </div>
+{% endblock %}

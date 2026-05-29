@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('home.title') }}{% endblock %}
+
+{% block body_class %}home page-template-default{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="index.html#" id="video-close">
+    <i class="fal fa-times">
+    </i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container">
+    </div>
+   </div>
+  </div>
+  <div id="main">
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('home.hero_title') | safe }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('home.hero_subtitle') }}
+      <span class="underline">
+       {{ t('home.hero_subtitle_underline') }}
+      </span>
+     </div>
+     <a class="button" href="{{ url_for('contact') }}">
+      {{ t('home.hero_button') }}
+     </a>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/Kempen_B001_1.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10,0.3);">
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" class="wp-block-spacer" style="height:60px">
+   </div>
+   <div class="ok-wie-zijn-wij" id="wie-zijn-wij">
+    <h2>
+     {{ t('home.who_we_are_title') }}
+    </h2>
+    <p>
+     {{ t('home.who_we_are_body') }}
+    </p>
+   </div>
+   <div aria-hidden="true" class="wp-block-spacer" style="height:60px">
+   </div>
+   <h2 class="has-text-align-center all-caps" id="holy-week">
+    {{ t('home.believe_section_title') }}
+   </h2>
+   <div aria-hidden="true" class="wp-block-spacer" style="height:50px">
+   </div>
+   <div class="ok-accordion" id="geloofsinhoud">
+    <details class="ok-toggle" name="geloof" open>
+     <summary class="ok-toggle__title">
+      {{ t('home.belief_1_title') }}
+     </summary>
+     <div class="ok-toggle__body">
+      <p>
+       {{ t('home.belief_1_body') }}
+      </p>
+     </div>
+    </details>
+    <details class="ok-toggle" name="geloof">
+     <summary class="ok-toggle__title">
+      {{ t('home.belief_2_title') }}
+     </summary>
+     <div class="ok-toggle__body">
+      <p>
+       {{ t('home.belief_2_body') }}
+      </p>
+     </div>
+    </details>
+    <details class="ok-toggle" name="geloof">
+     <summary class="ok-toggle__title">
+      {{ t('home.belief_3_title') }}
+     </summary>
+     <div class="ok-toggle__body">
+      <p>
+       {{ t('home.belief_3_body') }}
+      </p>
+     </div>
+    </details>
+    <details class="ok-toggle" name="geloof">
+     <summary class="ok-toggle__title">
+      {{ t('home.belief_4_title') }}
+     </summary>
+     <div class="ok-toggle__body">
+      <p>
+       {{ t('home.belief_4_body') }}
+      </p>
+     </div>
+    </details>
+    <details class="ok-toggle" name="geloof">
+     <summary class="ok-toggle__title">
+      {{ t('home.belief_5_title') }}
+     </summary>
+     <div class="ok-toggle__body">
+      <p>
+       {{ t('home.belief_5_body') }}
+      </p>
+     </div>
+    </details>
+   </div>
+   <div class="wp-block-media-text alignwide is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Warm gouden zonlicht over een korenveld" class="wp-image-19821" loading="lazy" src="assets/images/openkerk/geloof-01-god-liefde.jpg">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <h2>
+      {{ t('home.belief_1_title') }}
+     </h2>
+     <p>
+      {{ t('home.belief_1_body') }}
+     </p>
+    </div>
+   </div>
+   <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Twee mensen in rustig gesprek bij warm raamlicht" class="wp-image-19864" loading="lazy" src="assets/images/openkerk/geloof-02-jezus-god.jpg">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <h2>
+      {{ t('home.belief_2_media_title') }}
+     </h2>
+     <p>
+      {{ t('home.belief_2_body') }}
+     </p>
+    </div>
+   </div>
+   <div class="wp-block-media-text alignwide is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Open boek in het gras met herfstlicht" class="wp-image-6839" loading="lazy" src="assets/images/openkerk/geloof-03-bijbel.jpg">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <h2>
+      {{ t('home.belief_3_title') }}
+     </h2>
+     <p>
+      {{ t('home.belief_3_body') }}
+     </p>
+    </div>
+   </div>
+   <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Slingerend bospad in warm zonlicht" class="wp-image-19867" loading="lazy" src="assets/images/openkerk/geloof-04-volgen.jpg">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <h2>
+      {{ t('home.belief_4_title') }}
+     </h2>
+     <p>
+      {{ t('home.belief_4_body') }}
+     </p>
+    </div>
+   </div>
+   <div class="wp-block-media-text alignwide is-stacked-on-mobile">
+    <figure class="wp-block-media-text__media">
+     <img alt="Mistig bos met lichtstralen door de boomkruinen" class="wp-image-19866" loading="lazy" src="assets/images/openkerk/geloof-05-triniteit.jpg">
+    </figure>
+    <div class="wp-block-media-text__content">
+     <h2>
+      {{ t('home.belief_5_title') }}
+     </h2>
+     <p>
+      {{ t('home.belief_5_body') }}
+     </p>
+    </div>
+   </div>
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px">
+   </div>
+   <div class="section-container slider-staff" style="background-color: transparent;">
+    <div class="centered-text">
+     <h2 id="leadership-heading">
+      {{ t('home.leaders_title') }}
+     </h2>
+     <p class="mild-grey-text">
+      {{ t('home.leaders_subtitle') }}
+     </p>
+    </div>
+    <div id="staff-scroll">
+     <div class="staff-scroll active-staff" id="staff-scroll-1">
+     </div>
+     <div class="staff-scroll" id="staff-scroll-2">
+     </div>
+    </div>
+    <div class="staff-listing">
+     <div class="staff-post">
+      <div class="hold-image">
+       <div class="hold-image-con">
+        <img alt class="profile-image" src="assets/images/openkerk/A7307020.jpg">
+       </div>
+      </div>
+      <h3>
+       {{ t('home.leader_1_name') }}
+      </h3>
+      <p class="slider-text">
+       {{ t('home.leader_1_role') }}
+      </p>
+     </div>
+     <div class="staff-post">
+      <div class="hold-image">
+       <div class="hold-image-con">
+        <img alt class="profile-image" src="assets/images/openkerk/A7307020.jpg">
+       </div>
+      </div>
+      <h3>
+       {{ t('home.leader_2_name') }}
+      </h3>
+      <p class="slider-text">
+       {{ t('home.leader_2_role') }}
+      </p>
+     </div>
+    </div>
+    <div class="events-button-parent">
+    </div>
+   </div>
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px">
+   </div>
+  </div>
+{% endblock %}

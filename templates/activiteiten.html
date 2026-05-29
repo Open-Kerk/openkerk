@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('activiteiten.page_title') }}{% endblock %}
+
+{% block body_class %}page-template-default activiteiten-page{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="{{ url_for('index') }}" id="video-close">
+    <i class="fal fa-times"></i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container"></div>
+   </div>
+  </div>
+
+  <div id="main">
+
+   {# ── Hero ── #}
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('activiteiten.hero_heading') | safe }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('activiteiten.hero_subtitle') | safe }}
+     </div>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/A7306011-scaled.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10, 0.5);"></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+   {# ── Intro ── #}
+   <h2 id="activiteiten-overzicht">
+    {{ t('activiteiten.intro_title') }}
+   </h2>
+   <p>
+    {{ t('activiteiten.intro_text') }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Activiteiten card grid (location-slider style) ── #}
+   <div class="section-container" id="activiteiten-slider">
+    <div class="location-listing activity-listing">
+
+     <div class="location-slide" id="kerkdienst">
+      <div class="hold-image">
+       <img alt="Kerkdienst Open Kerk Lommel" class="location-image" loading="lazy" src="assets/images/openkerk/IMG_9627-Enhanced-NR-1024x683.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.kerkdienst_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="#kerkdienst"><span>{{ t('activiteiten.kerkdienst_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.kerkdienst_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="kinderkerk">
+      <div class="hold-image">
+       <img alt="Kinderkerk Open Kerk Lommel" class="location-image" loading="lazy" src="assets/images/openkerk/IMG_6302.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.kinderkerk_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="#kinderkerk"><span>{{ t('activiteiten.kinderkerk_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.kinderkerk_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="jong">
+      <div class="hold-image">
+       <img alt="Jong° jeugdgroep Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/A7307020.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.jong_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="{{ url_for('kampen', camp='jong') }}#kampen-keuze"><span>{{ t('activiteiten.jong_title') | safe }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.jong_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="gebed">
+      <div class="hold-image">
+       <img alt="Gebed en worship Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/Prayer-Worship.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.gebed_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="#gebed"><span>{{ t('activiteiten.gebed_title') | safe }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.gebed_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="lifegroups">
+      <div class="hold-image">
+       <img alt="Lifegroups Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/IMG_9627.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.lifegroups_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="#lifegroups"><span>{{ t('activiteiten.lifegroups_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.lifegroups_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="realmen">
+      <div class="hold-image">
+       <img alt="Real Men Camp Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/RealMenCamp.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.realmen_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="{{ url_for('kampen', camp='realmen') }}#kampen-keuze"><span>{{ t('activiteiten.realmen_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.realmen_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="vrouwen">
+      <div class="hold-image">
+       <img alt="Vrouwenavond Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/geetanjal-khanna-8CwoHpZe3qE-unsplash-1000x1000.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.vrouwen_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="#vrouwen"><span>{{ t('activiteiten.vrouwen_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.vrouwen_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="nieuwestart">
+      <div class="hold-image">
+       <img alt="Nieuwe start cursus Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/geloof-04-volgen.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.nieuwestart_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="#nieuwestart"><span>{{ t('activiteiten.nieuwestart_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.nieuwestart_desc') }}</p>
+     </div>
+
+     <div class="location-slide" id="kampen">
+      <div class="hold-image">
+       <img alt="Zomerkampen Open Kerk" class="location-image" loading="lazy" src="assets/images/openkerk/Zomerkampen.jpg">
+      </div>
+      <span class="activity-meta">{{ t('activiteiten.kampen_meta') }}</span>
+      <a class="gold-text-link location-slide-link" href="{{ url_for('kampen', camp='kinder') }}#kampen-keuze"><span>{{ t('activiteiten.kampen_title') }}</span></a>
+      <p class="activity-desc">{{ t('activiteiten.kampen_desc') }}</p>
+
+     </div>
+
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Blijf op de hoogte ── #}
+   <h2 id="app-info">
+    {{ t('activiteiten.app_title') }}
+   </h2>
+   <p>
+    {{ t('activiteiten.app_text') }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+  </div>
+{% endblock %}

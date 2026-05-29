@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('anbi.title') }} — OPEN. Kerk{% endblock %}
+
+{% block body_class %}page-template-default anbi-page{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="{{ url_for('index') }}" id="video-close">
+    <i class="fal fa-times"></i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container"></div>
+   </div>
+  </div>
+
+  <div id="main">
+
+   {# ── Hero ── #}
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('anbi.hero_heading') | safe }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('anbi.hero_subtitle') | safe }}
+     </div>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/A7306011-scaled.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10, 0.5);"></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+   {# ── Doelstelling ── #}
+   <h2 id="doelstelling">{{ t('anbi.doelstelling_heading') }}</h2>
+   <p>
+    {{ t('anbi.doelstelling_p1') }}
+   </p>
+   <p>
+    {{ t('anbi.doelstelling_p2') }}
+   </p>
+   <p>
+    {{ t('anbi.doelstelling_p3') }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Gegevens ── #}
+   <h2 id="gegevens">{{ t('anbi.gegevens_heading') }}</h2>
+
+   <div class="anbi-cards">
+    <div class="anbi-card">
+     <span class="anbi-card__label">{{ t('anbi.gegevens_card1_label') }}</span>
+     <p>{{ t('anbi.gegevens_card1_value') | safe }}</p>
+    </div>
+    <div class="anbi-card">
+     <span class="anbi-card__label">{{ t('anbi.gegevens_card2_label') }}</span>
+     <p>{{ t('anbi.gegevens_card2_value') | safe }}</p>
+    </div>
+    <div class="anbi-card">
+     <span class="anbi-card__label">{{ t('anbi.gegevens_card3_label') }}</span>
+     <dl class="anbi-card__list">
+      <dt>{{ t('anbi.gegevens_card3_dt1') }}</dt><dd>{{ t('anbi.gegevens_card3_dd1') }}</dd>
+      <dt>{{ t('anbi.gegevens_card3_dt2') }}</dt><dd>{{ t('anbi.gegevens_card3_dd2') }}</dd>
+     </dl>
+    </div>
+    <div class="anbi-card">
+     <span class="anbi-card__label">{{ t('anbi.gegevens_card4_label') }}</span>
+     <dl class="anbi-card__list">
+      <dt>{{ t('anbi.gegevens_card4_dt1') }}</dt><dd>{{ t('anbi.gegevens_card4_dd1') }}</dd>
+      <dt>{{ t('anbi.gegevens_card4_dt2') }}</dt><dd>{{ t('anbi.gegevens_card4_dd2') }}</dd>
+     </dl>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Bestuur ── #}
+   <h2 id="bestuur">{{ t('anbi.bestuur_heading') }}</h2>
+   <p>{{ t('anbi.bestuur_intro') }}</p>
+   <ul class="anbi-bestuur">
+    <li><strong>Tim Laurey</strong> — {{ t('anbi.bestuur_role1') }}</li>
+    <li><strong>Radovan Bierens</strong> — {{ t('anbi.bestuur_role2') }}</li>
+    <li><strong>Bram Riemens</strong> — {{ t('anbi.bestuur_role3') }}</li>
+    <li><strong>Ellen Vermeulen-Laurijssen</strong> — {{ t('anbi.bestuur_role4') }}</li>
+   </ul>
+   <p>
+    {{ t('anbi.bestuur_team') }}
+   </p>
+   <p>
+    {{ t('anbi.bestuur_remuneration') | safe }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Vertrouwenspersoon ── #}
+   <h2 id="vertrouwenspersoon">{{ t('anbi.vertrouwenspersoon_heading') }}</h2>
+   <p>
+    {{ t('anbi.vertrouwenspersoon_p1') | safe }}
+   </p>
+   <p>
+    <a class="gold" href="mailto:vertrouwenspersoon@openkerk.com">vertrouwenspersoon@openkerk.com</a>
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── Verantwoording ── #}
+   <h2 id="verantwoording">{{ t('anbi.verantwoording_heading') }}</h2>
+   <p>
+    {{ t('anbi.verantwoording_p1') }}
+   </p>
+
+   <div class="anbi-docs">
+    <a class="anbi-doc" href="https://drive.google.com/file/d/1jk4t96ncTa7S1jJa7k_EwI9mTZG66SYd/view" target="_blank" rel="noopener">
+     <span class="anbi-doc__icon" aria-hidden="true"><i class="fas fa-file-alt"></i></span>
+     <span class="anbi-doc__text">
+      <span class="anbi-doc__title">{{ t('anbi.doc1_title') }}</span>
+      <span class="anbi-doc__desc">{{ t('anbi.doc1_desc') }}</span>
+     </span>
+     <span class="anbi-doc__arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="anbi-doc" href="https://docs.google.com/document/d/1MMkuRWDVYoh8wMJTKBdWGx2-omJe6DODx-tZALrhD2g/edit?usp=sharing" target="_blank" rel="noopener">
+     <span class="anbi-doc__icon" aria-hidden="true"><i class="fas fa-file-alt"></i></span>
+     <span class="anbi-doc__text">
+      <span class="anbi-doc__title">{{ t('anbi.doc2_title') }}</span>
+      <span class="anbi-doc__desc">{{ t('anbi.doc2_desc') }}</span>
+     </span>
+     <span class="anbi-doc__arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="anbi-doc" href="https://docs.google.com/document/d/102PPCUR1DOn8nkcrGPh1segZRpaTFDVT5C0EwkVzkI8/edit?usp=drive_link" target="_blank" rel="noopener">
+     <span class="anbi-doc__icon" aria-hidden="true"><i class="fas fa-file-alt"></i></span>
+     <span class="anbi-doc__text">
+      <span class="anbi-doc__title">{{ t('anbi.doc3_title') }}</span>
+      <span class="anbi-doc__desc">{{ t('anbi.doc3_desc') }}</span>
+     </span>
+     <span class="anbi-doc__arrow" aria-hidden="true">&rarr;</span>
+    </a>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+  </div>
+{% endblock %}

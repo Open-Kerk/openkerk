@@ -1,0 +1,973 @@
+{% extends "base.html" %}
+
+{% block title %}Teachings — OPEN. Kerk{% endblock %}
+
+{% block body_class %}archive category category-annual-vision-prayer{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="#" id="video-close">
+    <i class="fal fa-times">
+    </i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container">
+    </div>
+   </div>
+  </div>
+  <div class="sermon-bar no-audio" data-audio data-embed data-itunes data-lesson data-podbean data-spotify>
+   <div id="sermon-details">
+    <i class="fad fa-info">
+    </i>
+    <span>
+     &times;
+    </span>
+   </div>
+   <div id="sermon-summary-container">
+    <div id="summary-title">
+     <img alt class="summary-image" src width="34">
+     <div class="summary-title-text">
+      <h5 class="summary-heading">
+       No Audio
+      </h5>
+      <div class="summary-sub-heading">
+      </div>
+     </div>
+    </div>
+    <div id="sermon-summary-content">
+    </div>
+    <div class="sermon-links">
+     <span class="practice-span">
+      <a class="practice-link gold-text-link" href target="_blank">
+       Practice
+      </a>
+     </span>
+     <span class="itunes-span">
+      <a class="practice-link gold-text-link" href target="_blank">
+       Apple
+      </a>
+     </span>
+     <span class="spotify-span">
+      <a class="practice-link gold-text-link" href target="_blank">
+       Spotify
+      </a>
+     </span>
+     <span class="video-span">
+      <a class="practice-link gold-text-link" data-embed href="#">
+       Video
+      </a>
+     </span>
+    </div>
+   </div>
+   <div class="container in-player w-container">
+    <div class="grid-this player-piece">
+     <div class="sermon__profile" id="w-node-041c5da21f2e-8d7aa175">
+      <img alt class="sermon-image" src width="34">
+      <div class="sermon-content">
+       <h5 class="heading-3">
+        No Audio
+       </h5>
+       <div class="sermon-text">
+       </div>
+      </div>
+     </div>
+     <div class="player" id="w-node-fd7bb00eb738-8d7aa175">
+      <audio preload="none" src="#">
+      </audio>
+     </div>
+     <div class="sermon-links">
+      <span class="practice-span">
+       <a class="practice-link gold-text-link" href target="_blank">
+        Practice
+       </a>
+      </span>
+      <span class="itunes-span">
+       <a class="practice-link gold-text-link" href target="_blank">
+        Apple
+       </a>
+      </span>
+      <span class="spotify-span">
+       <a class="practice-link gold-text-link" href target="_blank">
+        Spotify
+       </a>
+      </span>
+      <span class="video-span">
+       <a class="practice-link gold-text-link" data-embed href="#">
+        Video
+       </a>
+      </span>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="tab-nav-container">
+   <a class="sub-nav-link" href="https://realitysf.com/teachings">
+    Current Series
+   </a>
+   <a class="sub-nav-link" href="https://realitysf.com/category/series">
+    Past Series
+   </a>
+   <a class="sub-nav-link" href="https://realitysf.com/category/essentials">
+    Essentials
+   </a>
+   <a class="search-icon w-inline-block" href="#">
+    <img alt src="assets/images/icon-search.svg">
+    <span class="close-search-input">
+     &times;
+    </span>
+   </a>
+   <form action="https://realitysf.com/teachings/" id="search-box">
+    <input id="s" name="s" placeholder="Type and hit enter" type="text" value>
+   </form>
+  </div>
+  <div class="category-details">
+   <a class="cat-back-link" href="https://realitysf.com/category/series/">
+    <img alt src="assets/images/back-arrow.svg">
+    <div>
+     Back to Series
+    </div>
+   </a>
+   <div class="flex-cat-parent">
+    <img alt class="cat-image" src="assets/images/RSF_AVP_2026_Square_r2v1_01.jpg" width="282">
+    <div class="series-parent-flex no-top centered">
+     <div class="flexed centered">
+      <div class="small-grey-text">
+       12 Teachings
+      </div>
+     </div>
+     <h1>
+      Annual Vision & Prayer
+     </h1>
+     <div class="hold-series-description" id="series-description">
+      <p class="series-description">
+       <p>
+        At the beginning of every year, our leadership lays out the pastoral vision and plans for the coming year, and then we submit them to the Lord together in prayer. Also here you&rsquo;ll find Midyear Updates on what was shared at Annual Vision & Prayer.
+       </p>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="audio-filter-container">
+   <div class="audio-filter audio-title-filter">
+    <a class="filter-link" href="#" id="audio-title-filter">
+     Title
+     <span>
+      & Teacher
+     </span>
+     <i class="fa fa-caret-down">
+     </i>
+    </a>
+   </div>
+   <div class="audio-filter audio-teacher-filter">
+    <a class="filter-link" href="#" id="audio-teacher-filter">
+     Teacher
+     <i class="fa fa-caret-down">
+     </i>
+    </a>
+   </div>
+   <div class="audio-filter audio-summary-filter">
+    <a class="filter-link" href="#" id="audio-summary-filter">
+     Summary
+     <i class="fa fa-caret-down">
+     </i>
+    </a>
+   </div>
+   <div class="audio-filter dates audio-date-filter">
+    <a class="filter-link active-audio-filter" href="#" id="audio-date-filter">
+     Date
+     <i class="fa fa-caret-down">
+     </i>
+    </a>
+   </div>
+   <div class="audio-filter audio-duration-filter">
+    <a class="filter-link" href="#" id="audio-duration-filter">
+     Duration
+     <i class="fa fa-caret-down">
+     </i>
+    </a>
+   </div>
+   <div class="hold-search-filter">
+    <img alt class="search-icon-mobile" src="assets/images/icon-search.svg">
+   </div>
+  </div>
+  <div class="overflow-player-section">
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/vuccqnp4d8zjeckp/20260201-AVP-Audio.mp3" data-date="1769904000000" data-duration data-embed="https://vimeo.com/1162285146?share=copy&fl=sv&fe=ci" data-id="21392" data-image="assets/images/Dave-Lomas-Staff-150x150.jpg" data-itunes data-lesson data-podbean data-spotify data-summary="Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on faith and the invitation to " data-teacher="Dave Lomas, Mike Gleim, Lindsay Barrios, Naomi Lau, Tyler Madsen" data-title="Annual Vision & Prayer 2026" let make."" us>
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2026
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/Dave-Lomas-Staff-150x150.jpg" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas, Mike Gleim, Lindsay Barrios, Naomi Lau, Tyler Madsen
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on faith and the invitation to "let us make."
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20260201
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       1:17:02
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/vuccqnp4d8zjeckp/20260201-AVP-Audio.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/1162285146?share=copy&amp;amp;fl=sv&amp;amp;fe=ci" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/uwnq8sjf9n25iwqe/20250202-AVP-audio.mp3" data-date="1738454400000" data-duration data-embed="https://vimeo.com/1053875403?share=copy" data-id="20144" data-image="assets/images/Lomas6-150x150.jpg" data-itunes data-lesson data-podbean="https://mcdn.podbean.com/mf/web/t4hzp643ushcyqxm/20250202-Annual_Vision_and_Prayer.pdf" data-spotify data-summary="Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on being in the presence of Jesus." data-teacher="Dave Lomas, Jessica Gracewski, & Mike Gleim" data-title="Annual Vision & Prayer 2025">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2025
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/Lomas6-150x150.jpg" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas, Jessica Gracewski, & Mike Gleim
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on being in the presence of Jesus.
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20250202
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       1:11:13
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/uwnq8sjf9n25iwqe/20250202-AVP-audio.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/1053875403?share=copy" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/t4hzp643ushcyqxm/20250202-Annual_Vision_and_Prayer.pdf" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div and class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/t8rzju/AVP-Audio.mp3" data-date="1706486400000" data-duration data-embed="https://vimeo.com/908780402?share=copy" data-id="19444" data-image="assets/images/Lomas6-150x150.jpg" data-itunes data-lesson data-podbean data-spotify data-summary="Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on being " data-teacher="Dave Lomas, Jessica Gracewski, Mike Gleim, & Lindsay Barrios" data-title="Annual Vision & Prayer 2024" established in love."" rooted>
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2024
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/Lomas6-150x150.jpg" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas, Jessica Gracewski, Mike Gleim, & Lindsay Barrios
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on being "rooted and established in love."
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20240129
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       1:16:26
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/t8rzju/AVP-Audio.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/908780402?share=copy" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/9iitmc/20230129-AVP-Audio.mp3" data-date="1674950400000" data-duration data-embed="https://vimeo.com/795386255" data-id="18760" data-image="assets/images/lomas-150x150.png" data-itunes data-lesson data-podbean="https://mcdn.podbean.com/mf/web/jw9srm/AVP_2023-presentation.pdf" data-spotify data-summary="Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on being " data-teacher="Dave Lomas" data-title="Like Trees: Annual Vision & Prayer 2023" in place."" rooted>
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Like Trees: Annual Vision & Prayer 2023
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/lomas-150x150.png" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas shares the presentation of our Annual Vision & Prayer, focused on being "rooted in place."
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20230129
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       1:05:34
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/9iitmc/20230129-AVP-Audio.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/795386255" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/jw9srm/AVP_2023-presentation.pdf" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/p4u8vm/2022-02-27-teaching-audio.mp3" data-date="1645920000000" data-duration data-embed="https://vimeo.com/683008296" data-id="17679" data-image="assets/images/lomas_website_profile5x6-150x150.png" data-itunes="https://podcasts.apple.com/us/podcast/vision-sunday-2022/id351782771?i=1000552486933" data-lesson data-podbean="https://mcdn.podbean.com/mf/web/y5xg93/20220227-Vision_Sunday_2022.pdf" data-spotify="https://open.spotify.com/episode/27JZyDKvK59RAr1wUmnCDc?si=e6271b64597b4af0" data-summary="Dave Lomas teaches from Colossians 1:28-29 on maturity in Christ, and shares a vision for renewal as we look toward the future of Reality SF." data-teacher="Dave Lomas" data-title="Vision Sunday 2022">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Vision Sunday 2022
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/lomas_website_profile5x6-150x150.png" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas teaches from Colossians 1:28-29 on maturity in Christ, and shares a vision for renewal as we look toward the future of Reality SF.
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20220227
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       54:52
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/p4u8vm/2022-02-27-teaching-audio.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/683008296" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/y5xg93/20220227-Vision_Sunday_2022.pdf" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/gh4wbq/20210125-AVP_Finalaudio.mp3" data-date="1611532800000" data-duration data-embed="https://vimeo.com/505459892" data-id="16338" data-image="assets/images/lomas_website_profile5x6-150x150.png" data-itunes="https://podcasts.apple.com/us/podcast/reality-san-francisco/id351782771#episodeGuid=realitysf.podbean.com%2Fed36f7fb-caf6-3316-acd2-981bb3fe2415" data-lesson data-podbean data-spotify="https://open.spotify.com/episode/5TPzYntBUqZo5MaxLuMc07?si=wdcE8n4JRT-55UEep5AxTw" data-summary="Dave Lomas is joined by other staff members as we look back on 2020 and forward to the rest of 2021 together. Then several leaders and volunteers in our church pray over specific themes we are highlighting this year, and want to see God move and expand us in." data-teacher="Dave Lomas" data-title="Annual Vision & Prayer 2021">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2021
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/lomas_website_profile5x6-150x150.png" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas is joined by other staff members as we look back on 2020 and forward to the rest of 2021 together. Then several leaders and volunteers in our church pray over specific themes we are highlighting this year, and want to see God move and expand us in.
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20210125
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       58:33
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/gh4wbq/20210125-AVP_Finalaudio.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/505459892" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/bnxgpw/20200108-Annual-Vision-and-Prayer-2020.mp3" data-date="1578441600000" data-duration data-embed="https://vimeo.com/384579055" data-id="10921" data-image="assets/images/lomas_website_profile5x6-150x150.png" data-itunes="https://podcasts.apple.com/us/podcast/annual-vision-prayer-2020/id351782771?i=1000462286641" data-lesson data-podbean="https://mcdn.podbean.com/mf/web/97err2/20200107-Annual-Vision-and-Prayer-2020.pdf" data-spotify="https://open.spotify.com/episode/6VTdrWymNuwlkR7JuYQt7L?si=blx3SFFQQg6s_CrGcYarxQ" data-summary="At our ten-year anniversary Annual Vision & Prayer, Dave Lomas looks back on the main themes of our early years as a church in order to canonize them as an essential part of our future. He then looks forward to share key initiatives for 2020." data-teacher="Dave Lomas" data-title="Annual Vision & Prayer 2020">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2020
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/lomas_website_profile5x6-150x150.png" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       At our ten-year anniversary Annual Vision & Prayer, Dave Lomas looks back on the main themes of our early years as a church in order to canonize them as an essential part of our future. He then looks forward to share key initiatives for 2020.
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20200108
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       48:38
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/bnxgpw/20200108-Annual-Vision-and-Prayer-2020.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/384579055" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/97err2/20200107-Annual-Vision-and-Prayer-2020.pdf" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/tvmini/20190115-Annual_Vision_and_Prayer_Audio_ONLY.mp3" data-date="1547510400000" data-duration data-embed="http://vimeo.com/311778254" data-id="5976" data-image="assets/images/lomas_website_profile5x6-150x150.png" data-itunes="https://itunes.apple.com/us/podcast/annual-vision-prayer-2019/id351782771?i=1000427799336&mt=2" data-lesson data-podbean="https://mcdn.podbean.com/mf/web/b2rvde/20190115-Annual_Vision_and_Prayer_Presentation.pdf" data-spotify="https://open.spotify.com/episode/1GOdc3OZGRPXvlTGvP3sfD" data-summary="Dave Lomas&rsquo; presentation from our 2019 Annual Vision & Prayer Night." data-teacher="Dave Lomas" data-title="Annual Vision & Prayer 2019">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2019
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/lomas_website_profile5x6-150x150.png" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas&rsquo; presentation from our 2019 Annual Vision & Prayer Night.
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20190115
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       59:12
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/tvmini/20190115-Annual_Vision_and_Prayer_Audio_ONLY.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="http://vimeo.com/311778254" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/b2rvde/20190115-Annual_Vision_and_Prayer_Presentation.pdf" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://realitysf.podbean.com/mf/web/9suw8m/20180826-Midyear_Update.mp3" data-date="1517184000000" data-duration data-embed data-id="5369" data-image data-itunes data-lesson data-podbean data-spotify data-summary data-teacher="Dale Gustafson" data-title="2018 Midyear Update">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       2018 Midyear Update
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src width="25">
+      <div class="teacher-ellipsis">
+       Dale Gustafson
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       29 January 2018
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       36:42
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://realitysf.podbean.com/mf/web/9suw8m/20180826-Midyear_Update.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="http://media.blubrry.com/reality_san_francisco/www.realitysf.com/download/mp3/20180129-AVP_2018_Presentation.mp3" data-date="1517184000000" data-duration data-embed data-id="4602" data-image data-itunes data-lesson data-podbean="http://bit.ly/2GvC4yR" data-spotify data-summary data-teacher="Dave Lomas" data-title="Annual Vision & Prayer 2018">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision & Prayer 2018
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       29 January 2018
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       36:42
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="http://media.blubrry.com/reality_san_francisco/www.realitysf.com/download/mp3/20180129-AVP_2018_Presentation.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block" href="http://bit.ly/2GvC4yR" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://realitysf.com/download/mp3/20160126-Annual_Vision_Prayer_2016.mp3" data-date="1453680000000" data-duration data-embed data-id="2952" data-image data-itunes data-lesson data-podbean data-spotify data-summary data-teacher="Dave Lomas" data-title="Annual Vision and Prayer 2016">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision and Prayer 2016
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20160125
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       1:00:00
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://realitysf.com/download/mp3/20160126-Annual_Vision_Prayer_2016.mp3" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .mp3 audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="play-list-item-parent" data-audio="https://mcdn.podbean.com/mf/web/cibtga/20150126-Annual-Vision-Prayer.m4a" data-date="1422230400000" data-duration data-embed="https://vimeo.com/118039698" data-id="1968" data-image="assets/images/lomas_website_profile5x6-150x150.png" data-itunes data-lesson data-podbean="https://realitysf.com/assets/annual-vision-and-prayer/AVP_Slides_2015.pdf" data-spotify data-summary="Dave Lomas reviews the year past in the life of our church and shares vision and areas of prayer for the year ahead." data-teacher="Dave Lomas" data-title="Annual Vision and Prayer Night 2015">
+    <div class="play-list-item">
+     <div class="status-indicator">
+      <div class="audioControl">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <div class="status-play-button">
+       <i class="fas fa-play">
+       </i>
+      </div>
+     </div>
+     <div class="audio-title">
+      <div class="teacher-ellipsis title">
+       Annual Vision and Prayer Night 2015
+      </div>
+     </div>
+     <div class="audio-teacher">
+      <img alt class="teacher-image" src="assets/images/lomas_website_profile5x6-150x150.png" width="25">
+      <div class="teacher-ellipsis">
+       Dave Lomas
+      </div>
+     </div>
+     <div class="audio-summary">
+      <div class="ellipsed-text">
+       Dave Lomas reviews the year past in the life of our church and shares vision and areas of prayer for the year ahead.
+      </div>
+     </div>
+     <div class="dates audio-date">
+      <div>
+       20150126
+      </div>
+     </div>
+     <div class="audio-duration">
+      <div>
+       1:00:00
+      </div>
+     </div>
+     <div class="audio-download">
+      <img alt src="assets/images/ellipsis.svg">
+      <div class="download-content-parent">
+       <a class="download-content-block" href="https://mcdn.podbean.com/mf/web/cibtga/20150126-Annual-Vision-Prayer.m4a" target="_blank">
+        <div class="teacher-ellipsis">
+         Download .m4a audio file
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-download.svg" width="25">
+       </a>
+       <a class="download-content-block view-video-recording" data-embed="https://vimeo.com/118039698" href="#">
+        <div class="teacher-ellipsis">
+         View video recording
+        </div>
+        <img alt class="action-icon" src="assets/images/icon-video.svg" width="25">
+       </a>
+       <a class="download-content-block" href="https://realitysf.com/assets/annual-vision-and-prayer/AVP_Slides_2015.pdf" target="_blank">
+        <div class="teacher-ellipsis">
+         View Slides
+        </div>
+        <img alt class="action-icon download" src="assets/images/icon-lesson.svg" width="25">
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+{% endblock %}

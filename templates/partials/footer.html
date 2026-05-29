@@ -1,0 +1,87 @@
+<footer class="footer" style="background-image: url('https://openkerk.com/wp-content/uploads/2022/12/IMG_8032-scaled.jpg');">
+ <div id="footer-inner">
+  <div class="footer-brand-col">
+   <img alt="OPEN. Kerk logo" src="assets/images/openkerk/Logo-OPEN-Zwart.png">
+   <p>
+    {{ t('footer.tagline_1') }}
+    <br>
+    {{ t('footer.tagline_2') }}
+   </p>
+   <address style="font-style:normal; margin-top:24px;">
+    <span style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; display:block; margin-bottom:10px;">
+     {{ t('footer.bezoek_ons') }}
+    </span>
+    <a href="{{ url_for('contact') }}#route" style="color:#a1a1a1; font-size:13px; font-weight:400; line-height:1.9;">
+     Saskesdreef 10
+     <br>
+     3920 Lommel-Kolonie
+     <br>
+     Belgi&euml;
+     <br>
+     {{ t('footer.zondag') }}
+    </a>
+    <br><br>
+    <a href="tel:+3211525527" style="color:#a1a1a1; font-size:13px; font-weight:400; line-height:1.9;">+32 (0)11 525 527</a>
+    <br>
+    <a href="mailto:contact@openkerk.com" style="color:#a1a1a1; font-size:13px; font-weight:400; line-height:1.9;">contact@openkerk.com</a>
+   </address>
+  </div>
+  <details class="footer-nav-col" open>
+   <summary><h4>{{ t('footer.col_activiteiten') }}</h4></summary>
+   <ul>
+    <li><a href="{{ url_for('activiteiten') }}#kerkdienst">{{ t('footer.kerkdienst') }}</a></li>
+    <li><a href="{{ url_for('activiteiten') }}#kinderkerk">{{ t('footer.kinderkerk') }}</a></li>
+    <li><a href="{{ url_for('activiteiten') }}#jong">{{ t('footer.jong') }}</a></li>
+    <li><a href="{{ url_for('activiteiten') }}#lifegroups">{{ t('footer.lifegroups') }}</a></li>
+    <li><a href="{{ url_for('activiteiten') }}#realmen">{{ t('footer.realmen') }}</a></li>
+    <li><a href="{{ url_for('activiteiten') }}#gebed">{{ t('footer.gebed') }}</a></li>
+   </ul>
+  </details>
+  <details class="footer-nav-col" open>
+   <summary><h4>{{ t('footer.col_kampen') }}</h4></summary>
+   <ul>
+    <li><a href="{{ url_for('kampen', camp='kinder') }}#kampen-keuze">{{ t('footer.kinderkamp') }}</a></li>
+    <li><a href="{{ url_for('kampen', camp='jong') }}#kampen-keuze">{{ t('footer.summercamp') }}</a></li>
+    <li><a href="{{ url_for('kampen', camp='realmen') }}#kampen-keuze">{{ t('footer.realmencamp') }}</a></li>
+   </ul>
+  </details>
+  <details class="footer-nav-col" open>
+   <summary><h4>{{ t('footer.col_info') }}</h4></summary>
+   <ul>
+    <li><a href="{{ url_for('contact') }}">{{ t('footer.contact') }}</a></li>
+    <li><a href="{{ url_for('geven') }}">{{ t('footer.geven') }}</a></li>
+    <li><a href="{{ url_for('anbi') }}">{{ t('footer.anbi') }}</a></li>
+    <li><a href="assets/Vrijwilligerspakket.pdf" target="_blank" rel="noopener">{{ t('footer.vrijwilligerspakket') }}</a></li>
+   </ul>
+  </details>
+ </div>
+ <div class="footer-bottom-bar">
+  <p>
+   {{ t('footer.copyright') }}
+  </p>
+  <span class="anbi">
+   {{ t('footer.anbi_erkend') }}
+  </span>
+ </div>
+</footer>
+
+<script>
+/* Footer columns: collapsed on mobile, always open on desktop */
+(function () {
+  var MOBILE = 768;
+  var cols = document.querySelectorAll('.footer-nav-col');
+  function sync() {
+    var mobile = window.innerWidth <= MOBILE;
+    cols.forEach(function (d) {
+      if (mobile) { d.removeAttribute('open'); }
+      else { d.setAttribute('open', ''); }
+    });
+  }
+  sync();
+  var t;
+  window.addEventListener('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(sync, 150);
+  });
+})();
+</script>

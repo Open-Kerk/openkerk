@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('contact.title') }} — OPEN. Kerk{% endblock %}
+
+{% block body_class %}page-template-default contact-page{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="{{ url_for('index') }}" id="video-close">
+    <i class="fas fa-times"></i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container"></div>
+   </div>
+  </div>
+
+  <div id="main">
+
+   {# ── Hero ── #}
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('contact.hero_heading') | safe }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('contact.hero_subtitle') | safe }}
+     </div>
+     <a class="button" href="#route">
+      {{ t('contact.hero_button') }}
+     </a>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/A7307020.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10, 0.5);"></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+   {# ── Contactgegevens ── #}
+   <h2 id="contact">{{ t('contact.contactgegevens_heading') }}</h2>
+   <p>
+    {{ t('contact.contactgegevens_p1') }}
+   </p>
+
+   <div class="contact-cards">
+    <div class="contact-card">
+     <span class="contact-card__icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
+     <span class="contact-card__label">{{ t('contact.card_address_label') }}</span>
+     <p class="contact-card__value">{{ t('contact.card_address_value') | safe }}</p>
+    </div>
+    <div class="contact-card">
+     <span class="contact-card__icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
+     <span class="contact-card__label">{{ t('contact.card_service_label') }}</span>
+     <p class="contact-card__value">{{ t('contact.card_service_value') | safe }}</p>
+    </div>
+    <div class="contact-card">
+     <span class="contact-card__icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+     <span class="contact-card__label">{{ t('contact.card_email_label') }}</span>
+     <p class="contact-card__value"><a href="mailto:contact@openkerk.com">{{ t('contact.card_email_value') }}</a></p>
+    </div>
+    <div class="contact-card">
+     <span class="contact-card__icon" aria-hidden="true"><i class="fas fa-phone"></i></span>
+     <span class="contact-card__label">{{ t('contact.card_phone_label') }}</span>
+     <p class="contact-card__value"><a href="tel:+3211525527">{{ t('contact.card_phone_value') }}</a></p>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Route / Google Maps ── #}
+   <h2 id="route">{{ t('contact.route_heading') }}</h2>
+   <p>
+    {{ t('contact.route_p1') }}
+   </p>
+
+   <div class="contact-map">
+    <div class="contact-map__frame">
+     <iframe
+       title="Routekaart OPEN. Kerk — Saskesdreef 10, Lommel"
+       src="https://www.google.com/maps?q=Saskesdreef%2010,%203920%20Lommel-Kolonie,%20Belgi%C3%AB&output=embed"
+       loading="lazy"
+       referrerpolicy="no-referrer-when-downgrade"
+       allowfullscreen></iframe>
+    </div>
+    <div class="contact-map__cta">
+     <a class="button"
+        href="https://www.google.com/maps/dir/?api=1&destination=Saskesdreef+10,+3920+Lommel-Kolonie,+Belgi%C3%AB"
+        target="_blank" rel="noopener">
+      {{ t('contact.route_button') }}
+     </a>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+  </div>
+{% endblock %}

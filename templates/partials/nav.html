@@ -1,0 +1,238 @@
+<div id="navbar">
+ <div id="inner-navbar">
+  <a href="/" id="nav-logo">
+   <img alt="OPEN. Kerk" id="white-logo" src="assets/images/openkerk/Logo-OPEN-Zwart.png">
+   <img alt="OPEN. Kerk" id="black-logo" src="assets/images/openkerk/Logo-OPEN-Zwart.png">
+  </a>
+  <div id="menu-toggle">
+   <div class="menu-line" id="top-line">
+   </div>
+   <div class="menu-line" id="middle-line">
+   </div>
+   <div class="menu-line" id="bottom-line">
+   </div>
+  </div>
+  <nav class="nav-menu">
+   <div class="mega-menu-wrap" id="mega-menu-wrap-main">
+    <div class="mega-menu-toggle">
+     <div class="mega-toggle-blocks-left">
+     </div>
+     <div class="mega-toggle-blocks-center">
+     </div>
+     <div class="mega-toggle-blocks-right">
+      <div class="mega-toggle-block mega-menu-toggle-animated-block mega-toggle-block-0">
+       <button aria-expanded="false" aria-label="Toggle Menu" class="mega-toggle-animated mega-toggle-animated-slider" type="button">
+        <span class="mega-toggle-animated-box">
+         <span class="mega-toggle-animated-inner">
+         </span>
+        </span>
+       </button>
+      </div>
+     </div>
+    </div>
+    <ul class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-breakpoint="1000" data-document-click="collapse" data-effect="fade" data-effect-mobile="disabled" data-effect-speed="200" data-effect-speed-mobile="0" data-event="hover" data-hover-intent-interval="100" data-hover-intent-timeout="300" data-mobile-direction="vertical" data-mobile-force-width="false" data-mobile-state="collapse_all" data-second-click="go" data-unbind="true" data-vertical-behaviour="standard" id="mega-menu-main">
+     <!-- Activiteiten -->
+     <li class="mega-menu-item mega-menu-item-has-children mega-align-bottom-left mega-menu-megamenu mega-menu-grid" id="mega-menu-item-act">
+      <a aria-expanded="false" class="mega-menu-link" href="{{ url_for('activiteiten') }}" tabindex="0">
+       {{ t('nav.activiteiten') }}
+       <span aria-hidden="true" class="mega-indicator">
+       </span>
+      </a>
+      <ul class="mega-sub-menu" role="presentation">
+       <li class="mega-menu-row" id="mega-menu-act-0">
+        <ul class="mega-sub-menu" role="presentation" style="--columns:12">
+         <li class="mega-menu-column mega-menu-columns-4-of-12" style="--columns:12; --span:4">
+          <ul class="mega-sub-menu">
+           <li class="mega-menu-item mega-menu-item-type-widget widget_text">
+            <h4 class="mega-block-title">
+             {{ t('nav.act.featured_title') }}
+            </h4>
+            <div class="textwidget">
+             <p class="sub-nav-text">
+              {{ t('nav.act.featured_text') }}
+             </p>
+             <p>
+              <a href="{{ url_for('activiteiten') }}">
+               {{ t('nav.act.featured_link') }}
+              </a>
+             </p>
+            </div>
+           </li>
+          </ul>
+         </li>
+         <li class="mega-menu-column mega-menu-columns-4-of-12" style="--columns:12; --span:4">
+          <ul class="mega-sub-menu">
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#kerkdienst">
+             {{ t('nav.act.kerkdienst') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#kinderkerk">
+             {{ t('nav.act.kinderkerk') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#jong">
+             {{ t('nav.act.jong') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#gebed">
+             {{ t('nav.act.gebed') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#lifegroups">
+             {{ t('nav.act.lifegroups') }}
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li class="mega-menu-column mega-menu-columns-4-of-12" style="--columns:12; --span:4">
+          <ul class="mega-sub-menu">
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#realmen">
+             {{ t('nav.act.realmen') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#vrouwen">
+             {{ t('nav.act.vrouwen') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('activiteiten') }}#nieuwestart">
+             {{ t('nav.act.nieuwestart') }}
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('kampen') }}">
+             {{ t('nav.act.zomerkampen') }}
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <!-- Kampen -->
+     <li class="mega-menu-item mega-menu-item-has-children mega-align-bottom-left mega-menu-megamenu mega-menu-grid" id="mega-menu-item-kamp">
+      <a aria-expanded="false" class="mega-menu-link" href="{{ url_for('kampen') }}" tabindex="0">
+       {{ t('nav.kampen') }}
+       <span aria-hidden="true" class="mega-indicator">
+       </span>
+      </a>
+      <ul class="mega-sub-menu" role="presentation">
+       <li class="mega-menu-row" id="mega-menu-kamp-0">
+        <ul class="mega-sub-menu" role="presentation" style="--columns:12">
+         <li class="mega-menu-column mega-menu-columns-4-of-12" style="--columns:12; --span:4">
+          <ul class="mega-sub-menu">
+           <li class="mega-menu-item mega-menu-item-type-widget widget_text">
+            <h4 class="mega-block-title">
+             {{ t('nav.kamp.featured_title') }}
+            </h4>
+            <div class="textwidget">
+             <p class="sub-nav-text">
+              {{ t('nav.kamp.featured_text') }}
+             </p>
+             <p>
+              <a href="{{ url_for('kampen') }}">
+               {{ t('nav.kamp.featured_link') }}
+              </a>
+             </p>
+            </div>
+           </li>
+          </ul>
+         </li>
+         <li class="mega-menu-column mega-menu-columns-4-of-12" style="--columns:12; --span:4">
+          <ul class="mega-sub-menu">
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('kampen', camp='kinder') }}#kampen-keuze">
+             {{ t('nav.kamp.kinderkamp') }}
+             <span class="sub-nav-meta">
+              {{ t('nav.kamp.kinderkamp_meta') }}
+             </span>
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('kampen', camp='jong') }}#kampen-keuze">
+             {{ t('nav.kamp.summercamp') }}
+             <span class="sub-nav-meta">
+              {{ t('nav.kamp.summercamp_meta') }}
+             </span>
+            </a>
+           </li>
+           <li class="mega-menu-item">
+            <a class="mega-menu-link" href="{{ url_for('kampen', camp='realmen') }}#kampen-keuze">
+             {{ t('nav.kamp.realmencamp') }}
+             <span class="sub-nav-meta">
+              {{ t('nav.kamp.realmencamp_meta') }}
+             </span>
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <!-- Nieuwbouw -->
+     <li class="mega-menu-item" id="mega-menu-item-nbw">
+      <a class="mega-menu-link" href="{{ url_for('nieuwbouw') }}" tabindex="0">
+       {{ t('nav.nieuwbouw') }}
+      </a>
+     </li>
+     <!-- Contact -->
+     <li class="mega-menu-item" id="mega-menu-item-contact">
+      <a class="mega-menu-link" href="{{ url_for('contact') }}" tabindex="0">
+       {{ t('nav.contact') }}
+      </a>
+     </li>
+    </ul>
+   </div>
+
+   {# ── Mobile language selector — shows inside the slide-down menu ── #}
+   <div id="lang-switcher-mobile" role="navigation" aria-label="Taal kiezen">
+    <span class="lang-mobile-label">Taal / Language</span>
+    <ul class="lang-mobile-list">
+     {% for code, label in languages.items() %}
+     <li>
+      <a class="lang-mobile-option {% if current_lang == code %}lang-active{% endif %}"
+         href="{{ url_for('set_language', lang=code, next=request.path) }}"
+         hreflang="{{ code }}">
+       {{ label }}
+      </a>
+     </li>
+     {% endfor %}
+    </ul>
+   </div>
+  </nav>
+
+  {# ── Language switcher — absolutely positioned, far right of navbar (desktop) ── #}
+  <div id="lang-switcher" role="navigation" aria-label="Taal kiezen">
+   <button class="lang-current" aria-haspopup="true" aria-expanded="false">
+    <span class="lang-globe"><i class="fas fa-globe" aria-hidden="true"></i></span>
+    <span class="lang-code">{{ current_lang | upper }}</span>
+    <span class="lang-arrow">&#9662;</span>
+   </button>
+   <ul class="lang-dropdown" role="menu">
+    {% for code, label in languages.items() %}
+    <li role="none">
+     <a class="lang-option {% if current_lang == code %}lang-active{% endif %}"
+        href="{{ url_for('set_language', lang=code, next=request.path) }}"
+        role="menuitem"
+        hreflang="{{ code }}">
+      {{ label }}
+     </a>
+    </li>
+    {% endfor %}
+   </ul>
+  </div>
+
+  <div id="anchor-block"></div>
+ </div>
+</div>
+
+

@@ -1,0 +1,366 @@
+nav:
+  activiteiten: Activities
+  kampen: Camps
+  nieuwbouw: New Building
+  contact: Contact
+  act:
+    featured_title: Together every week
+    featured_text: At Open Kerk there is something to experience every week — from the Sunday service and children's church to prayer, life groups and youth groups.
+    featured_link: View calendar
+    kerkdienst: Sunday Service
+    kinderkerk: Children's Church
+    jong: Jong°
+    gebed: Prayer & Worship
+    lifegroups: Life Groups
+    realmen: Real Men
+    vrouwen: Women's Evening
+    nieuwestart: New Start
+    zomerkampen: Summer Camps
+  kamp:
+    featured_title: Summer 2025
+    featured_text: Every year we organise camps for children, teens and men — days full of faith, friendship and adventure.
+    featured_link: View all camps
+    kinderkamp: Children's Camp
+    kinderkamp_meta: 16–19 Aug · €95
+    summercamp: Jong° Summer Camp
+    summercamp_meta: 19–22 Aug · €110
+    realmencamp: Real Men Camp
+    realmencamp_meta: 11–13 Sept · €100
+footer:
+  tagline_1: A living community in Lommel, Belgium.
+  tagline_2: '"Open to God, open to you."'
+  bezoek_ons: Visit us
+  zondag: Sunday 10:30
+  col_activiteiten: Activities
+  col_kampen: Camps
+  col_info: Info
+  kerkdienst: Sunday Service
+  kinderkerk: Children's Church
+  jong: Jong°
+  lifegroups: Life Groups
+  realmen: Real Men
+  gebed: Prayer & Worship
+  kinderkamp: Children's Camp
+  summercamp: Jong° Summer Camp
+  realmencamp: Real Men Camp
+  live: Live
+  contact: Contact
+  geven: Give
+  anbi: ANBI
+  vrijwilligerspakket: Volunteer Pack
+  copyright: © 2026 OPEN. Kerk Lommel
+  anbi_erkend: ANBI Registered
+lang:
+  label: Taal / Language
+home:
+  title: OPEN. Kerk — Open to God, open to you.
+  hero_title: Open to God,<br>open to you.
+  hero_subtitle: The church is a house of prayer. Jesus said, ‘My temple will be called a house of prayer for all nations.’ It is our goal to create a place of God's presence by seeking Him
+  hero_subtitle_underline: in worship and prayer.
+  hero_button: Join Us
+  who_we_are_title: Who we are
+  who_we_are_body: Open Kerk is an Evangelical congregation in Lommel, Belgium, started in 1983 as a small house church and grown into a warm community of hundreds of people who gather every week. A place where you are welcome just as you are, where faith and life are not separated from each other, and where people look out for one another. We believe that God is good and that life works best when we live it the way He intended. Not as an obligation, but as an invitation. Every Sunday at 10:30. Open to God, open to you.
+  believe_section_title: What does it mean to believe in God?
+  belief_1_title: God is love
+  belief_1_body: The most important thing a person can know about God is that He is good. You can trust Him and His Word. God made everything and loves His creation. It is best for you and me to live His way. That is why it is good to realize that God loves you and wants the best for you.
+  belief_2_title: Jesus is God
+  belief_2_media_title: Jesus is God
+  belief_2_body: The Bible describes how God Himself became a Man to restore the friendship between God and people. Through our freedom we have, alongside many good things, also done many bad things. The Bible calls this sin, and through sin the friendship between God and people was broken. Jesus restored this by showing and teaching how a person can live as a child of God. Jesus died for your sins and mine on a cross, but rose again from the dead. By believing in Him, you and I receive new life again; the real life, free from sin and in friendship with God!
+  belief_3_title: The Bible is the Word of God
+  belief_3_body: The Bible speaks the eternal Word and Truth. A Christian follows the word of God carefully. That obedience makes for a life with God, in hope and peace.
+  belief_4_title: Jesus asks us to follow Him
+  belief_4_body: 'Jesus once said: "Do not only listen to what I say, but also do it." When you do what Jesus says in His Word, you become more like Him and you are a blessing not only to yourself but also to the world around you.'
+  belief_5_title: Father, Son and Holy Spirit
+  belief_5_body: God is one. He is the Creator of all that exists and Lord over creation. God is a Father because He makes, leads and protects us. God is the Son because He became a human to restore the friendship between Him and us. God is the Holy Spirit who dwells in all people who believe in Him.
+  leaders_title: Meet our leaders
+  leaders_subtitle: These are the pastors who bring us discipleship.
+  leader_1_name: Tim Laurey
+  leader_1_role: Pastor of OpenKerk.
+  leader_2_name: Vanessa Laurey
+  leader_2_role: Pastor of OpenKerk.
+activiteiten:
+  page_title: Activities — OPEN. Kerk
+  hero_heading: What is there to<br><span class="underline">do at the church?</span>
+  hero_subtitle: Every week there is plenty to experience at Open Kerk.<br>From the Sunday service to lifegroups, prayer and camps —<br>there is a place for you.
+  intro_title: All activities at Open. Kerk
+  intro_text: A living church comes together — not only on Sunday, but throughout the whole week. Below you will find everything that is happening. Download our app for the latest updates, times and locations.
+  kerkdienst_meta: Every Sunday · 10:30 – 12:30u
+  kerkdienst_title: Church service
+  kerkdienst_desc: Every Sunday at 10.30u. Give yourself a whole year to come to church every week. Learn about God. And discover how everything starts to look better.
+  kinderkerk_meta: Every Sunday · 10:30 – 12:30u
+  kinderkerk_title: Children's church
+  kinderkerk_desc: While the grown-ups are enjoying themselves in the regular service, the children certainly should not be left out. That is why it is so nice to know there is an awesome OPEN. Children's church where every child is welcome. Everything is geared towards introducing children to God.
+  jong_meta: 2× per month · Friday evening
+  jong_title: Jong°
+  jong_desc: Jongº is the youth group of OPEN Kerk. Twice a month on Friday evenings they get together for a fun evening. They share one goal… and that is to get to know Jesus better, personally and as a group. Living with God is exciting… feels familiar… and teaches us who we really are.
+  gebed_meta: Every Monday · 19:30 – 21:00u
+  gebed_title: Prayer & Worship
+  gebed_desc: Every Monday evening we gather at Open. Kerk to worship God and pray together. Everyone is welcome to take part. On the last Thursday of every month we hold an Intercession evening, where we pray not for ourselves but for others.
+  lifegroups_meta: Every month
+  lifegroups_title: Lifegroups
+  lifegroups_desc: Once a month we get together in small groups to enjoy a meal and talk about faith. Through these groups you build real friendships and grow in your relationship with God.
+  realmen_meta: Every month
+  realmen_title: Real Men
+  realmen_desc: Once a month men gather in small groups to talk about faith, build friendship and encourage one another.
+  vrouwen_meta: 2× per year
+  vrouwen_title: Women's evening
+  vrouwen_desc: Twice a year there is an evening on a Friday especially for women. These take place at Open. Kerk and are so enjoyable and uplifting that you really don't want to miss them!
+  nieuwestart_meta: 2× per year · 4 Wednesdays
+  nieuwestart_title: Fresh start
+  nieuwestart_desc: Twice a year you can sign up for the Fresh Start. Over 4 Wednesday evenings we discuss the basics of faith in Jesus. Sign up to take part in the next fresh start.
+  kampen_meta: Yearly · summer holidays
+  kampen_title: Summer camps
+  kampen_desc: Every year we organise summer camps for children and young people during the summer holidays. For the men of Open. Kerk we organise an adventurous weekend in the Ardennes in September.
+  app_title: Stay up to date
+  app_text: We share all activities in the Open. Kerk app. You can download it using the QR code that regularly appears on screen during the church services of Open. Kerk.
+live:
+  page_title: Live — OPEN. Kerk
+  hero_heading: <span class="underline">Live</span>
+  hero_subtitle: Can't be there in person? Watch along live.<br>Every Sunday at 10:30.
+  hero_button: Watch the stream
+  stream_title: Today's service
+  stream_text: Every Sunday at 10:30u we broadcast the church service live. Join us from home or watch a previous service again.
+  offline_status: There is no broadcast at the moment
+  offline_text: The next livestream is this coming Sunday at 10:30u. Until then you can watch previous services again.
+  offline_link: Watch previous services
+  welcome_title: You are welcome
+  welcome_text: It is important that you feel at home and that you are present as much as possible. Watching online is great, but of course you are also warmly welcome to come and visit us in Lommel. Open for God, open for you.
+geven:
+  title: Giving
+  hero_heading: Ways to <span class="underline">give</span>
+  hero_subtitle: Thank you for your gift! Together we are building a house of prayer,<br>teaching and community.
+  hero_button: How you can give
+  intro_heading: Would you like to support us financially?
+  intro_p1: You can make a donation using the bank details below. Are you giving for a specific purpose? Then mention it in the description when transferring. Open Kerk has registered ANBI status — donations are therefore tax-deductible.
+  intro_p2: Are you giving to our <strong>building project</strong>? Wonderful! Then add <strong>"Build The House"</strong> in the description.
+  card_label_bank: Bank
+  card_label_iban: IBAN
+  card_label_bic: BIC
+  card_nl_country: Netherlands
+  card_nl_bank: ABN AMRO
+  card_nl_iban: NL55 ABNA 0528 2626 37
+  card_nl_bic: ABNANL2A
+  card_nl_qr_label: Scan with Tikkie
+  card_be_country: Belgium
+  card_be_bank: KBC
+  card_be_iban: BE88 7352 1819 7141
+  card_be_bic: KREDBEBB
+  card_be_qr_label: Scan with Payconiq
+  anbi_heading: ANBI & tax deduction
+  anbi_p1: Open Kerk has registered ANBI status (Public Benefit Organisation). This means your donations are tax-deductible. Do you have questions about giving, periodic donations or bequests? Feel free to contact us — we are happy to help you think it through.
+  anbi_contact_link: Get in touch
+anbi:
+  title: ANBI
+  hero_heading: <span class="underline">ANBI</span>
+  hero_subtitle: OPEN. Kerk has registered ANBI status.<br>Here you will find our details, our board and our accountability.
+  doelstelling_heading: Mission
+  doelstelling_p1: OPEN. Kerk is a Protestant evangelical church. We believe in Jesus Christ; God and Saviour of all people on earth. We come together as believers to honour God the Father, in the name of Jesus Christ our Saviour, and work inspired by the Holy Spirit to carry out the good works of the church of Jesus Christ in the Kempen region. The aim of our church is to inform the people in our region that there is a God who loves them — and to show that Jesus Christ lives and that living according to His commandments offers a life of blessing and abundance as a result.
+  doelstelling_p2: All our activities are based on this good cause. The church teaches its visitors about the love of Jesus, sings songs to honour God the Father, and gives children, in a playful and educational way, the awareness that God is always there for them. It gives to the poor and offers help to people in the various needs of this life — in sickness, sorrow and personal problems. The church is also active in youth work, so that young people can develop into their future position in society as a child of God.
+  doelstelling_p3: In short, the church strives for all people to live in the love, grace and protection of Jesus Christ, our God.
+  gegevens_heading: Details
+  gegevens_card1_label: Place of meeting
+  gegevens_card1_value: Saskesdreef 10<br>3920 Lommel-Kolonie (Belgium)
+  gegevens_card2_label: OPEN. Kerk
+  gegevens_card2_value: Church under Dutch law<br>Schrijnwerkersplein 12<br>5555 CP Valkenswaard (Netherlands)
+  gegevens_card3_label: Registration
+  gegevens_card3_dt1: KvK
+  gegevens_card3_dd1: '17252159'
+  gegevens_card3_dt2: RSIN
+  gegevens_card3_dd2: 8184.85.875
+  gegevens_card4_label: Bank details
+  gegevens_card4_dt1: NL
+  gegevens_card4_dd1: NL55 ABNA 0528 2626 37 · ABNANL2A
+  gegevens_card4_dt2: BE
+  gegevens_card4_dd2: BE88 7352 1819 7141 · KREDBEBB
+  bestuur_heading: Board
+  bestuur_intro: 'The board of OPEN. Kerk currently consists of:'
+  bestuur_role1: Pastor
+  bestuur_role2: Chair of the board
+  bestuur_role3: Treasurer
+  bestuur_role4: Board member
+  bestuur_team: The pastors are Tim and Vanessa Laurey. In addition, Open Kerk has a leadership team of 24 people.
+  bestuur_remuneration: Board members receive no financial reward or compensation for their role as a board member. The pastors of Open Kerk receive a stipend according to the standards of the <a class="gold" href="http://www.steunpuntkerkenwerk.nl/kerkelijk-personeelsbeleid/predikanten/materiele-regelingen/" target="_blank" rel="noopener">Material Regulations for Ministers</a> of Steunpunt Kerkenwerk.
+  vertrouwenspersoon_heading: Confidential adviser
+  vertrouwenspersoon_p1: Do you experience something in Open Kerk that is not in line with the <a class="gold" href="assets/Vrijwilligerspakket.pdf" target="_blank" rel="noopener">code of conduct</a>? Then please contact our confidential adviser.
+  verantwoording_heading: Accountability
+  verantwoording_p1: 'For full transparency, we make our administrative data and documents available:'
+  doc1_title: Administrative data
+  doc1_desc: Overview of income and expenditure
+  doc2_title: Policy plan
+  doc2_desc: Our current policy plan
+  doc3_title: Annual report
+  doc3_desc: Activity report for the past year
+contact:
+  title: Contact
+  hero_heading: Come <span class="underline">visit</span>
+  hero_subtitle: You are very welcome. Every Sunday at 10:30 a.m.<br>Open to God, open to you.
+  hero_button: Plan your route
+  contactgegevens_heading: Contact details
+  contactgegevens_p1: Do you have a question or would you just like to drop by? We are happy to help you.
+  card_address_label: Address
+  card_address_value: Saskesdreef 10<br>3920 Lommel-Kolonie<br>Belgium
+  card_service_label: Church service
+  card_service_value: Every Sunday<br>at 10:30 a.m.<br>Free parking
+  card_email_label: Email
+  card_email_value: contact@openkerk.com
+  card_phone_label: Phone
+  card_phone_value: +32 (0)11 525 527
+  route_heading: How to find us
+  route_p1: Open Kerk is located on the Saskesdreef in Lommel-Kolonie, with plenty of free parking on site. Plan your route with one click.
+  route_button: Open directions
+nieuwbouw:
+  page_title: New Building OPEN. Kerk
+  hero_heading: Open Kerk Building Project
+  hero_subtitle: Room to grow now and for <span class="underline">the generations to come.</span>
+  waarom_heading: Why we are building
+  waarom_p1: Open Kerk has been present in Lommel since 1983. What began as a small house church has grown into a church with hundreds of visitors on Sundays. We are grateful for that growth – but in our building we are now literally running up against its limits.
+  waarom_p2: 'The church hall is regularly full and the children''s church rooms are structurally too small. At the same time, more and more people, from Lommel and the wider region, are finding their way to Open Kerk. That is why we are investing in a future-proof building on the Saskesdreef: a single location where the Word of God remains central, with enough space for worship services, Children''s Church and fellowship – also for the generations after us.'
+  video_fallback: Your browser does not support this video.
+  stap_heading: Built step by step
+  stap_p1: Open Kerk has been based on the Saskesdreef for years. First the existing building was renovated, then the current church hall and parking spaces were added. At the end of 2023, the vision arose to thoroughly renew and expand the site.
+  stap_p2: Two adjacent woodland plots were purchased and included in the building plan space for extra parking, play areas and rainwater storage on our own grounds. In 2024 Buro-B Architecten from Genk developed the plan; the building permit has been granted and is final. So we really can start building.
+  fases_heading: Building in 4 phases
+  fases_intro: The building project is deliberately phased. This way we build step by step, keep welcoming visitors at the same location, and shape the financing responsibly.
+  fase1_num: Phase 1
+  fase1_title: A new children's church
+  fase1_desc: Enough rooms for the various age groups, good acoustics and safe, well-organised spaces, directly connected to the rest of the building. Also a new kitchen and sanitary facilities. Not a "nice little corner", but a fully-fledged place in the heart of the church.
+  fase1_plan: 'Planning: first half of 2026'
+  fase2_num: Phase 2
+  fase2_title: New church hall
+  fase2_desc: The old part will be demolished and replaced by a new, larger church hall. The current hall (2013) will remain and become the "link" between the church hall, children's church and multipurpose space. More seats, good sightlines, acoustics and technology suitable for worship services, baptismal services and special gatherings.
+  fase3_num: Phase 3
+  fase3_title: Entrance & multifunctional hall
+  fase3_desc: 'The existing church hall will get a glass facade and become the new entrance and connecting space. The other half will become a multifunctional meeting space: youth church and teen activities, weddings and funeral services, congregation evenings, courses and conferences.'
+  fase4_num: Phase 4
+  fase4_title: Redesign of the outdoor area
+  fase4_desc: Additional and better organised parking, safe walking routes for children and parents, greenery and play areas, and facilities for rainwater storage. Thanks to the new plots, the site remains spacious and green, with plenty of open space.
+  kinderkerk_meta: Phase 1 · first half of 2026
+  kinderkerk_heading: A home for the children
+  kinderkerk_p1: On the ground floor there will be "airport-style" toilet blocks, a kitchen and children's rooms. On the first floor, toilets for children, children's rooms and a consultation room. Towards the end of summer 2026, the children will festively move from the old to the new building.
+  tijdlijn_heading: Timeline
+  tl1_jaar: '1983'
+  tl1_titel: Started as a house church in Eersel
+  tl1_tekst: Cees & Agnès Laurey start the church from their living room. Soon too small; the growing church uses village halls in the Kempen region.
+  tl2_jaar: '2004'
+  tl2_titel: Rental and renovation of Saskesdreef 10
+  tl2_tekst: After a long search and much prayer, the church is able to rent the "Lenteleven" building. With combined efforts it is thoroughly renovated.
+  tl3_jaar: '2009'
+  tl3_titel: Purchase of the building
+  tl3_tekst: After 5 years of renting, the church buys the building, largely financed through donations and partly via a mortgage.
+  tl4_jaar: '2013'
+  tl4_titel: Construction of the current church hall
+  tl4_tekst: The old hall seated around 100 visitors. The new hall, finished by the church itself, seats 300 visitors.
+  tl5_jaar: '2016'
+  tl5_titel: Tim & Vanessa Laurey become pastors
+  tl5_tekst: Founders Cees & Agnès retire; their son Tim and his wife Vanessa become the pastors of Open Kerk.
+  tl6_jaar: '2023'
+  tl6_titel: Vision for expansion
+  tl6_tekst: Every Sunday around 300 adults and 80 children. The spaces feel full; God urges the leadership towards expansion.
+  tl7_jaar: '2024'
+  tl7_titel: Purchase of plots & building permit
+  tl7_tekst: Two adjacent woodland plots are bought within a month. Buro-B Architecten designs the new building; the permit is approved without objection. The lights turn green.
+  tl8_jaar: '2026'
+  tl8_titel: 'Phase 1: construction of the Children''s Church'
+  tl8_tekst: Construction of the children's church and a "construction road" with later parking spaces. In the second half of the year the children move to the new building.
+  tl9_jaar: Later
+  tl9_titel: Phases 2, 3 & 4
+  tl9_tekst: New hall, glass entrance, multifunctional space and outdoor area with 160 parking spaces, partly for people with reduced mobility and with charging points.
+  fin_meta: Responsible stewardship
+  fin_heading: How we intend to finance this
+  fin_p1: As a church we want to handle money responsibly. This project is possible because Open Kerk itself contributes substantially from donations and reserves, and because regular visitors and those involved lend and/or give.
+  fin_p2: We opt for a mix of our own resources, loans from within our own circle, and are open to external loans, with a realistic long-term repayment plan. In this way we do justice to stewardship and to the calling to build, in this region, a house of prayer, teaching and community.
+  voorwie_heading: Who is this building project for?
+  voorwie_p1: This project is not there "for the building itself", but for people for children and young people who, in a safe, spacious environment, learn what it means to follow Jesus; for families and singles who serve God together and meet one another; for the Lommel region and surroundings; and for future generations our children and their children.
+  voorwie_p2: We see this building as a means to build up the church of Christ, in good understanding with other churches and faith communities in the city.
+  betrokken_heading: How you can get involved
+  betrokken_p1_before: We are grateful for everyone who supports this project within and outside our church. Praying along for wisdom, protection and spiritual fruit.
+  betrokken_link_geven: Give
+  betrokken_p1_after: through the usual channels of Open Kerk, with the reference "Building project". Think along if you know someone who can help finance this project through a loan. As soon as there are important milestones, we will share them on this page and via our church app.
+  betrokken_contact: Get in touch
+kampen:
+  page_title: Camps OPEN. Kerk
+  hero_heading: Off to <span class="underline">camp</span> together
+  hero_subtitle: Every year we head out for children, youth and men.<br>Days full of faith, friendship and adventure.
+  hero_button: View the camps
+  intro_heading: Three camps, one goal
+  intro_paragraph: 'Whether you''re 6 or 60 there''s a camp for you. Choose a camp below to see all the details: dates, costs, theme and answers to your questions.'
+  tab_kinder: Children's Camp
+  tab_jong: Jong° Summer Camp
+  tab_realmen: Real Men Camp
+  fact_when_label: When
+  fact_cost_label: Cost
+  fact_who_label: Who for
+  fact_location_label: Location
+  fact_theme_label: Theme
+  fact_stay_label: Accommodation
+  kinder_kicker: Ages 6 to 12
+  kinder_title: Children's Camp
+  kinder_tagline: 'Together with one goal: meeting Jesus!'
+  kinder_when_value: 16 – 19 August
+  kinder_cost_value: € 95
+  kinder_who_value: Primary school, ages 6–12
+  kinder_location_value: Nieuwe Kopen 14, Lommel
+  kinder_theme_value: First love
+  kinder_intro: 'Every year we organise a wonderful children''s camp for primary school kids, with one clear goal: meeting Jesus. The kids don''t just learn about Him, they also get to experience Him through teaching, prayer, praise & worship and plenty of time to play sports, have fun and build friendships.'
+  kinder_faq1_title: Who it's for
+  kinder_faq1_body: <p>For all primary school children (from age 6), with or without a Christian background. You're very welcome!</p>
+  kinder_faq2_title: The activities
+  kinder_faq2_body: '<p>Each day we start with a service around the theme. After that we get creative and active. In the evening there''s a worship service. In between: sports, games, being outdoors and having fun.</p>'
+  kinder_faq3_title: The theme First love
+  kinder_faq3_body: <p>We love God because He first loved us (John 3:16). Over three days we explore through the Bible how great Jesus' love for us is, and what it means to love God with all your heart, soul and mind.</p>
+  kinder_faq4_title: Registration
+  kinder_faq4_body: <p>You can register until 14 June 2026. Participation is subject to acceptance of the camp rules. Once the form is completed and the payment received, registration is complete. You will not receive a confirmation by email.</p>
+  kinder_faq5_title: Payment
+  kinder_faq5_body: '<p>The cost is € 95 and must be transferred no later than 1 July 2026 to the Kinderkerk account:</p><p><strong>NL82 ABNA 0246 4531 92</strong> in the name of Kinderkerk<br>With reference: Child''s name + Kinderkamp 2026</p><p>Two instalments are also allowed: € 50 before 1 June and € 45 before 1 July.</p>'
+  kinder_cta: Register for Children's Camp
+  jong_kicker: Secondary school
+  jong_title: Jong° Summer Camp
+  jong_tagline: Four days, one goal
+  jong_when_value: 19 – 22 August
+  jong_cost_value: € 110
+  jong_who_value: From secondary school age
+  jong_location_value: Nieuwe Kopen 14, Lommel
+  jong_theme_value: Inside Out
+  jong_intro: 'Four days in which, in a fun atmosphere and with lots of laughs, we share one goal: getting to know Jesus better as our Friend, Saviour and Helper. With youth services, worship, Fun & Adventure activities and plenty of free time.'
+  jong_faq1_title: Who it's for
+  jong_faq1_body: <p>For young people from secondary school age, with or without a Christian background. Are you over 18 and want to join? Welcome we'll then ask you to help out with a task.</p>
+  jong_faq2_title: The activities
+  jong_faq2_body: '<p>Youth services with worship and themes you can really use in your daily life, awesome Fun & Adventure activities, and free time to get to know both God and your friends better. And above all: lots of fun and good company.</p>'
+  jong_faq3_title: The theme Inside Out
+  jong_faq3_body: <p>The teaching is about our inside and our outside. When we change from the inside out, the fruit only becomes visible on the outside. The Bible is full of lessons on how we (in our hearts) can become more like Jesus.</p>
+  jong_faq4_title: Registration
+  jong_faq4_body: <p>You can register until 14 June 2026. Participation is subject to acceptance of the camp rules. Once the form is completed and the payment received, your registration is complete. You will not receive a confirmation by email.</p>
+  jong_faq5_title: Payment
+  jong_faq5_body: '<p>The cost is € 110 and must be transferred no later than 1 July 2026 to the Jong° account:</p><p><strong>NL48 ABNA 0246 4532 22</strong> in the name of Jong°<br>With reference: Your name + SummerCamp 2026</p><p>Two instalments are also allowed: € 50 before 1 June and € 60 before 1 July. For cancellations after 1 July we charge half of the camp fee.</p>'
+  jong_faq6_title: The camp rules
+  jong_faq6_body: <p>Non-smoking and non-alcoholic camp. Make sure you're insured yourself (mind your foreign travel insurance). Don't forget your ID. Better leave valuables at home. Using a phone, tablet or game console isn't desired a quick message to your mum is of course fine.</p>
+  jong_cta: Register for Summer Camp
+  realmen_kicker: Men from age 16
+  realmen_title: Real Men Camp
+  realmen_tagline: Encouraged, spurred on and awake
+  realmen_when_value: 11 – 13 September
+  realmen_cost_value: € 100
+  realmen_who_value: Men from age 16
+  realmen_location_value: Domaine du Bocq, Purnode
+  realmen_stay_value: Camping & tents
+  realmen_intro: 'A weekend for men from Open Kerk and beyond. Whether you''ve been around for years or are just checking it out: you''re welcome as you are. No perfect stories, but real ones. About faith, struggle, falling and getting back up, and following Jesus in real life. You''re not in it alone.'
+  realmen_faq1_title: What can I expect?
+  realmen_faq1_body: '<p>Real stories, good conversations by the fire, activities and adventure, food and brotherhood. It''s about more than good company: growing together, being spurred on together and seeking Jesus together.</p>'
+  realmen_faq2_title: Who is it for?
+  realmen_faq2_body: <p>For all men from age 16. With lots of faith or with questions, around for years or joining for the first time. Come along not because everything is in order, but precisely because we need Jesus.</p>
+  realmen_faq3_title: I don't know many men yet. Awkward?
+  realmen_faq3_body: '<p>Maybe for a moment and that''ll be fine. You get to know men exactly by coming along: during the meals, by the fire, on the way or just in between. You don''t have to be the loudest. Just come and join in.</p>'
+  realmen_faq4_title: Sleeping & accommodation
+  realmen_faq4_body: <p>We sleep in tents that are already set up for you bring your own (air) mattress or camp bed. Prefer more comfort? Book a glamping tent at your own expense, or arrange an Airbnb/hotel nearby yourself. You can also come just on Saturday and sleep at home. Let us know your choice on the form.</p>
+  realmen_faq5_title: Start & finish
+  realmen_faq5_body: <p>Friday 11 September from 4:00 pm (not earlier the site isn't available before then). Joining later because of work or study is fine. On Sunday 13 September we finish at 8:00 am and drive straight to the church service in Lommel.</p>
+  realmen_faq6_title: Payment
+  realmen_faq6_body: '<p>The cost is € 100 (including food, activities and accommodation) and must be transferred no later than 1 September in the name of Open Kerk:</p><p><strong>NL:</strong> NL55 ABNA 0528 2626 37<br><strong>BE:</strong> BE88 7352 1819 7141<br>With reference: Your name + Real Men 2026</p><p>Open Kerk never works on a for-profit basis the amount covers exactly the costs of the weekend.</p>'
+  realmen_cta: Register for Real Men Camp
+  modal_title_prefix: Register —
+  modal_loading: Loading…
+  modal_placeholder_before: The registration form for
+  modal_placeholder_after: will be added soon.
+  questions_heading: Any questions?
+  questions_paragraph: Do you have questions about one of the camps? Feel free to get in touch we're happy to help. Open for God, open for you.
+  questions_button: Get in touch

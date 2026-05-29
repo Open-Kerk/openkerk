@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('geven.title') }} — OPEN. Kerk{% endblock %}
+
+{% block body_class %}page-template-default geven-page{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="{{ url_for('index') }}" id="video-close">
+    <i class="fal fa-times"></i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container"></div>
+   </div>
+  </div>
+
+  <div id="main">
+
+   {# ── Hero ── #}
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('geven.hero_heading') | safe }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('geven.hero_subtitle') | safe }}
+     </div>
+     <a class="button" href="#geven">
+      {{ t('geven.hero_button') }}
+     </a>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/A7306011-scaled.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10, 0.5);"></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+   {# ── Intro ── #}
+   <h2 id="geven">{{ t('geven.intro_heading') }}</h2>
+   <p>
+    {{ t('geven.intro_p1') }}
+   </p>
+   <p>
+    {{ t('geven.intro_p2') | safe }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:60px"></div>
+
+   {# ── Bankgegevens ── #}
+   <div class="geven-cards">
+
+    <div class="geven-card">
+     <span class="geven-card__land">{{ t('geven.card_nl_country') }}</span>
+     <dl class="geven-card__list">
+      <dt>{{ t('geven.card_label_bank') }}</dt><dd>{{ t('geven.card_nl_bank') }}</dd>
+      <dt>{{ t('geven.card_label_iban') }}</dt><dd>{{ t('geven.card_nl_iban') }}</dd>
+      <dt>{{ t('geven.card_label_bic') }}</dt><dd>{{ t('geven.card_nl_bic') }}</dd>
+     </dl>
+     <div class="geven-card__qr">
+      <img alt="Tikkie QR-code om te geven" loading="lazy" src="assets/images/openkerk/Tikkie-QRCode.jpg">
+      <span class="geven-card__qr-label">{{ t('geven.card_nl_qr_label') }}</span>
+     </div>
+    </div>
+
+    <div class="geven-card">
+     <span class="geven-card__land">{{ t('geven.card_be_country') }}</span>
+     <dl class="geven-card__list">
+      <dt>{{ t('geven.card_label_bank') }}</dt><dd>{{ t('geven.card_be_bank') }}</dd>
+      <dt>{{ t('geven.card_label_iban') }}</dt><dd>{{ t('geven.card_be_iban') }}</dd>
+      <dt>{{ t('geven.card_label_bic') }}</dt><dd>{{ t('geven.card_be_bic') }}</dd>
+     </dl>
+     <div class="geven-card__qr">
+      <img alt="Payconiq QR-code om te geven" loading="lazy" src="assets/images/openkerk/Payconic-QRCode.jpg">
+      <span class="geven-card__qr-label">{{ t('geven.card_be_qr_label') }}</span>
+     </div>
+    </div>
+
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
+
+   {# ── ANBI ── #}
+   <h2 id="anbi">{{ t('geven.anbi_heading') | safe }}</h2>
+   <p>
+    {{ t('geven.anbi_p1') }}
+   </p>
+   <p>
+    <a class="gold" href="{{ url_for('contact') }}">{{ t('geven.anbi_contact_link') }}</a>
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+  </div>
+{% endblock %}

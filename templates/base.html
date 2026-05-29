@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>{% block title %}OPEN. Kerk{% endblock %}</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+  {# Runs before the body renders: strip any #hash so the browser can't
+     instant-jump to a mid-page anchor (which causes an ugly flash).
+     The stored hash is smooth-scrolled to after load. #}
+  <script>
+   (function () {
+     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+     if (window.location.hash) {
+       window.__pendingHash = window.location.hash;
+       history.replaceState(null, '', window.location.pathname + window.location.search);
+     }
+   })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="{{ url_for('static', filename='images/openkerk/favicon.png') }}" rel="icon" type="image/png" sizes="100x100">
+  <link href="{{ url_for('static', filename='images/openkerk/favicon.png') }}" rel="shortcut icon" type="image/png">
+  <link href="{{ url_for('static', filename='images/openkerk/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  {% block extra_head %}{% endblock %}
+ </head>
+ <body class="mega-menu-main mega-menu-footer {% block body_class %}{% endblock %}">
+
+  {# Loading indicator #}
+  <div id="page-loading">
+   <div id="loading-indicator"></div>
+   <div id="loading-progress-container">
+    <div id="loading-progress-bar"></div>
+   </div>
+  </div>
+
+  {# Navigation — see partials/nav.html #}
+  {% include 'partials/nav.html' %}
+
+  {# Page-specific content #}
+  {% block content %}{% endblock %}
+
+  {# Footer — see partials/footer.html #}
+  {% include 'partials/footer.html' %}
+
+  {# Scripts #}
+  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+
+  {# Custom slow & smooth scroll for in-page anchor links #}
+  <script>
+  (function () {
+    var NAV_OFFSET = 96;     // height of the fixed navbar
+    var DURATION   = 1400;   // scroll time in ms (higher = slower)
+
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function smoothScrollTo(targetY) {
+      var startY    = window.pageYOffset;
+      var distance  = targetY - startY;
+      var startTime = null;
+
+      function step(now) {
+        if (startTime === null) startTime = now;
+        var elapsed  = now - startTime;
+        var progress = Math.min(elapsed / DURATION, 1);
+        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+        if (elapsed < DURATION) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="#"]');
+      if (!link) return;
+
+      // Leave modal open/close links to the modal controller
+      if (link.hasAttribute('data-open-modal') ||
+          link.hasAttribute('data-close-modal') ||
+          link.closest('.form-modal')) return;
+
+      var url  = new URL(link.href, window.location.href);
+      // Only handle anchors that point to the current page
+      if (url.pathname !== window.location.pathname || !url.hash) return;
+      // Let links that change the query string navigate normally
+      // (e.g. /kampen?camp=realmen switches the active tab via a reload)
+      if (url.search !== window.location.search) return;
+
+      var target = document.querySelector(url.hash);
+      if (!target) return;
+
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+      smoothScrollTo(top);
+      history.pushState(null, '', url.hash);
+    });
+
+    // ── Cross-page navigation to a #hash ──
+    // The <head> script already stripped the hash (so the browser can't
+    // jump). After full load we smooth-scroll to the stored target.
+    window.addEventListener('load', function () {
+      var hash = window.__pendingHash;
+      if (!hash || hash.length < 2) return;
+      var target;
+      try { target = document.querySelector(hash); } catch (e) { return; }
+      if (!target) return;
+      window.scrollTo(0, 0);
+      var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+      requestAnimationFrame(function () {
+        smoothScrollTo(top);
+        history.replaceState(null, '', window.location.pathname + window.location.search + hash);
+      });
+    });
+  })();
+  </script>
+
+  {% block extra_scripts %}{% endblock %}
+
+ </body>
+</html>

@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('kampen.page_title') }}{% endblock %}
+
+{% block body_class %}page-template-default kampen-page{% endblock %}
+
+{% block content %}
+  <div class="audio-video" id="video-overlay">
+   <a href="{{ url_for('index') }}" id="video-close">
+    <i class="fal fa-times"></i>
+   </a>
+   <div id="video-iframe-container">
+    <div id="inner-frame-container"></div>
+   </div>
+  </div>
+
+  <div id="main">
+
+   {# ── Hero ── #}
+   <div class="short-header parallax-on not-live" id="page-hero">
+    <div id="page-hero-content" style="padding:200px 0;">
+     <h1>
+      {{ t('kampen.hero_heading') | safe }}
+     </h1>
+     <div id="hero-sub-title">
+      {{ t('kampen.hero_subtitle') | safe }}
+     </div>
+     <a class="button" href="#kampen-keuze">
+      {{ t('kampen.hero_button') }}
+     </a>
+    </div>
+    <div id="page-hero-background" style="background-image: url('assets/images/openkerk/Zomerkampen.jpg'); background-position: center center; background-size: cover;">
+     <div id="page-her-background-after" style="background: rgba(10, 10, 10, 0.5);"></div>
+    </div>
+   </div>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+   {# ── Intro ── #}
+   <h2 id="kampen-keuze">
+    {{ t('kampen.intro_heading') }}
+   </h2>
+   <p>
+    {{ t('kampen.intro_paragraph') }}
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:60px"></div>
+
+   {# ── Camp tab switcher (CSS-only) ── #}
+   <div class="camp-tabs">
+    <input type="radio" name="camp" id="tab-kinder" {{ 'checked' if active_camp == 'kinder' else '' }}>
+    <input type="radio" name="camp" id="tab-jong" {{ 'checked' if active_camp == 'jong' else '' }}>
+    <input type="radio" name="camp" id="tab-realmen" {{ 'checked' if active_camp == 'realmen' else '' }}>
+
+    <div class="camp-tabnav" role="tablist">
+     <label for="tab-kinder" class="camp-tab">{{ t('kampen.tab_kinder') | safe }}</label>
+     <label for="tab-jong" class="camp-tab">{{ t('kampen.tab_jong') | safe }}</label>
+     <label for="tab-realmen" class="camp-tab">{{ t('kampen.tab_realmen') | safe }}</label>
+    </div>
+
+    <div class="camp-panels">
+
+     {# ─────────── KINDERKAMP ─────────── #}
+     <section class="camp-panel" id="panel-kinder">
+      <div class="camp-banner" style="background-image:url('assets/images/openkerk/IMG_6302.jpg');">
+       <div class="camp-banner__overlay">
+        <span class="camp-banner__kicker">{{ t('kampen.kinder_kicker') }}</span>
+        <h3 class="camp-banner__title">{{ t('kampen.kinder_title') }}</h3>
+        <p class="camp-banner__tagline">{{ t('kampen.kinder_tagline') }}</p>
+       </div>
+      </div>
+
+      <div class="camp-facts">
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_when_label') }}</span><span class="camp-fact__value">{{ t('kampen.kinder_when_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_cost_label') }}</span><span class="camp-fact__value">{{ t('kampen.kinder_cost_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_who_label') }}</span><span class="camp-fact__value">{{ t('kampen.kinder_who_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_location_label') }}</span><span class="camp-fact__value">{{ t('kampen.kinder_location_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_theme_label') }}</span><span class="camp-fact__value">{{ t('kampen.kinder_theme_value') }}</span></div>
+      </div>
+
+      <p class="camp-intro">
+       {{ t('kampen.kinder_intro') | safe }}
+      </p>
+
+      <div class="ok-accordion camp-faq">
+       <details class="ok-toggle" open>
+        <summary class="ok-toggle__title">{{ t('kampen.kinder_faq1_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.kinder_faq1_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.kinder_faq2_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.kinder_faq2_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.kinder_faq3_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.kinder_faq3_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.kinder_faq4_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.kinder_faq4_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.kinder_faq5_title') }}</summary>
+        <div class="ok-toggle__body">
+         {{ t('kampen.kinder_faq5_body') | safe }}
+        </div>
+       </details>
+      </div>
+
+      <div class="camp-cta">
+       <a class="button" href="#aanmeld-kinder" data-open-modal="aanmeld-kinder">{{ t('kampen.kinder_cta') }}</a>
+      </div>
+     </section>
+
+     {# ─────────── JONG° SUMMER CAMP ─────────── #}
+     <section class="camp-panel" id="panel-jong">
+      <div class="camp-banner" style="background-image:url('assets/images/openkerk/Zomerkampen.jpg');">
+       <div class="camp-banner__overlay">
+        <span class="camp-banner__kicker">{{ t('kampen.jong_kicker') }}</span>
+        <h3 class="camp-banner__title">{{ t('kampen.jong_title') | safe }}</h3>
+        <p class="camp-banner__tagline">{{ t('kampen.jong_tagline') }}</p>
+       </div>
+      </div>
+
+      <div class="camp-facts">
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_when_label') }}</span><span class="camp-fact__value">{{ t('kampen.jong_when_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_cost_label') }}</span><span class="camp-fact__value">{{ t('kampen.jong_cost_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_who_label') }}</span><span class="camp-fact__value">{{ t('kampen.jong_who_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_location_label') }}</span><span class="camp-fact__value">{{ t('kampen.jong_location_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_theme_label') }}</span><span class="camp-fact__value">{{ t('kampen.jong_theme_value') }}</span></div>
+      </div>
+
+      <p class="camp-intro">
+       {{ t('kampen.jong_intro') | safe }}
+      </p>
+
+      <div class="ok-accordion camp-faq">
+       <details class="ok-toggle" open>
+        <summary class="ok-toggle__title">{{ t('kampen.jong_faq1_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.jong_faq1_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.jong_faq2_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.jong_faq2_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.jong_faq3_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.jong_faq3_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.jong_faq4_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.jong_faq4_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.jong_faq5_title') }}</summary>
+        <div class="ok-toggle__body">
+         {{ t('kampen.jong_faq5_body') | safe }}
+        </div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.jong_faq6_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.jong_faq6_body') | safe }}</div>
+       </details>
+      </div>
+
+      <div class="camp-cta">
+       <a class="button" href="#aanmeld-jong" data-open-modal="aanmeld-jong">{{ t('kampen.jong_cta') }}</a>
+      </div>
+     </section>
+
+     {# ─────────── REAL MEN CAMP ─────────── #}
+     <section class="camp-panel" id="panel-realmen">
+      <div class="camp-banner" style="background-image:url('assets/images/openkerk/RealMenCamp.jpg');">
+       <div class="camp-banner__overlay">
+        <span class="camp-banner__kicker">{{ t('kampen.realmen_kicker') }}</span>
+        <h3 class="camp-banner__title">{{ t('kampen.realmen_title') }}</h3>
+        <p class="camp-banner__tagline">{{ t('kampen.realmen_tagline') }}</p>
+       </div>
+      </div>
+
+      <div class="camp-facts">
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_when_label') }}</span><span class="camp-fact__value">{{ t('kampen.realmen_when_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_cost_label') }}</span><span class="camp-fact__value">{{ t('kampen.realmen_cost_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_who_label') }}</span><span class="camp-fact__value">{{ t('kampen.realmen_who_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_location_label') }}</span><span class="camp-fact__value">{{ t('kampen.realmen_location_value') }}</span></div>
+       <div class="camp-fact"><span class="camp-fact__label">{{ t('kampen.fact_stay_label') }}</span><span class="camp-fact__value">{{ t('kampen.realmen_stay_value') | safe }}</span></div>
+      </div>
+
+      <p class="camp-intro">
+       {{ t('kampen.realmen_intro') | safe }}
+      </p>
+
+      <div class="ok-accordion camp-faq">
+       <details class="ok-toggle" open>
+        <summary class="ok-toggle__title">{{ t('kampen.realmen_faq1_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.realmen_faq1_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.realmen_faq2_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.realmen_faq2_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.realmen_faq3_title') }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.realmen_faq3_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.realmen_faq4_title') | safe }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.realmen_faq4_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.realmen_faq5_title') | safe }}</summary>
+        <div class="ok-toggle__body">{{ t('kampen.realmen_faq5_body') | safe }}</div>
+       </details>
+       <details class="ok-toggle">
+        <summary class="ok-toggle__title">{{ t('kampen.realmen_faq6_title') }}</summary>
+        <div class="ok-toggle__body">
+         {{ t('kampen.realmen_faq6_body') | safe }}
+        </div>
+       </details>
+      </div>
+
+      <div class="camp-cta">
+       <a class="button" href="#aanmeld-realmen" data-open-modal="aanmeld-realmen">{{ t('kampen.realmen_cta') }}</a>
+      </div>
+     </section>
+
+    </div>
+   </div>
+
+   {# ── Aanmeld-modals: embedded Google Form per kamp (CSS :target) ── #}
+   {% set forms = [
+     ('aanmeld-kinder',  'Kinderkamp',          camp_forms.kinder),
+     ('aanmeld-jong',    'Jong° Summer Camp',   camp_forms.jong),
+     ('aanmeld-realmen', 'Real Men Camp',       camp_forms.realmen)
+   ] %}
+   {% for modal_id, naam, form_url in forms %}
+   <div class="form-modal" id="{{ modal_id }}">
+    <div class="form-modal__backdrop" data-close-modal></div>
+    <div class="form-modal__inner">
+     <div class="form-modal__head">
+      <span class="form-modal__title">{{ t('kampen.modal_title_prefix') }} {{ naam }}</span>
+      <a class="form-modal__close" href="#" data-close-modal aria-label="Sluiten">&times;</a>
+     </div>
+     <div class="form-modal__body">
+      {% if form_url %}
+      <iframe
+        src="{{ form_url }}{{ '&' if '?' in form_url else '?' }}embedded=true"
+        title="Aanmeldformulier {{ naam }}"
+        frameborder="0" marginheight="0" marginwidth="0">
+       {{ t('kampen.modal_loading') }}
+      </iframe>
+      {% else %}
+      <div class="form-modal__placeholder">
+       <p>{{ t('kampen.modal_placeholder_before') }} <strong>{{ naam }}</strong> {{ t('kampen.modal_placeholder_after') }}</p>
+      </div>
+      {% endif %}
+     </div>
+    </div>
+   </div>
+   {% endfor %}
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
+
+   {# ── Vragen ── #}
+   <h2 id="aanmelden">
+    {{ t('kampen.questions_heading') }}
+   </h2>
+   <p>
+    {{ t('kampen.questions_paragraph') }}
+   </p>
+   <p>
+    <a class="gold" href="{{ url_for('contact') }}">{{ t('kampen.questions_button') }}</a>
+   </p>
+
+   <div aria-hidden="true" class="wp-block-spacer" style="height:120px"></div>
+
+  </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function () {
+  function openModal(id) {
+    var m = document.getElementById(id);
+    if (m) { m.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+  }
+  function closeAll() {
+    document.querySelectorAll('.form-modal.is-open').forEach(function (m) {
+      m.classList.remove('is-open');
+    });
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', function (e) {
+    var opener = e.target.closest('[data-open-modal]');
+    if (opener) {
+      e.preventDefault();
+      openModal(opener.getAttribute('data-open-modal'));
+      return;
+    }
+    if (e.target.closest('[data-close-modal]')) {
+      e.preventDefault();
+      closeAll();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+{% endblock %}
