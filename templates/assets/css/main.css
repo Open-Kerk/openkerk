@@ -275,21 +275,21 @@ li {
   align-items: center;
   border: 1px solid #aaa;
   border-radius: 4px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7087ecfd081922d88c10a1_transparent.gif");
+  background-image: none;
   background-position: 0px 0px;
   background-size: 16px;
 }
 
 .style-guide-logo-box.cc-dark {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .5))), url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7087ecfd081922d88c10a1_transparent.gif");
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7087ecfd081922d88c10a1_transparent.gif");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .5))), none;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), none;
   background-position: 0px 0px, 0px 0px;
   background-size: auto, 16px;
 }
 
 .style-guide-logo-box.cc-light {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, .5)), to(hsla(0, 0%, 100%, .5))), url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7087ecfd081922d88c10a1_transparent.gif");
-  background-image: linear-gradient(180deg, hsla(0, 0%, 100%, .5), hsla(0, 0%, 100%, .5)), url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7087ecfd081922d88c10a1_transparent.gif");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, .5)), to(hsla(0, 0%, 100%, .5))), none;
+  background-image: linear-gradient(180deg, hsla(0, 0%, 100%, .5), hsla(0, 0%, 100%, .5)), none;
   background-position: 0px 0px, 0px 0px;
   background-size: auto, 16px;
 }
@@ -789,7 +789,7 @@ li {
   overflow: hidden;
   padding-right: 0px;
   padding-left: 0px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c842cfc8f09534f6fbd07fc_full-width-footer-bg-resized.jpg");
+  background-image: none;
   background-position: 50% 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1141,7 +1141,7 @@ li {
 }
 
 .link-inside-dropdown.dark.w--current {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ec2d05ceb82396e658_active-mobile-nav.png");
+  background-image: none;
   background-position: 50% 100%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1378,7 +1378,7 @@ li {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c85ff06af6262d0f912ebc2_img-home-main-v2-2x.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1425,7 +1425,7 @@ li {
   margin-bottom: 25px;
   padding-bottom: 5px;
   padding-left: 54px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c840406af6262afac108f63_top-arrow.png");
+  background-image: none;
   background-position: 0% 50%;
   background-size: 28px;
   background-repeat: no-repeat;
@@ -1440,7 +1440,7 @@ li {
   display: inline-block;
   margin-bottom: 0px;
   padding-top: 1px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c8404a28f0953c371bccc33_bottom-arrow.png");
+  background-image: none;
 }
 
 .arrow-text.no-neg {
@@ -1449,7 +1449,7 @@ li {
 
 .arrow-text.dark {
   padding-left: 25px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72f8bac6a0652c027c0752_dark-arrow.svg");
+  background-image: none;
   background-size: 20px;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
 }
@@ -1752,7 +1752,7 @@ li {
 .full-image {
   width: 50vw;
   padding-bottom: 80%;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f53d30d63b6d8acce67_img-passion-led-us.jpg");
+  background-image: none;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1760,32 +1760,32 @@ li {
 
 .full-image.left {
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f532d05cedbaf961acf_img-adversity-thru-diversity.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
 }
 
 .full-image.family {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166edc6a0654ba27a3413_morning-classes.jpg");
+  background-image: none;
   background-size: cover;
 }
 
 .full-image.friends {
   position: relative;
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ed6e5e6856baeb0be6_friends.jpg");
+  background-image: none;
   background-size: cover;
 }
 
 .full-image.volunteers {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ec3312825e263ae46c_our-volunteers.jpg");
+  background-image: none;
   background-size: cover;
 }
 
 .full-image.doodles {
   position: relative;
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ec6e5e686a4eeb0be3_our-classrooms.jpg");
+  background-image: none;
   background-size: cover;
 }
 
@@ -1794,19 +1794,19 @@ li {
   border-style: solid none solid solid;
   border-width: 1px;
   border-color: #f1f1f1;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c8609228f095372ecbf52e3_img-passion-led-us-2x.jpg");
+  background-image: none;
   background-position: 50% 100%;
   background-size: cover;
 }
 
 .full-image.right-side-blog-image.left-side {
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f532d05cedbaf961acf_img-adversity-thru-diversity.jpg");
+  background-image: none;
   background-size: cover;
 }
 
 .full-image.community {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72f706c6a0656b0e7c053c_seek-to-live-life.jpg");
+  background-image: none;
   background-size: cover;
 }
 
@@ -1818,7 +1818,7 @@ li {
   display: inline-block;
   margin-bottom: -5px;
   padding-bottom: 7px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f52c6a0656d2b796ebf_drawn-with-god-2-lines.png");
+  background-image: none;
   background-position: 50% 100%;
   background-size: 90%;
   background-repeat: no-repeat;
@@ -1828,7 +1828,7 @@ li {
   display: inline-block;
   margin-bottom: -5px;
   padding-bottom: 5px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f523f8bb2e6fe233835_drawn-with-god-2-lines-long.png");
+  background-image: none;
   background-position: 50% 100%;
   background-size: 90%;
   background-repeat: no-repeat;
@@ -2019,7 +2019,7 @@ li {
 .because-of-him {
   position: relative;
   width: 100%;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f52d30d635421acce65_img-because-of-him.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2040,7 +2040,7 @@ li {
 .him {
   display: inline-block;
   padding-bottom: 15px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708fa16e5e687dfcea3a6a_drawn-him.png");
+  background-image: none;
   background-position: 50% 100%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -2059,7 +2059,7 @@ li {
   height: 100vh;
   padding-right: 0px;
   padding-left: 0px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c860005544f6a37ff391b21_ministry-image.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2069,7 +2069,7 @@ li {
 .familise-to-raise {
   display: inline-block;
   padding-bottom: 4px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ee6e5e68482deb0be8_drawn-kids-raise.png");
+  background-image: none;
   background-position: 100% 100%;
   background-size: 80%;
   background-repeat: no-repeat;
@@ -2119,7 +2119,7 @@ li {
   display: inline-block;
   margin-left: -20px;
   padding: 9px 21px 9px 20px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ed3f8bb2463224137d_check-in-opens.png");
+  background-image: none;
   background-position: 0px 0px;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -2131,7 +2131,7 @@ li {
 .our-top-priority {
   display: inline-block;
   padding-bottom: 3px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ecfd081904008d053f_our-top-priority.png");
+  background-image: none;
   background-position: 50% 100%;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -2244,7 +2244,7 @@ li {
 .reserved-parking {
   position: relative;
   width: 100%;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ec6e5e683b18eb0be2_weve-got-parking.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2294,7 +2294,7 @@ li {
   height: 606px;
   padding-right: 0px;
   padding-left: 0px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c8609b09eacd1e6ee674722_image-stories-v3.jpg");
+  background-image: none;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2324,7 +2324,7 @@ li {
 }
 
 .inside {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72f95e3f8bb28dba26097a_drawn-circle-together.png");
+  background-image: none;
   background-position: 0px 0px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -2471,7 +2471,7 @@ li {
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c73045c2d05ce1b4098d912_meet-james.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2522,7 +2522,7 @@ li {
 .blog-right-side-image {
   width: 50vw;
   padding-bottom: 80%;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c73045c6e5e687e52ecf962_image-right-blog.jpg");
+  background-image: none;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2530,31 +2530,31 @@ li {
 
 .blog-right-side-image.left {
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c708f532d05cedbaf961acf_img-adversity-thru-diversity.jpg");
+  background-image: none;
   background-size: 100%;
 }
 
 .blog-right-side-image.family {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166edc6a0654ba27a3413_morning-classes.jpg");
+  background-image: none;
   background-size: cover;
 }
 
 .blog-right-side-image.friends {
   position: relative;
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ed6e5e6856baeb0be6_friends.jpg");
+  background-image: none;
   background-size: 100%;
 }
 
 .blog-right-side-image.volunteers {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ec3312825e263ae46c_our-volunteers.jpg");
+  background-image: none;
   background-size: cover;
 }
 
 .blog-right-side-image.doodles {
   position: relative;
   float: right;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ec6e5e686a4eeb0be3_our-classrooms.jpg");
+  background-image: none;
   background-size: 100%;
 }
 
@@ -2563,7 +2563,7 @@ li {
   border-style: solid none solid solid;
   border-width: 1px;
   border-color: #f1f1f1;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72fd00c6a06524617c0b4c_neighborhood-spotlight.jpg");
+  background-image: none;
   background-position: 50% 100%;
   background-size: 635px;
 }
@@ -2572,7 +2572,7 @@ li {
   width: 100%;
   margin-bottom: 35px;
   padding-bottom: 45%;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c73045cfd081958bc8f0535_full-width-blog-image.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-attachment: fixed;
@@ -2628,7 +2628,7 @@ li {
   height: 100vh;
   padding-right: 0px;
   padding-left: 0px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c85ff08af626235f812ebc3_img-about-large.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2637,7 +2637,7 @@ li {
 }
 
 .underline {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7338d66e5e6874afed3f76_reality-underline.png");
+  background-image: none;
   background-position: 50% 89%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -2787,7 +2787,7 @@ li {
 }
 
 .exists-underline {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7166ecfd081904008d053f_our-top-priority.png");
+  background-image: none;
   background-position: 50% 89%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -2855,7 +2855,7 @@ li {
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72f7076e5e680ac7ece42c_community-groups.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2867,7 +2867,7 @@ li {
 }
 
 .together-underline {
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c73508a3f8bb23065267fa5_together-underline.png");
+  background-image: none;
   background-position: 91% 89%;
   background-size: 93%;
   background-repeat: no-repeat;
@@ -2906,7 +2906,7 @@ li {
   width: 100%;
   padding-top: 140px;
   padding-bottom: 90px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c87407e3af90361f56ce475_Seagulls.jpg");
+  background-image: none;
   background-position: 70% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3059,7 +3059,7 @@ li {
   margin-left: auto;
   padding-bottom: 75px;
   padding-left: 12vw;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c7aeb839254e952dcc1716b_tool-tip-arrows.png");
+  background-image: none;
   background-position: 50% 22%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -3539,7 +3539,7 @@ li {
   height: 355px;
   padding-right: 16px;
   padding-left: 16px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c85ff069eacd15c20673930_practice-image-2x.jpg");
+  background-image: none;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3773,7 +3773,7 @@ li {
 
 .underline-him {
   display: inline-block;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c843555af62624a7b10d44f_underline-of-him.png");
+  background-image: none;
   background-position: 50% 100%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -3888,7 +3888,7 @@ li {
   min-height: 606px;
   padding-right: 0px;
   padding-left: 0px;
-  background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c85ff06af6262670d12ebbe_image-leadership-2x.jpg");
+  background-image: none;
   background-position: 50% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -4594,7 +4594,7 @@ li {
     margin-left: -12px;
     padding-right: 0px;
     padding-left: 12px;
-    background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72d6c12d05ce0ec998a02a_drawn-circle-kids-check-in-tablet.png");
+    background-image: none;
     background-position: 0px 3px;
   }
   .jesus-heart {
@@ -4800,7 +4800,7 @@ li {
     width: 190px;
     margin-right: auto;
     margin-left: auto;
-    background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c734e3ffd0819c9988f5d82_triangle-down.svg");
+    background-image: none;
     background-position: 100% 50%;
     background-size: 14px;
     background-repeat: no-repeat;
@@ -6266,7 +6266,7 @@ li {
     padding-top: 14px;
     padding-right: 12px;
     padding-bottom: 14px;
-    background-image: url("https://uploads-ssl.webflow.com/5c708797c6a06534bf795fe8/5c72d8e42d05ce701998a226_drawn-circle-kids-check-in-mobile.png");
+    background-image: none;
     background-size: contain;
     font-size: 13px;
     line-height: 18px;
@@ -17108,8 +17108,7 @@ a {
 	    position: relative;
 	    padding: 200px 0;
 	    color: #fff;
-	    width:  width: calc(100% - 16vw);
-	    margin: 0 var(--side-padding);
+		    margin: 0 var(--side-padding);
 	    z-index: 1;
 	    
 	    /*
