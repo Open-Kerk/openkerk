@@ -15,3 +15,6 @@ instance/
 # Editors
 .vscode/
 .idea/
+
+# DigitalOcean App Platform spec (contains SECRET_KEY)
+.do/
