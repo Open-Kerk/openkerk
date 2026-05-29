@@ -26260,13 +26260,14 @@ html {
 }
 
 /* ================================================================
-   HEADINGS — Brandon Grotesque Black (free substitute: Montserrat 900)
-   Body/running text stays Playfair Display (see "Main text" block above).
-   This block is last in source order so it wins over the earlier
-   Playfair heading rules at equal/greater specificity.
+   HEADINGS — Maison Neue (self-hosted, as on realitysf.com)
+   Weight 500 = MaisonNeue-Medium (the family only ships Book/Medium/Demi,
+   no Black; 500 matches Reality SF's h1). Body/running text stays Playfair
+   Display (see "Main text" block above). This block is last in source order
+   so it wins over the earlier Playfair heading rules.
    ================================================================ */
 :root {
-  --font-heading: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Maisonneue', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -26281,7 +26282,7 @@ h1, h2, h3, h4, h5, h6,
 #page-hero-content h1,
 #mega-menu-wrap-main #mega-menu-main .widget_text .mega-block-title {
   font-family: var(--font-heading) !important;
-  font-weight: 900 !important;
+  font-weight: 500 !important;
 }
 
 /* Activity card → deeplinks to the individual camp tabs */
