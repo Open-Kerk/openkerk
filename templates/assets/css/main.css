@@ -24407,7 +24407,7 @@ body.form-loaded #mailchimp #newsletter-loading {
 #footer-inner {
   position: relative;
   z-index: 1;
-  padding: 25px var(--side-padding);
+  padding: 70px var(--side-padding);
   display: grid;
   grid-template-columns: 1.6fr repeat(3, 1fr);
   gap: 48px;
@@ -25176,9 +25176,13 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
 }
 
 
-/* ── Reserve space on the right so nav items don't slide under the lang switcher ── */
-#inner-navbar {
-  padding-right: 80px !important;
+/* ── Reserve space on the right so nav items don't slide under the lang switcher.
+   Only on desktop (≥1001px) where the fixed switcher is visible; on mobile it is
+   hidden, so no padding is reserved. ── */
+@media only screen and (min-width: 1001px) {
+  #inner-navbar {
+    padding-right: 80px !important;
+  }
 }
 
 /* ── FIX: last nav item had margin-right:-6vw (Reality SF design) which

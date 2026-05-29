@@ -18,6 +18,7 @@ LANGUAGES = {
     'nl': 'Nederlands',
     'en': 'English',
     'fr': 'Français',
+    'es': 'Español',
 }
 
 # ── Live stream embed ──────────────────────────────────────────────────
