@@ -11,7 +11,7 @@ on:
       max_videos:
         description: 'Max videos to process this run'
         required: false
-        default: '1'
+        default: '3'
       vimeo_id:
         description: 'Specific Vimeo id (overrides the queue if set)'
         required: false
@@ -28,7 +28,7 @@ concurrency:
 jobs:
   process:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     permissions:
       contents: write   # to push DB + VTT updates back to main
     steps:
@@ -61,7 +61,7 @@ jobs:
           VIMEO_TOKEN: ${{ secrets.VIMEO_TOKEN }}
           VIMEO_USER_ID: ${{ secrets.VIMEO_USER_ID }}
         run: |
-          ARGS="--max ${{ github.event.inputs.max_videos || '1' }}"
+          ARGS="--max ${{ github.event.inputs.max_videos || '3' }}"
           if [ -n "${{ github.event.inputs.vimeo_id }}" ]; then
             ARGS="--id ${{ github.event.inputs.vimeo_id }}"
           fi
