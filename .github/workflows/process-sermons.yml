@@ -71,6 +71,7 @@ jobs:
           python -m scripts.process_video $ARGS
 
       - name: Commit and push
+        id: commit
         run: |
           git config user.name  "openkerk-bot"
           git config user.email "openkerk-bot@users.noreply.github.com"
@@ -80,7 +81,48 @@ jobs:
           [ -d templates/assets/subtitles ] && git add templates/assets/subtitles/
           if git diff --cached --quiet; then
             echo "No changes to commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "auto: process sermon transcripts"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Below: only fires when the commit step actually committed. Rebuilds
+      # the Docker image with the new DB+VTTs baked in, pushes to DOCR, and
+      # forces a DO redeploy so the new sermon is visible on the live site
+      # within minutes.
+      - name: Install doctl
+        if: steps.commit.outputs.changed == 'true'
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Set up Docker buildx
+        if: steps.commit.outputs.changed == 'true'
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log into DOCR
+        if: steps.commit.outputs.changed == 'true'
+        run: doctl registry login --expiry-seconds 1200
+
+      - name: Build + push linux/amd64 image
+        if: steps.commit.outputs.changed == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: registry.digitalocean.com/foundry-registry/openkerk:latest
+
+      - name: Trigger DigitalOcean redeploy
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          APP_ID=$(doctl apps list --format ID,Spec.Name --no-header \
+                   | awk '$2 == "openkerk" {print $1}')
+          if [ -z "$APP_ID" ]; then
+            echo "No openkerk app found on this DO account; skipping redeploy"
+            exit 0
+          fi
+          doctl apps create-deployment "$APP_ID" --wait=false \
+                --format ID,Phase --no-header
