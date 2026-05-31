@@ -37,14 +37,15 @@ def run() -> int:
                 'thumbnail_url': vimeo_client.best_thumbnail(video) or '',
                 'published_at':  video.get('release_time') or video.get('created_time') or '',
                 'speaker':       ((video.get('user') or {}).get('name')) or '',
+                'unlisted_hash': vimeo_client.unlisted_hash(video),
             }
 
             if row is None:
                 conn.execute(
                     '''INSERT INTO videos (vimeo_id, title, description, duration_sec,
-                       thumbnail_url, published_at, speaker)
+                       thumbnail_url, published_at, speaker, unlisted_hash)
                        VALUES (:vimeo_id, :title, :description, :duration_sec,
-                       :thumbnail_url, :published_at, :speaker)''',
+                       :thumbnail_url, :published_at, :speaker, :unlisted_hash)''',
                     data,
                 )
                 conn.execute(
@@ -56,7 +57,8 @@ def run() -> int:
                 conn.execute(
                     '''UPDATE videos SET title = :title, description = :description,
                        duration_sec = :duration_sec, thumbnail_url = :thumbnail_url,
-                       published_at = :published_at, speaker = :speaker
+                       published_at = :published_at, speaker = :speaker,
+                       unlisted_hash = :unlisted_hash
                        WHERE vimeo_id = :vimeo_id''',
                     data,
                 )

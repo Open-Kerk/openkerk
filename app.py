@@ -268,7 +268,7 @@ def teaching(vimeo_id):
     try:
         row = conn.execute(
             '''SELECT vimeo_id, title, description, thumbnail_url, published_at,
-                      speaker, duration_sec
+                      speaker, duration_sec, unlisted_hash
                FROM videos WHERE vimeo_id = ? AND transcript_status = 'done' ''',
             (vimeo_id,),
         ).fetchone()

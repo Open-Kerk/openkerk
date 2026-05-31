@@ -21,8 +21,10 @@
 
   <div class="vimeo-wrap" style="position:relative; aspect-ratio:16/9; background:#000;
        border-radius:4px; overflow:hidden; margin-bottom:16px;">
+   {# Unlisted videos require ?h=<hash> in the player URL; public ones don't. #}
+   {% set _h = ('h=' ~ video.unlisted_hash ~ '&') if video.unlisted_hash else '' %}
    <iframe id="teaching-player"
-           src="https://player.vimeo.com/video/{{ video.vimeo_id }}?#t={{ start_t }}s"
+           src="https://player.vimeo.com/video/{{ video.vimeo_id }}?{{ _h }}#t={{ start_t }}s"
            frameborder="0"
            allow="autoplay; fullscreen; picture-in-picture"
            allowfullscreen

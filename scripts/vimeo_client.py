@@ -8,7 +8,9 @@ file we can hand to Whisper).
 from __future__ import annotations
 
 import os
+import re
 from typing import Iterator
+from urllib.parse import parse_qs, urlparse
 
 import requests
 
@@ -36,7 +38,7 @@ def list_videos(per_page: int = 50) -> Iterator[dict]:
         'per_page': per_page,
         'fields': (
             'uri,name,description,duration,created_time,release_time,'
-            'pictures.sizes,download,files,user.name'
+            'pictures.sizes,download,files,user.name,player_embed_url,privacy.view'
         ),
         'sort': 'date',
         'direction': 'desc',
@@ -87,6 +89,20 @@ def best_audio_url(video: dict) -> str | None:
         return None
     candidates.sort()
     return candidates[0][1]
+
+
+def unlisted_hash(video: dict) -> str | None:
+    """Return the unlisted-video hash if this video requires one.
+
+    Vimeo's player URL contains the hash as ?h=<10-hex-chars>. Public
+    videos have no hash. Without it, our iframe shows "Sorry, we're
+    having a little trouble".
+    """
+    url = video.get('player_embed_url') or ''
+    if not url:
+        return None
+    h = parse_qs(urlparse(url).query).get('h', [None])[0]
+    return h or None
 
 
 def best_thumbnail(video: dict) -> str | None:

@@ -55,9 +55,11 @@ def connect(path: str = DB_PATH, *, readonly: bool = False) -> Iterator[sqlite3.
         conn.execute('PRAGMA foreign_keys = ON')
         _load_vec(conn)
         # Self-bootstrap on write connections so scripts run idempotently
-        # even on a fresh repo clone without a committed sermons.db.
+        # even on a fresh repo clone without a committed sermons.db. Then
+        # apply any column-add migrations on existing DBs.
         if not readonly:
             conn.executescript(SCHEMA)
+            _migrate(conn)
         yield conn
         if not readonly:
             conn.commit()
@@ -76,6 +78,7 @@ CREATE TABLE IF NOT EXISTS videos (
     speaker         TEXT,
     series          TEXT,
     audio_lang      TEXT DEFAULT 'nl',
+    unlisted_hash   TEXT,         -- required in iframe src for unlisted videos
     processed_at    TEXT,         -- ISO8601; NULL = not yet processed
     transcript_status TEXT DEFAULT 'pending'  -- pending|done|failed
 );
@@ -122,6 +125,17 @@ CREATE TABLE IF NOT EXISTS queue (
     last_error  TEXT
 );
 """
+
+
+def _migrate(conn: sqlite3.Connection) -> None:
+    """Idempotently bring an existing DB up to the current schema.
+
+    Each migration must be guarded by a feature-check, so re-running on an
+    up-to-date DB is a no-op.
+    """
+    cols = {row['name'] for row in conn.execute('PRAGMA table_info(videos)')}
+    if 'unlisted_hash' not in cols:
+        conn.execute('ALTER TABLE videos ADD COLUMN unlisted_hash TEXT')
 
 
 def init_db(path: str = DB_PATH) -> None:
