@@ -70,17 +70,21 @@ def connect(path: str = DB_PATH, *, readonly: bool = False) -> Iterator[sqlite3.
 SCHEMA = f"""
 CREATE TABLE IF NOT EXISTS videos (
     vimeo_id        TEXT PRIMARY KEY,
-    title           TEXT NOT NULL,
+    title           TEXT NOT NULL,         -- raw Vimeo title (kept for cross-ref / fallback)
     description     TEXT,
     duration_sec    INTEGER,
     thumbnail_url   TEXT,
-    published_at    TEXT,         -- ISO8601 UTC
+    published_at    TEXT,                  -- ISO8601 UTC
     speaker         TEXT,
     series          TEXT,
     audio_lang      TEXT DEFAULT 'nl',
-    unlisted_hash   TEXT,         -- required in iframe src for unlisted videos
-    sermon_start_sec REAL,        -- offset where sermon begins (VAD-detected); NULL = transcribed from 0
-    processed_at    TEXT,         -- ISO8601; NULL = not yet processed
+    unlisted_hash   TEXT,                  -- required in iframe src for unlisted videos
+    sermon_start_sec REAL,                 -- offset where sermon begins (VAD-detected); NULL = transcribed from 0
+    display_title_nl TEXT,                 -- LLM-cleaned title in Dutch
+    display_title_en TEXT,                 -- translated from display_title_nl
+    display_title_fr TEXT,
+    display_title_es TEXT,
+    processed_at    TEXT,                  -- ISO8601; NULL = not yet processed
     transcript_status TEXT DEFAULT 'pending'  -- pending|done|failed
 );
 
@@ -139,6 +143,10 @@ def _migrate(conn: sqlite3.Connection) -> None:
         conn.execute('ALTER TABLE videos ADD COLUMN unlisted_hash TEXT')
     if 'sermon_start_sec' not in cols:
         conn.execute('ALTER TABLE videos ADD COLUMN sermon_start_sec REAL')
+    for lang in ('nl', 'en', 'fr', 'es'):
+        col = f'display_title_{lang}'
+        if col not in cols:
+            conn.execute(f'ALTER TABLE videos ADD COLUMN {col} TEXT')
 
 
 def init_db(path: str = DB_PATH) -> None:

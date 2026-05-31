@@ -153,3 +153,65 @@ def translate_segments(texts: Sequence[str], lang: str) -> list[str]:
         batch = list(texts[i:i + BATCH_SIZE])
         out.extend(translate_batch(batch, lang))
     return out
+
+
+# ─── Title generation ────────────────────────────────────────────────
+
+TITLE_SYSTEM = (
+    "You generate clean, concise sermon titles for a Christian church's "
+    "website. Rules:\n"
+    "1. Max 70 characters.\n"
+    "2. Write in Dutch.\n"
+    "3. Capture the main theme, scripture passage, or core message.\n"
+    "4. If the original filename contains series markers (e.g. 'Bidden & "
+    "   Vasten - Dag 5', 'Vision Sunday 2025'), preserve them as a prefix.\n"
+    "5. Strip file extensions (.mp4, .mov), random IDs, video player text, "
+    "   and generic placeholders like 'Open Kerk online dienst'.\n"
+    "6. Return ONLY the title text — no surrounding quotes, no markdown, "
+    "   no explanation.\n"
+    "7. If the transcript is too short / empty, do your best with the "
+    "   original title; clean it up and return that."
+)
+
+
+def generate_clean_title(transcript_text: str, original_title: str) -> str:
+    """Ask GPT-4o-mini to produce a clean Dutch title from the transcript.
+
+    Returns the new title, or a cleaned-up original_title if the model
+    returns nothing usable.
+    """
+    snippet = (transcript_text or '').strip()[:3000]
+    user = (
+        f'Original filename: {original_title}\n\n'
+        f'Sermon transcript (first part):\n{snippet}'
+    )
+    client = _client()
+    resp = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {'role': 'system', 'content': TITLE_SYSTEM},
+            {'role': 'user', 'content': user},
+        ],
+        temperature=0.3,
+        max_tokens=120,
+    )
+    title = (resp.choices[0].message.content or '').strip()
+    # Strip stray wrapping quotes/markdown if the model added them.
+    title = title.strip('"').strip("'").strip('*').strip()
+    # Drop a trailing period if any (model artifact).
+    if title.endswith('.') and not title.endswith('...'):
+        title = title[:-1]
+    if not title:
+        # Last-resort fallback: strip the .mp4 etc. from the original.
+        title = re.sub(r'\.(mp4|mov|avi|m4v)$', '', original_title or '', flags=re.I).strip()
+    return title[:120] or 'Untitled'
+
+
+def translate_title(title: str, lang: str) -> str:
+    """Translate a single sermon title into `lang`. Uses the same batched
+    translator (treated as a single-item batch), so the glossary still
+    applies."""
+    if not title or lang == 'nl':
+        return title
+    out = translate_batch([title], lang)
+    return out[0].strip() if out else title

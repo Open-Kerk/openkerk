@@ -116,6 +116,17 @@ def process(vimeo_id: str, *, reprocess: bool = False) -> None:
     if not nl_texts:
         raise RuntimeError('Whisper returned zero segments')
 
+    print(f'  generating clean title...')
+    clean_title_nl = translate_client.generate_clean_title(
+        transcript_text=transcript.text,
+        original_title=video.get('name') or 'Untitled',
+    )
+    print(f'    nl: "{clean_title_nl}"')
+    display_titles = {'nl': clean_title_nl}
+    for lang in TARGET_LANGS:
+        display_titles[lang] = translate_client.translate_title(clean_title_nl, lang)
+        print(f'    {lang}: "{display_titles[lang]}"')
+
     print(f'  translating {len(nl_texts)} segments x {len(TARGET_LANGS)} languages...')
     translations = {
         lang: translate_client.translate_segments(nl_texts, lang)
@@ -172,8 +183,11 @@ def process(vimeo_id: str, *, reprocess: bool = False) -> None:
 
         conn.execute(
             "UPDATE videos SET processed_at = ?, transcript_status = 'done', "
-            "sermon_start_sec = ? WHERE vimeo_id = ?",
-            (_now(), sermon_start if sermon_start > 0 else None, vimeo_id),
+            "sermon_start_sec = ?, display_title_nl = ?, display_title_en = ?, "
+            "display_title_fr = ?, display_title_es = ? WHERE vimeo_id = ?",
+            (_now(), sermon_start if sermon_start > 0 else None,
+             display_titles['nl'], display_titles['en'],
+             display_titles['fr'], display_titles['es'], vimeo_id),
         )
         conn.execute('DELETE FROM queue WHERE vimeo_id = ?', (vimeo_id,))
 

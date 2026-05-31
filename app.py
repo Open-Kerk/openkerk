@@ -208,6 +208,21 @@ def _seg_text(sec):
     return f'{h}:{m:02d}:{s:02d}' if h else f'{m}:{s:02d}'
 
 
+def _resolve_title(row, lang):
+    """Pick the cleanest title we have, preferring the user's language.
+
+    Order: display_title_<lang> -> display_title_nl -> raw Vimeo title.
+    Accepts either a sqlite3.Row or a dict; missing keys fall through.
+    """
+    def _get(key):
+        try:
+            v = row[key]
+        except (KeyError, IndexError):
+            return None
+        return v if (v and str(v).strip()) else None
+    return _get(f'display_title_{lang}') or _get('display_title_nl') or row['title']
+
+
 def _translated_snippet(conn, vimeo_id, lang, start_sec, end_sec):
     """Return the matching transcript text in the user's language. Falls back
     to Dutch if no translation exists yet for this segment range."""
@@ -242,16 +257,21 @@ def teachings():
             "SELECT COUNT(*) FROM videos WHERE transcript_status = 'done'"
         ).fetchone()[0]
         rows = conn.execute(
-            '''SELECT vimeo_id, title, thumbnail_url, published_at, speaker, duration_sec
+            '''SELECT vimeo_id, title, thumbnail_url, published_at, speaker, duration_sec,
+                      display_title_nl, display_title_en, display_title_fr, display_title_es
                FROM videos
                WHERE transcript_status = 'done'
                ORDER BY published_at DESC
                LIMIT ? OFFSET ?''',
             (TEACHINGS_PER_PAGE, offset),
         ).fetchall()
-        videos = [dict(r) for r in rows]
-        for v in videos:
+        lang = get_locale()
+        videos = []
+        for r in rows:
+            v = dict(r)
+            v['display_title'] = _resolve_title(r, lang)
             v['duration_label'] = _seg_text(v['duration_sec'] or 0)
+            videos.append(v)
         pages = max(1, (total + TEACHINGS_PER_PAGE - 1) // TEACHINGS_PER_PAGE)
         return render_template('teachings.html',
                                videos=videos, total=total, page=page, pages=pages,
@@ -268,13 +288,15 @@ def teaching(vimeo_id):
     try:
         row = conn.execute(
             '''SELECT vimeo_id, title, description, thumbnail_url, published_at,
-                      speaker, duration_sec, unlisted_hash
+                      speaker, duration_sec, unlisted_hash,
+                      display_title_nl, display_title_en, display_title_fr, display_title_es
                FROM videos WHERE vimeo_id = ? AND transcript_status = 'done' ''',
             (vimeo_id,),
         ).fetchone()
         if not row:
             abort(404)
         video = dict(row)
+        video['display_title'] = _resolve_title(row, get_locale())
         video['duration_label'] = _seg_text(video['duration_sec'] or 0)
         try:
             start = max(0, int(request.args.get('t', 0)))
@@ -335,9 +357,16 @@ def teachings_search():
                 snippet = _translated_snippet(
                     conn, h.vimeo_id, lang, h.start_sec, h.end_sec,
                 ) or h.snippet
+                title_row = conn.execute(
+                    '''SELECT title, display_title_nl, display_title_en,
+                              display_title_fr, display_title_es
+                       FROM videos WHERE vimeo_id = ?''',
+                    (h.vimeo_id,),
+                ).fetchone()
+                display_title = _resolve_title(title_row, lang) if title_row else h.title
                 hits_out.append({
                     'vimeo_id':      h.vimeo_id,
-                    'title':         h.title,
+                    'title':         display_title,
                     'thumbnail_url': h.thumbnail_url,
                     'speaker':       h.speaker,
                     'published_at':  h.published_at,
@@ -359,17 +388,20 @@ def teachings_search():
         try:
             like = f'%{q}%'
             rows = conn.execute(
-                '''SELECT vimeo_id, title, description, thumbnail_url, speaker, published_at
+                '''SELECT vimeo_id, title, description, thumbnail_url, speaker, published_at,
+                          display_title_nl, display_title_en, display_title_fr, display_title_es
                    FROM videos
                    WHERE transcript_status = 'done'
-                     AND (title LIKE ? OR description LIKE ?)
+                     AND (title LIKE ? OR description LIKE ?
+                          OR display_title_nl LIKE ? OR display_title_en LIKE ?
+                          OR display_title_fr LIKE ? OR display_title_es LIKE ?)
                    ORDER BY published_at DESC LIMIT 12''',
-                (like, like),
+                (like, like, like, like, like, like),
             ).fetchall()
             for r in rows:
                 hits_out.append({
                     'vimeo_id':      r['vimeo_id'],
-                    'title':         r['title'],
+                    'title':         _resolve_title(r, lang),
                     'thumbnail_url': r['thumbnail_url'],
                     'speaker':       r['speaker'],
                     'published_at':  r['published_at'],
