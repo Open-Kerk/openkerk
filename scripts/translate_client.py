@@ -61,8 +61,12 @@ SYSTEM_TMPL = (
     "You are translating Dutch Christian sermon transcripts into {lang_name}. "
     "You will receive a JSON array of Dutch segments. Translate each segment "
     "faithfully, preserving tone and theological meaning, and return a JSON "
-    "array of {lang_name} translations of the EXACT same length and order. "
-    "Do not merge or split segments. Output only valid JSON — no prose, no markdown.\n\n"
+    "object of the form {{\"translations\": [...]}} where the array has "
+    "EXACTLY the same length and order as the input. Even if multiple "
+    "segments contain identical Dutch text (e.g. repeated [muziek] markers), "
+    "include one translation entry per input position — do not deduplicate "
+    "into a dict. Do not merge or split segments. Output only valid JSON, "
+    "no prose, no markdown.\n\n"
     "Glossary (authoritative — prefer these renderings):\n{glossary}\n"
 )
 
@@ -98,21 +102,38 @@ def translate_batch(texts: Sequence[str], lang: str) -> list[str]:
         temperature=0.2,
     )
     raw = resp.choices[0].message.content or ''
-    parsed = _parse_array(raw, expected=len(texts))
+    parsed = _parse_array(raw, source_texts=list(texts))
     return parsed
 
 
-def _parse_array(raw: str, *, expected: int) -> list[str]:
-    """The model is instructed to return a JSON array. response_format
-    json_object means it'll wrap it ({"translations": [...]}); accept either."""
+def _parse_array(raw: str, *, source_texts: list[str]) -> list[str]:
+    """Normalize the model's response to a list of len(source_texts).
+
+    The system prompt asks for a JSON array, but gpt-4o-mini will sometimes:
+      - wrap it in a JSON object: {"translations": [...]}
+      - collapse duplicate inputs into a source->translation dict:
+        {"RUSTIGE MUZIEK": "MÚSICA TRANQUILA"} (when all segs are the same
+        Whisper artifact). JSON objects can't have duplicate keys, so we'd
+        otherwise lose alignment.
+
+    Strategy:
+      1. If it's a list, use it directly.
+      2. If it's a dict containing a list value, use that list.
+      3. Otherwise treat the dict as a source-text -> translation map and
+         look up each source text in order (preserves alignment + handles
+         the duplicate-input case correctly).
+    """
+    expected = len(source_texts)
     data = json.loads(raw)
     if isinstance(data, list):
         arr = data
     elif isinstance(data, dict):
-        # Find the first list value.
+        # Prefer a wrapped list if present.
         arr = next((v for v in data.values() if isinstance(v, list)), None)
         if arr is None:
-            raise ValueError(f'no array found in response: {raw[:200]}')
+            # Treat dict as {source_text: translation}; remap to input order.
+            # Unknown sources fall through to '' so timing stays aligned.
+            arr = [data.get(s, '') for s in source_texts]
     else:
         raise ValueError(f'unexpected response shape: {type(data)}')
     arr = [str(x) for x in arr]
