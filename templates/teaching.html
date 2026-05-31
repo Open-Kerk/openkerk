@@ -19,6 +19,21 @@
    {% if video.duration_label %} · {{ video.duration_label }}{% endif %}
   </div>
 
+  {# Fullscreen styles: when the wrapper is fullscreened, fill the viewport
+     and scale the caption up. Vimeo's built-in fullscreen button only
+     fullscreens the iframe, which would hide our caption; the JS below
+     swaps that to fullscreen the wrapper instead. #}
+  <style>
+    .vimeo-wrap:fullscreen,
+    .vimeo-wrap:-webkit-full-screen {
+      width: 100vw; height: 100vh; aspect-ratio: auto; background: #000;
+      border-radius: 0; margin: 0;
+    }
+    .vimeo-wrap:fullscreen #teaching-caption,
+    .vimeo-wrap:-webkit-full-screen #teaching-caption {
+      font-size: 28px; bottom: 10%; max-width: 70%; padding: 10px 18px;
+    }
+  </style>
   <div class="vimeo-wrap" style="position:relative; aspect-ratio:16/9; background:#000;
        border-radius:4px; overflow:hidden; margin-bottom:16px;">
    {# Unlisted videos require ?h=<hash> in the player URL; public ones don't. #}
@@ -135,6 +150,38 @@
   player.on('timeupdate', function (e) { showCueAt(e.seconds); });
   langSel.addEventListener('change', function () { loadVTT(langSel.value); });
   loadVTT(langSel.value);
+
+  // Fullscreen swap: Vimeo's button fullscreens the iframe only, which
+  // hides our caption overlay. Detect when the iframe goes fullscreen and
+  // immediately re-fullscreen the wrapper (iframe + caption together).
+  var wrap = document.querySelector('.vimeo-wrap');
+
+  function reqFs(el) {
+    var fn = el.requestFullscreen || el.webkitRequestFullscreen;
+    return fn ? fn.call(el) : null;
+  }
+  function exitFs() {
+    var fn = document.exitFullscreen || document.webkitExitFullscreen;
+    return fn ? fn.call(document) : null;
+  }
+  function fsElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement;
+  }
+
+  var swapping = false;
+  function maybeSwap() {
+    if (swapping) return;
+    if (fsElement() === iframe) {
+      swapping = true;
+      var p = exitFs();
+      // Browsers vary on whether exit returns a Promise; handle both.
+      Promise.resolve(p).then(function () { return reqFs(wrap); })
+        .catch(function () {})
+        .finally(function () { swapping = false; });
+    }
+  }
+  document.addEventListener('fullscreenchange', maybeSwap);
+  document.addEventListener('webkitfullscreenchange', maybeSwap);
 })();
 </script>
 {% endblock %}
