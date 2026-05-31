@@ -382,3 +382,8 @@ teachings:
   date_label: Date
   duration_label: Length
   subtitles_label: Subtitles
+  col_title: Title & speaker
+  col_summary: Summary
+  col_date: Date
+  col_duration: Length
+  watch_label: Watch

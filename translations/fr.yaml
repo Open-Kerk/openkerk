@@ -382,3 +382,8 @@ teachings:
   date_label: Date
   duration_label: Durée
   subtitles_label: Sous-titres
+  col_title: Titre et prédicateur
+  col_summary: Résumé
+  col_date: Date
+  col_duration: Durée
+  watch_label: Regarder

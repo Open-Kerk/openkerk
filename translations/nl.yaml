@@ -382,3 +382,8 @@ teachings:
   date_label: Datum
   duration_label: Lengte
   subtitles_label: Ondertitels
+  col_title: Titel & spreker
+  col_summary: Samenvatting
+  col_date: Datum
+  col_duration: Lengte
+  watch_label: Bekijken

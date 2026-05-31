@@ -5,12 +5,31 @@
 {% block body_class %}archive teachings-page{% endblock %}
 
 {% block content %}
+{# Page-scoped overrides: Reality SF's list CSS assumes 5 columns; we use 4
+   (Title+Speaker / Summary / Date / Duration). Reallocate the 'Teacher'
+   column's 15% to the Title column so the layout still adds to ~97%. #}
+<style>
+  .teachings-page .audio-filter.audio-title-filter,
+  .teachings-page .play-list-item .audio-title { width: 30%; }
+  .teachings-page .audio-filter.audio-summary-filter,
+  .teachings-page .play-list-item .audio-summary { width: 45%; }
+  .teachings-page .audio-filter.audio-date-filter,
+  .teachings-page .play-list-item .audio-date { width: 12%; }
+  .teachings-page .audio-filter.audio-duration-filter,
+  .teachings-page .play-list-item .audio-duration { width: 10%; }
+  .teachings-page .play-list-item .audio-title {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .teachings-page .play-list-item .audio-title .sermon-content { flex: 1; min-width: 0; }
+  .teachings-page .play-list-item-parent { font-family: var(--font-heading), sans-serif; }
+</style>
+
 <div id="main">
  <div class="short-header parallax-on not-live" id="page-hero">
-  <div id="page-hero-content" style="padding:140px 0 100px;">
+  <div id="page-hero-content" style="padding:140px 0 90px;">
    <h1>{{ t('teachings.hero_heading') }}</h1>
    <div id="hero-sub-title">{{ t('teachings.hero_subtitle') }}</div>
-   <form id="teachings-search" role="search" autocomplete="off" style="margin-top:32px;">
+   <form id="teachings-search" role="search" autocomplete="off" style="margin-top:28px;">
     <input type="text" name="q" id="teachings-q"
            placeholder="{{ t('teachings.search_placeholder') }}"
            aria-label="{{ t('teachings.search_placeholder') }}">
@@ -24,77 +43,125 @@
   </div>
  </div>
 
- <div aria-hidden="true" class="wp-block-spacer" style="height:40px"></div>
+ <div id="teachings-results" hidden style="max-width:1200px; margin:48px auto 0; padding:0 24px;">
+  <h2 style="margin:0 0 24px;">{{ t('teachings.search_results_title') }}</h2>
+  <div id="teachings-results-list"></div>
+  <div aria-hidden="true" class="wp-block-spacer" style="height:60px"></div>
+ </div>
 
- <div class="teachings-container" style="max-width:1200px; margin:0 auto; padding:0 24px;">
-
-  <div id="teachings-results" hidden>
-   <h2 style="margin:0 0 24px;">{{ t('teachings.search_results_title') }}</h2>
-   <div id="teachings-results-list"></div>
-   <div aria-hidden="true" class="wp-block-spacer" style="height:60px"></div>
+ {% if total == 0 %}
+  <div class="teachings-empty"
+       style="text-align:center; padding:80px 24px 100px; color:#666; max-width:600px; margin:0 auto;">
+   {{ t('teachings.empty_state') }}
+  </div>
+ {% else %}
+  {# Reality SF-style sortable column header + sermon list, restyled by our
+     existing theme CSS so the Maisonneue + gold accents carry through. We
+     drop the dedicated 'Teacher' column (single-speaker channel) and merge
+     speaker info into the title column for density. #}
+  <div class="audio-filter-container" style="margin-top:48px;">
+   <div class="audio-filter audio-title-filter">
+    <span class="filter-link">
+     {{ t('teachings.col_title') }}
+    </span>
+   </div>
+   <div class="audio-filter audio-summary-filter">
+    <span class="filter-link">{{ t('teachings.col_summary') }}</span>
+   </div>
+   <div class="audio-filter dates audio-date-filter">
+    <span class="filter-link active-audio-filter">{{ t('teachings.col_date') }}</span>
+   </div>
+   <div class="audio-filter audio-duration-filter">
+    <span class="filter-link">{{ t('teachings.col_duration') }}</span>
+   </div>
   </div>
 
-  {% if total == 0 %}
-   <div class="teachings-empty" style="text-align:center; padding:80px 0; color:#666;">
-    {{ t('teachings.empty_state') }}
-   </div>
-  {% else %}
-   <div class="teachings-grid"
-        style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-               gap:32px 24px; margin-bottom:48px;">
-    {% for v in videos %}
-     <a class="teaching-card" href="{{ url_for('teaching', vimeo_id=v.vimeo_id) }}"
-        style="text-decoration:none; color:inherit; display:block;">
-      <div class="teaching-card__thumb"
-           style="aspect-ratio:16/9; background:#222 center/cover no-repeat;
-                  {% if v.thumbnail_url %}background-image:url('{{ v.thumbnail_url }}');{% endif %}
-                  border-radius:4px; position:relative; overflow:hidden;">
-       <div style="position:absolute; right:8px; bottom:8px;
-                   background:rgba(0,0,0,0.7); color:#fff; padding:2px 8px;
-                   font-size:13px; border-radius:2px;">{{ v.duration_label }}</div>
+  <div class="overflow-player-section">
+   {% for v in videos %}
+    <div class="play-list-item-parent" data-href="{{ url_for('teaching', vimeo_id=v.vimeo_id) }}">
+     <div class="play-list-item">
+      <div class="status-indicator">
+       <div class="status-play-button">
+        <i class="fas fa-play"></i>
+       </div>
       </div>
-      <h3 style="margin:14px 0 6px; font-size:18px; line-height:1.3;">{{ v.display_title or v.title }}</h3>
-      <div style="font-size:13px; color:#888;">
-       {% if v.speaker %}{{ v.speaker }}{% endif %}
-       {% if v.speaker and v.published_at %} · {% endif %}
-       {% if v.published_at %}{{ v.published_at[:10] }}{% endif %}
+      <div class="audio-title">
+       {% if v.thumbnail_url %}
+        <img alt="" class="teacher-image" src="{{ v.thumbnail_url }}"
+             width="40" style="border-radius:2px; object-fit:cover;">
+       {% endif %}
+       <div class="sermon-content" style="min-width:0;">
+        <div class="teacher-ellipsis title">{{ v.display_title or v.title }}</div>
+        {% if v.speaker %}
+         <div class="teacher-ellipsis" style="font-size:13px; color:#888;">{{ v.speaker }}</div>
+        {% endif %}
+       </div>
       </div>
-     </a>
-    {% endfor %}
-   </div>
+      <div class="audio-summary">
+       <div class="ellipsed-text">
+        {{ (v.description or v.display_title or v.title)[:200] }}
+       </div>
+      </div>
+      <div class="dates audio-date">
+       <div>{{ v.published_at[:10] if v.published_at else '' }}</div>
+      </div>
+      <div class="audio-duration">
+       <div>{{ v.duration_label }}</div>
+      </div>
+     </div>
+    </div>
+   {% endfor %}
+  </div>
 
-   {% if pages > 1 %}
-    <nav class="teachings-pagination"
-         style="display:flex; justify-content:center; gap:16px;
-                margin:32px 0 80px; align-items:center;">
-     {% if page > 1 %}
-      <a href="{{ url_for('teachings', page=page-1) }}"
-         class="button">{{ t('teachings.prev_page') }}</a>
-     {% endif %}
-     <span style="color:#666;">{{ page }} / {{ pages }}</span>
-     {% if page < pages %}
-      <a href="{{ url_for('teachings', page=page+1) }}"
-         class="button">{{ t('teachings.next_page') }}</a>
-     {% endif %}
-    </nav>
-   {% endif %}
+  {% if pages > 1 %}
+   <nav class="teachings-pagination"
+        style="display:flex; justify-content:center; gap:16px;
+               margin:48px 0 80px; align-items:center;">
+    {% if page > 1 %}
+     <a href="{{ url_for('teachings', page=page-1) }}"
+        class="button">{{ t('teachings.prev_page') }}</a>
+    {% endif %}
+    <span style="color:#666;">{{ page }} / {{ pages }}</span>
+    {% if page < pages %}
+     <a href="{{ url_for('teachings', page=page+1) }}"
+        class="button">{{ t('teachings.next_page') }}</a>
+    {% endif %}
+   </nav>
   {% endif %}
-
- </div>
+ {% endif %}
 </div>
 
 <script>
 (function () {
+  // Whole-row navigation for keyboard + mouse. Avoid swallowing clicks on
+  // genuine inner anchors (none today, but future-proof).
+  document.querySelectorAll('.play-list-item-parent[data-href]').forEach(function (row) {
+    row.style.cursor = 'pointer';
+    row.setAttribute('role', 'link');
+    row.setAttribute('tabindex', '0');
+    row.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      window.location.href = row.dataset.href;
+    });
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.location.href = row.dataset.href;
+      }
+    });
+  });
+
   var form  = document.getElementById('teachings-search');
   var input = document.getElementById('teachings-q');
   var box   = document.getElementById('teachings-results');
   var list  = document.getElementById('teachings-results-list');
-  var grid  = document.querySelector('.teachings-grid');
-  var pag   = document.querySelector('.teachings-pagination');
+  var listSection = document.querySelector('.overflow-player-section');
+  var filterBar   = document.querySelector('.audio-filter-container');
+  var pag         = document.querySelector('.teachings-pagination');
   if (!form) return;
 
-  var noResults  = {{ t('teachings.no_results') | tojson }};
-  var watchFrom  = {{ t('teachings.watch_from') | tojson }};
+  var noResults = {{ t('teachings.no_results') | tojson }};
+  var watchFrom = {{ t('teachings.watch_from') | tojson }};
 
   function escape(s) {
     return String(s || '').replace(/[&<>"']/g, function (c) {
@@ -104,7 +171,7 @@
 
   function render(hits) {
     if (!hits.length) {
-      list.innerHTML = '<p style="color:#666;">' + escape(noResults) + '</p>';
+      list.innerHTML = '<p style="color:#666; padding:24px 0;">' + escape(noResults) + '</p>';
       return;
     }
     list.innerHTML = hits.map(function (h) {
@@ -133,15 +200,16 @@
 
   function showResults(show) {
     box.hidden = !show;
-    if (grid) grid.style.display = show ? 'none' : 'grid';
-    if (pag)  pag.style.display  = show ? 'none' : 'flex';
+    if (filterBar)   filterBar.style.display   = show ? 'none' : '';
+    if (listSection) listSection.style.display = show ? 'none' : '';
+    if (pag)         pag.style.display         = show ? 'none' : '';
   }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var q = input.value.trim();
     if (!q) { showResults(false); return; }
-    list.innerHTML = '<p style="color:#888;">…</p>';
+    list.innerHTML = '<p style="color:#888; padding:24px 0;">…</p>';
     showResults(true);
     fetch('/teachings/search?q=' + encodeURIComponent(q))
       .then(function (r) { return r.json(); })
@@ -149,7 +217,6 @@
       .catch(function () { list.innerHTML = '<p style="color:#c00;">Error</p>'; });
   });
 
-  // Pre-fill from ?q= so back/forward keeps state.
   var initial = new URLSearchParams(location.search).get('q');
   if (initial) { input.value = initial; form.dispatchEvent(new Event('submit')); }
 })();
