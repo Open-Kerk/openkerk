@@ -55,6 +55,15 @@ jobs:
           VIMEO_USER_ID: ${{ secrets.VIMEO_USER_ID }}
         run: python -m scripts.sync_vimeo
 
+      # Self-healing step: any 'done' video that still has NULL display_title_nl
+      # gets a clean title + en/fr/es translations generated from its existing
+      # transcript. Happens before the main process step so even an empty
+      # queue tick can clear up the backlog. Costs ~$0.001/video.
+      - name: Backfill missing display titles
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python -m scripts.backfill_titles
+
       - name: Process queued videos
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
