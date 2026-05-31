@@ -54,6 +54,10 @@ def connect(path: str = DB_PATH, *, readonly: bool = False) -> Iterator[sqlite3.
         conn.row_factory = sqlite3.Row
         conn.execute('PRAGMA foreign_keys = ON')
         _load_vec(conn)
+        # Self-bootstrap on write connections so scripts run idempotently
+        # even on a fresh repo clone without a committed sermons.db.
+        if not readonly:
+            conn.executescript(SCHEMA)
         yield conn
         if not readonly:
             conn.commit()
