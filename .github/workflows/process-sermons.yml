@@ -98,8 +98,21 @@ jobs:
             exit 0
           fi
           git commit -m "auto: process sermon transcripts"
-          git push
-          echo "changed=true" >> "$GITHUB_OUTPUT"
+          # Rebase onto remote in case humans (or other workflows) pushed
+          # while we were processing — long sermon runs can take 30+ min,
+          # plenty of time for a race. Retry a few times in case of churn.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin main; then
+              echo "pushed on attempt $attempt"
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 10))
+          done
+          echo "push failed after 3 attempts"
+          exit 1
 
       # Below: only fires when the commit step actually committed. Rebuilds
       # the Docker image with the new DB+VTTs baked in, pushes to DOCR, and
