@@ -280,7 +280,33 @@ def teaching(vimeo_id):
             start = max(0, int(request.args.get('t', 0)))
         except ValueError:
             start = 0
-        return render_template('teaching.html', video=video, start_t=start)
+
+        # Fetch a signed MP4 URL for native HTML5 playback. If Vimeo is
+        # unavailable or the video has no progressive file (rare on Pro
+        # accounts), fall back to the iframe embed so the page still works.
+        play_url = None
+        if os.environ.get('VIMEO_TOKEN'):
+            try:
+                from scripts.vimeo_client import get_play_url  # noqa: WPS433
+                play_url = get_play_url(vimeo_id)
+            except Exception as exc:
+                app.logger.warning('vimeo play url fetch failed for %s: %s', vimeo_id, exc)
+
+        # Languages we actually generated subtitles for; the template renders
+        # a <track> for each existing VTT file.
+        sub_dir = os.path.join(BRAND_DIR, 'assets', 'subtitles')
+        subtitle_langs = [
+            code for code in LANGUAGES
+            if os.path.isfile(os.path.join(sub_dir, f'{vimeo_id}.{code}.vtt'))
+        ]
+
+        return render_template(
+            'teaching.html',
+            video=video,
+            start_t=start,
+            play_url=play_url,
+            subtitle_langs=subtitle_langs,
+        )
     finally:
         conn.close()
 

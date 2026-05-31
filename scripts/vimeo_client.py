@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import os
 import re
+import time
 from typing import Iterator
 from urllib.parse import parse_qs, urlparse
 
@@ -103,6 +104,53 @@ def unlisted_hash(video: dict) -> str | None:
         return None
     h = parse_qs(urlparse(url).query).get('h', [None])[0]
     return h or None
+
+
+def best_play_url(video: dict, *, max_height: int = 720) -> str | None:
+    """Return the best MP4 progressive URL for in-page playback.
+
+    Picks the highest-quality MP4 with height <= max_height (default 720p
+    — solid quality for sermon talking-heads, modest bandwidth). Falls
+    back to the smallest available if nothing fits the cap.
+
+    These URLs are signed and expire (typically within a few hours), so
+    callers should pair this with `get_play_url()` which caches with TTL.
+    """
+    candidates: list[tuple[int, str]] = []
+    for entry in video.get('files') or []:
+        link = entry.get('link')
+        if not link:
+            continue
+        # MIME may be 'video/mp4' or just 'mp4'; tolerate both.
+        mime = (entry.get('type') or '').lower()
+        if 'mp4' not in mime:
+            continue
+        candidates.append((int(entry.get('height') or 0), link))
+    if not candidates:
+        return None
+    candidates.sort(reverse=True)
+    for h, link in candidates:
+        if h <= max_height:
+            return link
+    return candidates[-1][1]
+
+
+# In-process TTL cache. Resets on worker restart — fine, the worst case
+# is one extra Vimeo API call after a redeploy.
+_PLAY_URL_CACHE: dict[str, tuple[float, str]] = {}
+PLAY_URL_TTL_SEC = 3 * 3600  # 3h, well under Vimeo's signed-URL expiry
+
+
+def get_play_url(vimeo_id: str, *, max_height: int = 720) -> str | None:
+    now = time.time()
+    cached = _PLAY_URL_CACHE.get(vimeo_id)
+    if cached and cached[0] > now:
+        return cached[1]
+    video = get_video(vimeo_id)
+    url = best_play_url(video, max_height=max_height)
+    if url:
+        _PLAY_URL_CACHE[vimeo_id] = (now + PLAY_URL_TTL_SEC, url)
+    return url
 
 
 def best_thumbnail(video: dict) -> str | None:

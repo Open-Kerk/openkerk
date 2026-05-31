@@ -5,6 +5,10 @@
 {% block body_class %}single single-teaching{% endblock %}
 
 {% block content %}
+{# Per-language subtitle label shown in the browser's native CC menu. #}
+{% set _sub_label = {
+  'nl': 'Nederlands', 'en': 'English', 'fr': 'Français', 'es': 'Español'
+} %}
 <div id="main">
  <div class="teaching-detail" style="max-width:960px; margin:0 auto; padding:120px 24px 80px;">
 
@@ -19,51 +23,63 @@
    {% if video.duration_label %} · {{ video.duration_label }}{% endif %}
   </div>
 
-  {# Fullscreen styles: when the wrapper is fullscreened, fill the viewport
-     and scale the caption up. Vimeo's built-in fullscreen button only
-     fullscreens the iframe, which would hide our caption; the JS below
-     swaps that to fullscreen the wrapper instead. #}
-  <style>
-    .vimeo-wrap:fullscreen,
-    .vimeo-wrap:-webkit-full-screen {
-      width: 100vw; height: 100vh; aspect-ratio: auto; background: #000;
-      border-radius: 0; margin: 0;
-    }
-    .vimeo-wrap:fullscreen #teaching-caption,
-    .vimeo-wrap:-webkit-full-screen #teaching-caption {
-      font-size: 28px; bottom: 10%; max-width: 70%; padding: 10px 18px;
-    }
-  </style>
-  <div class="vimeo-wrap" style="position:relative; aspect-ratio:16/9; background:#000;
-       border-radius:4px; overflow:hidden; margin-bottom:16px;">
-   {# Unlisted videos require ?h=<hash> in the player URL; public ones don't. #}
-   {% set _h = ('h=' ~ video.unlisted_hash ~ '&') if video.unlisted_hash else '' %}
-   <iframe id="teaching-player"
-           src="https://player.vimeo.com/video/{{ video.vimeo_id }}?{{ _h }}#t={{ start_t }}s"
-           frameborder="0"
-           allow="autoplay; fullscreen; picture-in-picture"
-           allowfullscreen
-           style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
-
-   <!-- Custom subtitle overlay; populated from /assets/subtitles/<id>.<lang>.vtt -->
-   <div id="teaching-caption"
-        style="position:absolute; left:50%; bottom:6%; transform:translateX(-50%);
-               max-width:80%; padding:6px 12px; color:#fff; font-size:18px;
-               line-height:1.35; text-align:center; background:rgba(0,0,0,0.6);
-               border-radius:3px; pointer-events:none; opacity:0; transition:opacity .15s;"></div>
-  </div>
-
-  <div style="display:flex; gap:16px; align-items:center; margin-bottom:32px;">
-   <label for="teaching-sub-lang" style="font-size:14px; color:#666;">
-    {{ t('teachings.subtitles_label') }}:
-   </label>
-   <select id="teaching-sub-lang" style="padding:6px 10px;">
-    {% for code, label in languages.items() %}
-     <option value="{{ code }}" {% if code == current_lang %}selected{% endif %}>{{ label }}</option>
+  {% if play_url %}
+   {# Native HTML5 player so captions, fullscreen and iOS Safari work
+      out of the box. The browser's built-in CC menu lists every <track>
+      below; the one with `default` is shown when the video starts. #}
+   <video id="teaching-player"
+          controls preload="metadata" crossorigin="anonymous"
+          poster="{{ video.thumbnail_url or '' }}"
+          style="display:block; width:100%; aspect-ratio:16/9;
+                 background:#000; border-radius:4px; margin-bottom:32px;">
+    <source src="{{ play_url }}" type="video/mp4">
+    {% for code in subtitle_langs %}
+     <track kind="subtitles"
+            srclang="{{ code }}"
+            label="{{ _sub_label[code] }}"
+            src="{{ url_for('static', filename='subtitles/' ~ video.vimeo_id ~ '.' ~ code ~ '.vtt') }}"
+            {% if code == current_lang %}default{% endif %}>
     {% endfor %}
-    <option value="off">—</option>
-   </select>
-  </div>
+   </video>
+
+   <script>
+   (function () {
+     var video = document.getElementById('teaching-player');
+     if (!video) return;
+
+     {% if start_t %}
+     // Honour ?t=<sec> from search-result deeplinks once metadata is loaded.
+     video.addEventListener('loadedmetadata', function () {
+       try { video.currentTime = {{ start_t }}; } catch (_) {}
+     });
+     {% endif %}
+
+     // Ensure the user's site-language track is the active one even if
+     // their browser preferences would pick differently. We do this on
+     // 'loadedmetadata' because tracks aren't enumerable until then.
+     var wantLang = {{ current_lang | tojson }};
+     video.addEventListener('loadedmetadata', function () {
+       for (var i = 0; i < video.textTracks.length; i++) {
+         var t = video.textTracks[i];
+         t.mode = (t.language === wantLang) ? 'showing' : 'disabled';
+       }
+     });
+   })();
+   </script>
+  {% else %}
+   {# Fallback: Vimeo token unavailable or no MP4 file. Embed iframe so
+      the page still works; captions won't show in fullscreen in this
+      mode, but the video plays. #}
+   {% set _h = ('h=' ~ video.unlisted_hash ~ '&') if video.unlisted_hash else '' %}
+   <div style="position:relative; aspect-ratio:16/9; background:#000;
+               border-radius:4px; overflow:hidden; margin-bottom:32px;">
+    <iframe src="https://player.vimeo.com/video/{{ video.vimeo_id }}?{{ _h }}#t={{ start_t }}s"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
+   </div>
+  {% endif %}
 
   {% if video.description %}
    <div class="teaching-description"
@@ -74,114 +90,4 @@
 
  </div>
 </div>
-
-<script src="https://player.vimeo.com/api/player.js"></script>
-<script>
-(function () {
-  var vimeoId  = {{ video.vimeo_id | tojson }};
-  var iframe   = document.getElementById('teaching-player');
-  var captionEl= document.getElementById('teaching-caption');
-  var langSel  = document.getElementById('teaching-sub-lang');
-  var player   = new Vimeo.Player(iframe);
-  var cues     = [];   // parsed cues for the currently loaded VTT
-  var loadedLang = null;
-
-  function parseTimestamp(t) {
-    // "HH:MM:SS.mmm" or "MM:SS.mmm"
-    var parts = t.split(':').map(parseFloat);
-    if (parts.length === 3) return parts[0]*3600 + parts[1]*60 + parts[2];
-    return parts[0]*60 + parts[1];
-  }
-
-  function parseVTT(text) {
-    var out = [];
-    var blocks = text.replace(/\r/g, '').split(/\n\n+/);
-    blocks.forEach(function (block) {
-      var lines = block.split('\n').filter(Boolean);
-      var timing = lines.find(function (l) { return l.indexOf('-->') >= 0; });
-      if (!timing) return;
-      var bits = timing.split(/\s*-->\s*/);
-      var start = parseTimestamp(bits[0]);
-      var end   = parseTimestamp((bits[1] || '').split(' ')[0]);
-      var idx   = lines.indexOf(timing);
-      var text  = lines.slice(idx + 1).join(' ').trim();
-      if (text) out.push({ start: start, end: end, text: text });
-    });
-    return out;
-  }
-
-  function loadVTT(lang) {
-    if (lang === 'off') {
-      cues = [];
-      loadedLang = 'off';
-      captionEl.textContent = '';
-      captionEl.style.opacity = 0;
-      return;
-    }
-    var url = '/assets/subtitles/' + encodeURIComponent(vimeoId) + '.' + encodeURIComponent(lang) + '.vtt';
-    fetch(url, { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('no vtt'); return r.text(); })
-      .then(function (text) { cues = parseVTT(text); loadedLang = lang; })
-      .catch(function () { cues = []; loadedLang = lang; });
-  }
-
-  function showCueAt(seconds) {
-    if (!cues.length) {
-      if (captionEl.style.opacity !== '0') {
-        captionEl.style.opacity = 0;
-        captionEl.textContent = '';
-      }
-      return;
-    }
-    // Binary-friendly linear walk — VTTs are <2000 cues so this is fine.
-    var hit = null;
-    for (var i = 0; i < cues.length; i++) {
-      if (cues[i].start <= seconds && seconds <= cues[i].end) { hit = cues[i]; break; }
-      if (cues[i].start > seconds) break;
-    }
-    if (hit) {
-      if (captionEl.textContent !== hit.text) captionEl.textContent = hit.text;
-      captionEl.style.opacity = 1;
-    } else if (captionEl.style.opacity !== '0') {
-      captionEl.style.opacity = 0;
-    }
-  }
-
-  player.on('timeupdate', function (e) { showCueAt(e.seconds); });
-  langSel.addEventListener('change', function () { loadVTT(langSel.value); });
-  loadVTT(langSel.value);
-
-  // Fullscreen swap: Vimeo's button fullscreens the iframe only, which
-  // hides our caption overlay. Detect when the iframe goes fullscreen and
-  // immediately re-fullscreen the wrapper (iframe + caption together).
-  var wrap = document.querySelector('.vimeo-wrap');
-
-  function reqFs(el) {
-    var fn = el.requestFullscreen || el.webkitRequestFullscreen;
-    return fn ? fn.call(el) : null;
-  }
-  function exitFs() {
-    var fn = document.exitFullscreen || document.webkitExitFullscreen;
-    return fn ? fn.call(document) : null;
-  }
-  function fsElement() {
-    return document.fullscreenElement || document.webkitFullscreenElement;
-  }
-
-  var swapping = false;
-  function maybeSwap() {
-    if (swapping) return;
-    if (fsElement() === iframe) {
-      swapping = true;
-      var p = exitFs();
-      // Browsers vary on whether exit returns a Promise; handle both.
-      Promise.resolve(p).then(function () { return reqFs(wrap); })
-        .catch(function () {})
-        .finally(function () { swapping = false; });
-    }
-  }
-  document.addEventListener('fullscreenchange', maybeSwap);
-  document.addEventListener('webkitfullscreenchange', maybeSwap);
-})();
-</script>
 {% endblock %}
