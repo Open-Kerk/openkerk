@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS videos (
     series          TEXT,
     audio_lang      TEXT DEFAULT 'nl',
     unlisted_hash   TEXT,         -- required in iframe src for unlisted videos
+    sermon_start_sec REAL,        -- offset where sermon begins (VAD-detected); NULL = transcribed from 0
     processed_at    TEXT,         -- ISO8601; NULL = not yet processed
     transcript_status TEXT DEFAULT 'pending'  -- pending|done|failed
 );
@@ -136,6 +137,8 @@ def _migrate(conn: sqlite3.Connection) -> None:
     cols = {row['name'] for row in conn.execute('PRAGMA table_info(videos)')}
     if 'unlisted_hash' not in cols:
         conn.execute('ALTER TABLE videos ADD COLUMN unlisted_hash TEXT')
+    if 'sermon_start_sec' not in cols:
+        conn.execute('ALTER TABLE videos ADD COLUMN sermon_start_sec REAL')
 
 
 def init_db(path: str = DB_PATH) -> None:

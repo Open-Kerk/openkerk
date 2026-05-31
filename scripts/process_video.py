@@ -105,7 +105,12 @@ def process(vimeo_id: str, *, reprocess: bool = False) -> None:
             )
 
     print(f'  transcribing {vimeo_id} ({video.get("name")})...')
-    transcript = whisper_client.transcribe(media_url, prompt=WHISPER_PROMPT)
+    transcript, sermon_start = whisper_client.transcribe_with_vad(
+        media_url, prompt=WHISPER_PROMPT,
+    )
+    if sermon_start > 0:
+        print(f'  skipped {sermon_start/60:.1f} min of worship music '
+              f'(sermon starts at {sermon_start:.0f}s)')
 
     nl_texts = [s.text for s in transcript.segments]
     if not nl_texts:
@@ -166,9 +171,9 @@ def process(vimeo_id: str, *, reprocess: bool = False) -> None:
             )
 
         conn.execute(
-            "UPDATE videos SET processed_at = ?, transcript_status = 'done' "
-            "WHERE vimeo_id = ?",
-            (_now(), vimeo_id),
+            "UPDATE videos SET processed_at = ?, transcript_status = 'done', "
+            "sermon_start_sec = ? WHERE vimeo_id = ?",
+            (_now(), sermon_start if sermon_start > 0 else None, vimeo_id),
         )
         conn.execute('DELETE FROM queue WHERE vimeo_id = ?', (vimeo_id,))
 

@@ -4,3 +4,5 @@ gunicorn>=21.0
 sqlite-vec>=0.1.9
 openai>=1.50
 requests>=2.31
+silero-vad>=5.1
+soundfile>=0.12

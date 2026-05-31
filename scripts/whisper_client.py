@@ -79,35 +79,40 @@ def _split(src: str, parts_dir: str, seconds: int = 600) -> list[str]:
     return parts
 
 
-def transcribe(media_url: str, *, prompt: str | None = None) -> Transcript:
-    """Transcribe the audio at `media_url`.
+def _trim(audio_in: str, audio_out: str, start_sec: float) -> None:
+    """Cut everything before start_sec. Re-encodes so timestamps are
+    accurate (-c copy on opus can land off the requested frame)."""
+    subprocess.run(
+        ['ffmpeg', '-y', '-loglevel', 'error',
+         '-ss', f'{start_sec:.3f}', '-i', audio_in,
+         '-vn', '-ac', '1', '-ar', '16000',
+         '-c:a', 'libopus', '-b:a', '24k', audio_out],
+        check=True,
+    )
 
-    `prompt` is a short hint (max 224 tokens) — we feed Whisper our church
-    name and a few high-frequency theological terms so it stops hearing them
-    as homophones.
-    """
+
+def _transcribe_audio(audio_path: str, *, prompt: str = '',
+                       offset_sec: float = 0.0) -> Transcript:
+    """Send a local audio file to Whisper. Splits into 10-min parts if
+    needed to stay under the 25 MB upload cap. Returned segment
+    timestamps are shifted by offset_sec, so the caller passing a
+    trimmed file with the trim point as offset_sec gets back cues that
+    line up with the ORIGINAL video timeline."""
     client = _client()
     with tempfile.TemporaryDirectory() as tmp:
-        src = os.path.join(tmp, 'src.mp4')
-        audio = os.path.join(tmp, 'audio.ogg')
-        _download(media_url, src)
-        _extract_audio(src, audio)
-
-        size = os.path.getsize(audio)
+        size = os.path.getsize(audio_path)
         if size <= MAX_BYTES:
-            parts = [audio]
-            offsets = [0.0]
+            parts = [audio_path]
+            part_offsets = [0.0]
         else:
             parts_dir = os.path.join(tmp, 'parts')
             os.makedirs(parts_dir)
-            parts = _split(audio, parts_dir, seconds=600)
-            # Offset each part by its index * 600 s. Because we used -c copy
-            # the actual durations match what ffmpeg's segmenter cut at.
-            offsets = [i * 600.0 for i in range(len(parts))]
+            parts = _split(audio_path, parts_dir, seconds=600)
+            part_offsets = [i * 600.0 for i in range(len(parts))]
 
         all_segments: list[Segment] = []
         all_text: list[str] = []
-        for path, offset in zip(parts, offsets):
+        for path, part_off in zip(parts, part_offsets):
             with open(path, 'rb') as f:
                 resp = client.audio.transcriptions.create(
                     model='whisper-1',
@@ -121,8 +126,8 @@ def transcribe(media_url: str, *, prompt: str | None = None) -> Transcript:
             all_text.append((data.get('text') or '').strip())
             for s in data.get('segments') or []:
                 all_segments.append(Segment(
-                    start=float(s['start']) + offset,
-                    end=float(s['end']) + offset,
+                    start=float(s['start']) + part_off + offset_sec,
+                    end=float(s['end']) + part_off + offset_sec,
                     text=s['text'].strip(),
                 ))
 
@@ -131,3 +136,45 @@ def transcribe(media_url: str, *, prompt: str | None = None) -> Transcript:
             text='\n'.join(t for t in all_text if t),
             segments=all_segments,
         )
+
+
+def transcribe(media_url: str, *, prompt: str | None = None) -> Transcript:
+    """Download `media_url`, extract audio, send the full thing to Whisper."""
+    with tempfile.TemporaryDirectory() as tmp:
+        src = os.path.join(tmp, 'src.mp4')
+        audio = os.path.join(tmp, 'audio.ogg')
+        _download(media_url, src)
+        _extract_audio(src, audio)
+        return _transcribe_audio(audio, prompt=prompt or '')
+
+
+def transcribe_with_vad(media_url: str, *, prompt: str | None = None,
+                         min_sermon_duration_sec: float = 600.0
+                         ) -> tuple[Transcript, float]:
+    """Same as transcribe(), but first runs VAD on the downloaded audio
+    to find the sermon start. Skips everything before it (typically
+    45-60 min of worship music on a Sunday service).
+
+    Returns (transcript, sermon_start_sec). sermon_start_sec is 0.0
+    when no music skip happened — useful for logging.
+    """
+    from .vad import find_sermon_start
+    with tempfile.TemporaryDirectory() as tmp:
+        src = os.path.join(tmp, 'src.mp4')
+        audio = os.path.join(tmp, 'audio.ogg')
+        _download(media_url, src)
+        _extract_audio(src, audio)
+
+        sermon_start = find_sermon_start(
+            audio, min_sermon_duration_sec=min_sermon_duration_sec,
+        )
+        if sermon_start > 0.0:
+            trimmed = os.path.join(tmp, 'sermon.ogg')
+            _trim(audio, trimmed, sermon_start)
+            transcript = _transcribe_audio(
+                trimmed, prompt=prompt or '', offset_sec=sermon_start,
+            )
+        else:
+            transcript = _transcribe_audio(audio, prompt=prompt or '')
+
+        return transcript, sermon_start
