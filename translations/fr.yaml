@@ -364,3 +364,21 @@ kampen:
   questions_heading: D'autres questions ?
   questions_paragraph: Tu as des questions sur l'un des camps ? N'hésite pas à nous contacter nous t'aiderons volontiers. Ouverts pour Dieu, ouverts pour toi.
   questions_button: Nous contacter
+teachings:
+  title: Enseignements
+  page_title: Enseignements — OPEN. Kerk
+  hero_heading: Enseignements
+  hero_subtitle: Parcourez tous les sermons — avec recherche et sous-titres en quatre langues.
+  search_placeholder: Rechercher dans les sermons…
+  search_button: Rechercher
+  search_results_title: Résultats de recherche
+  no_results: Aucun résultat trouvé.
+  empty_state: Les sermons apparaîtront bientôt ici.
+  watch_from: Regarder à partir de
+  back_to_list: Retour à la liste
+  prev_page: Précédent
+  next_page: Suivant
+  speaker_label: Prédicateur
+  date_label: Date
+  duration_label: Durée
+  subtitles_label: Sous-titres

@@ -364,3 +364,21 @@ kampen:
   questions_heading: Any questions?
   questions_paragraph: Do you have questions about one of the camps? Feel free to get in touch we're happy to help. Open for God, open for you.
   questions_button: Get in touch
+teachings:
+  title: Teachings
+  page_title: Teachings — OPEN. Kerk
+  hero_heading: Teachings
+  hero_subtitle: Browse every sermon — searchable and subtitled in four languages.
+  search_placeholder: Search the sermons…
+  search_button: Search
+  search_results_title: Search results
+  no_results: No results found.
+  empty_state: Sermons will appear here soon.
+  watch_from: Watch from
+  back_to_list: Back to the list
+  prev_page: Previous
+  next_page: Next
+  speaker_label: Speaker
+  date_label: Date
+  duration_label: Length
+  subtitles_label: Subtitles

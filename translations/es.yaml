@@ -364,3 +364,21 @@ kampen:
   questions_heading: ¿Alguna pregunta?
   questions_paragraph: '¿Tienes preguntas sobre alguno de los campamentos? No dudes en ponerte en contacto: estaremos encantados de ayudarte. Abiertos a Dios, abiertos a ti.'
   questions_button: Ponte en contacto
+teachings:
+  title: Enseñanzas
+  page_title: Enseñanzas — OPEN. Kerk
+  hero_heading: Enseñanzas
+  hero_subtitle: Explora todos los sermones — con búsqueda y subtítulos en cuatro idiomas.
+  search_placeholder: Buscar en los sermones…
+  search_button: Buscar
+  search_results_title: Resultados de búsqueda
+  no_results: No se encontraron resultados.
+  empty_state: Los sermones aparecerán aquí pronto.
+  watch_from: Ver desde
+  back_to_list: Volver a la lista
+  prev_page: Anterior
+  next_page: Siguiente
+  speaker_label: Predicador
+  date_label: Fecha
+  duration_label: Duración
+  subtitles_label: Subtítulos

@@ -364,3 +364,21 @@ kampen:
   questions_heading: Nog vragen?
   questions_paragraph: Heb je vragen over een van de kampen? Neem gerust contact met ons op we helpen je graag verder. Open voor God, open voor jou.
   questions_button: Neem contact op
+teachings:
+  title: Prediking
+  page_title: Prediking — OPEN. Kerk
+  hero_heading: Prediking
+  hero_subtitle: Bekijk al onze preken — doorzoekbaar en met ondertiteling in vier talen.
+  search_placeholder: Zoek in de preken…
+  search_button: Zoeken
+  search_results_title: Zoekresultaten
+  no_results: Geen resultaten gevonden.
+  empty_state: De preken worden binnenkort hier verzameld.
+  watch_from: Bekijk vanaf
+  back_to_list: Terug naar het overzicht
+  prev_page: Vorige
+  next_page: Volgende
+  speaker_label: Spreker
+  date_label: Datum
+  duration_label: Lengte
+  subtitles_label: Ondertitels

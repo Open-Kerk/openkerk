@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}{{ video.title }} — {{ t('teachings.title') }}{% endblock %}
+
+{% block body_class %}single single-teaching{% endblock %}
+
+{% block content %}
+<div id="main">
+ <div class="teaching-detail" style="max-width:960px; margin:0 auto; padding:120px 24px 80px;">
+
+  <a href="{{ url_for('teachings') }}" style="display:inline-block; margin-bottom:24px;
+     color:#888; font-size:14px; text-decoration:none;">← {{ t('teachings.back_to_list') }}</a>
+
+  <h1 style="margin:0 0 12px;">{{ video.title }}</h1>
+  <div style="color:#888; font-size:14px; margin-bottom:24px;">
+   {% if video.speaker %}{{ video.speaker }}{% endif %}
+   {% if video.speaker and video.published_at %} · {% endif %}
+   {% if video.published_at %}{{ video.published_at[:10] }}{% endif %}
+   {% if video.duration_label %} · {{ video.duration_label }}{% endif %}
+  </div>
+
+  <div class="vimeo-wrap" style="position:relative; aspect-ratio:16/9; background:#000;
+       border-radius:4px; overflow:hidden; margin-bottom:16px;">
+   <iframe id="teaching-player"
+           src="https://player.vimeo.com/video/{{ video.vimeo_id }}?#t={{ start_t }}s"
+           frameborder="0"
+           allow="autoplay; fullscreen; picture-in-picture"
+           allowfullscreen
+           style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
+
+   <!-- Custom subtitle overlay; populated from /assets/subtitles/<id>.<lang>.vtt -->
+   <div id="teaching-caption"
+        style="position:absolute; left:50%; bottom:6%; transform:translateX(-50%);
+               max-width:80%; padding:6px 12px; color:#fff; font-size:18px;
+               line-height:1.35; text-align:center; background:rgba(0,0,0,0.6);
+               border-radius:3px; pointer-events:none; opacity:0; transition:opacity .15s;"></div>
+  </div>
+
+  <div style="display:flex; gap:16px; align-items:center; margin-bottom:32px;">
+   <label for="teaching-sub-lang" style="font-size:14px; color:#666;">
+    {{ t('teachings.subtitles_label') }}:
+   </label>
+   <select id="teaching-sub-lang" style="padding:6px 10px;">
+    {% for code, label in languages.items() %}
+     <option value="{{ code }}" {% if code == current_lang %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+    <option value="off">—</option>
+   </select>
+  </div>
+
+  {% if video.description %}
+   <div class="teaching-description"
+        style="font-size:16px; line-height:1.7; color:#333; white-space:pre-line;">
+    {{ video.description }}
+   </div>
+  {% endif %}
+
+ </div>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+(function () {
+  var vimeoId  = {{ video.vimeo_id | tojson }};
+  var iframe   = document.getElementById('teaching-player');
+  var captionEl= document.getElementById('teaching-caption');
+  var langSel  = document.getElementById('teaching-sub-lang');
+  var player   = new Vimeo.Player(iframe);
+  var cues     = [];   // parsed cues for the currently loaded VTT
+  var loadedLang = null;
+
+  function parseTimestamp(t) {
+    // "HH:MM:SS.mmm" or "MM:SS.mmm"
+    var parts = t.split(':').map(parseFloat);
+    if (parts.length === 3) return parts[0]*3600 + parts[1]*60 + parts[2];
+    return parts[0]*60 + parts[1];
+  }
+
+  function parseVTT(text) {
+    var out = [];
+    var blocks = text.replace(/\r/g, '').split(/\n\n+/);
+    blocks.forEach(function (block) {
+      var lines = block.split('\n').filter(Boolean);
+      var timing = lines.find(function (l) { return l.indexOf('-->') >= 0; });
+      if (!timing) return;
+      var bits = timing.split(/\s*-->\s*/);
+      var start = parseTimestamp(bits[0]);
+      var end   = parseTimestamp((bits[1] || '').split(' ')[0]);
+      var idx   = lines.indexOf(timing);
+      var text  = lines.slice(idx + 1).join(' ').trim();
+      if (text) out.push({ start: start, end: end, text: text });
+    });
+    return out;
+  }
+
+  function loadVTT(lang) {
+    if (lang === 'off') {
+      cues = [];
+      loadedLang = 'off';
+      captionEl.textContent = '';
+      captionEl.style.opacity = 0;
+      return;
+    }
+    var url = '/assets/subtitles/' + encodeURIComponent(vimeoId) + '.' + encodeURIComponent(lang) + '.vtt';
+    fetch(url, { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('no vtt'); return r.text(); })
+      .then(function (text) { cues = parseVTT(text); loadedLang = lang; })
+      .catch(function () { cues = []; loadedLang = lang; });
+  }
+
+  function showCueAt(seconds) {
+    if (!cues.length) {
+      if (captionEl.style.opacity !== '0') {
+        captionEl.style.opacity = 0;
+        captionEl.textContent = '';
+      }
+      return;
+    }
+    // Binary-friendly linear walk — VTTs are <2000 cues so this is fine.
+    var hit = null;
+    for (var i = 0; i < cues.length; i++) {
+      if (cues[i].start <= seconds && seconds <= cues[i].end) { hit = cues[i]; break; }
+      if (cues[i].start > seconds) break;
+    }
+    if (hit) {
+      if (captionEl.textContent !== hit.text) captionEl.textContent = hit.text;
+      captionEl.style.opacity = 1;
+    } else if (captionEl.style.opacity !== '0') {
+      captionEl.style.opacity = 0;
+    }
+  }
+
+  player.on('timeupdate', function (e) { showCueAt(e.seconds); });
+  langSel.addEventListener('change', function () { loadVTT(langSel.value); });
+  loadVTT(langSel.value);
+})();
+</script>
+{% endblock %}

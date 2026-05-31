@@ -1,5 +1,8 @@
-from flask import Flask, render_template, session, redirect, request, url_for
+from flask import Flask, render_template, session, redirect, request, url_for, jsonify, abort
+import hashlib
+import hmac
 import os
+import sqlite3
 import yaml
 
 BRAND_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -175,9 +178,233 @@ def activiteiten():
     return render_template('activiteiten.html')
 
 
+SERMON_DB_PATH = os.environ.get(
+    'SERMON_DB_PATH',
+    os.path.join(os.path.dirname(__file__), 'data', 'sermons.db'),
+)
+TEACHINGS_PER_PAGE = 20
+
+# Lazy-imported so the app still starts when sqlite-vec is unavailable
+# (e.g. on macOS Python without extension loading). Search will degrade
+# to a SQL LIKE fallback if _semantic_search() raises.
+def _semantic_search(query, k):
+    from scripts.search import search  # noqa: WPS433
+    return search(query, k=k)
+
+
+def _sermon_db():
+    """Open a read-only handle to the sermon DB. Returns None if missing."""
+    if not os.path.isfile(SERMON_DB_PATH):
+        return None
+    conn = sqlite3.connect(f'file:{SERMON_DB_PATH}?mode=ro', uri=True)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def _seg_text(sec):
+    sec = max(0, int(sec))
+    h, rem = divmod(sec, 3600)
+    m, s = divmod(rem, 60)
+    return f'{h}:{m:02d}:{s:02d}' if h else f'{m}:{s:02d}'
+
+
+def _translated_snippet(conn, vimeo_id, lang, start_sec, end_sec):
+    """Return the matching transcript text in the user's language. Falls back
+    to Dutch if no translation exists yet for this segment range."""
+    if lang == 'nl':
+        rows = conn.execute(
+            'SELECT text FROM segments WHERE vimeo_id = ? AND start_sec < ? AND end_sec > ? '
+            'ORDER BY start_sec',
+            (vimeo_id, end_sec, start_sec),
+        ).fetchall()
+    else:
+        rows = conn.execute(
+            '''SELECT t.text FROM translations t
+               JOIN segments s ON s.id = t.segment_id
+               WHERE s.vimeo_id = ? AND t.lang = ?
+                 AND s.start_sec < ? AND s.end_sec > ?
+               ORDER BY s.start_sec''',
+            (vimeo_id, lang, end_sec, start_sec),
+        ).fetchall()
+    return ' '.join(r['text'] for r in rows).strip()
+
+
 @app.route('/teachings')
 def teachings():
-    return render_template('teachings.html')
+    conn = _sermon_db()
+    if conn is None:
+        return render_template('teachings.html', videos=[], total=0,
+                               page=1, pages=1, q='', results=None)
+    try:
+        page = max(1, int(request.args.get('page', 1)))
+        offset = (page - 1) * TEACHINGS_PER_PAGE
+        total = conn.execute(
+            "SELECT COUNT(*) FROM videos WHERE transcript_status = 'done'"
+        ).fetchone()[0]
+        rows = conn.execute(
+            '''SELECT vimeo_id, title, thumbnail_url, published_at, speaker, duration_sec
+               FROM videos
+               WHERE transcript_status = 'done'
+               ORDER BY published_at DESC
+               LIMIT ? OFFSET ?''',
+            (TEACHINGS_PER_PAGE, offset),
+        ).fetchall()
+        videos = [dict(r) for r in rows]
+        for v in videos:
+            v['duration_label'] = _seg_text(v['duration_sec'] or 0)
+        pages = max(1, (total + TEACHINGS_PER_PAGE - 1) // TEACHINGS_PER_PAGE)
+        return render_template('teachings.html',
+                               videos=videos, total=total, page=page, pages=pages,
+                               q='', results=None)
+    finally:
+        conn.close()
+
+
+@app.route('/teachings/<vimeo_id>')
+def teaching(vimeo_id):
+    conn = _sermon_db()
+    if conn is None:
+        abort(404)
+    try:
+        row = conn.execute(
+            '''SELECT vimeo_id, title, description, thumbnail_url, published_at,
+                      speaker, duration_sec
+               FROM videos WHERE vimeo_id = ? AND transcript_status = 'done' ''',
+            (vimeo_id,),
+        ).fetchone()
+        if not row:
+            abort(404)
+        video = dict(row)
+        video['duration_label'] = _seg_text(video['duration_sec'] or 0)
+        try:
+            start = max(0, int(request.args.get('t', 0)))
+        except ValueError:
+            start = 0
+        return render_template('teaching.html', video=video, start_t=start)
+    finally:
+        conn.close()
+
+
+@app.route('/teachings/search')
+def teachings_search():
+    q = (request.args.get('q') or '').strip()
+    lang = get_locale()
+    if not q:
+        return jsonify({'query': '', 'lang': lang, 'hits': []})
+
+    if not os.path.isfile(SERMON_DB_PATH):
+        return jsonify({'query': q, 'lang': lang, 'hits': []})
+
+    hits_out = []
+    used_semantic = False
+    try:
+        if not os.environ.get('OPENAI_API_KEY'):
+            raise RuntimeError('OPENAI_API_KEY not set; using keyword fallback')
+        sem_hits = _semantic_search(q, 12)
+        used_semantic = True
+        conn = sqlite3.connect(f'file:{SERMON_DB_PATH}?mode=ro', uri=True)
+        conn.row_factory = sqlite3.Row
+        try:
+            for h in sem_hits:
+                snippet = _translated_snippet(
+                    conn, h.vimeo_id, lang, h.start_sec, h.end_sec,
+                ) or h.snippet
+                hits_out.append({
+                    'vimeo_id':      h.vimeo_id,
+                    'title':         h.title,
+                    'thumbnail_url': h.thumbnail_url,
+                    'speaker':       h.speaker,
+                    'published_at':  h.published_at,
+                    'start_sec':     int(h.start_sec),
+                    'start_label':   _seg_text(h.start_sec),
+                    'snippet':       snippet[:400],
+                    'url':           url_for('teaching', vimeo_id=h.vimeo_id, t=int(h.start_sec)),
+                })
+        finally:
+            conn.close()
+    except Exception as exc:
+        # Fallback: title + description LIKE search. Loses meaning-matching
+        # but keeps the page usable when sqlite-vec is unavailable or the
+        # embedding call fails (no API key, network error, etc.).
+        app.logger.warning('teachings_search: semantic path failed (%s); '
+                           'falling back to keyword', exc)
+        conn = sqlite3.connect(f'file:{SERMON_DB_PATH}?mode=ro', uri=True)
+        conn.row_factory = sqlite3.Row
+        try:
+            like = f'%{q}%'
+            rows = conn.execute(
+                '''SELECT vimeo_id, title, description, thumbnail_url, speaker, published_at
+                   FROM videos
+                   WHERE transcript_status = 'done'
+                     AND (title LIKE ? OR description LIKE ?)
+                   ORDER BY published_at DESC LIMIT 12''',
+                (like, like),
+            ).fetchall()
+            for r in rows:
+                hits_out.append({
+                    'vimeo_id':      r['vimeo_id'],
+                    'title':         r['title'],
+                    'thumbnail_url': r['thumbnail_url'],
+                    'speaker':       r['speaker'],
+                    'published_at':  r['published_at'],
+                    'start_sec':     0,
+                    'start_label':   '',
+                    'snippet':       (r['description'] or '')[:400],
+                    'url':           url_for('teaching', vimeo_id=r['vimeo_id']),
+                })
+        finally:
+            conn.close()
+
+    return jsonify({'query': q, 'lang': lang,
+                    'mode': 'semantic' if used_semantic else 'keyword',
+                    'hits': hits_out})
+
+
+@app.route('/vimeo-webhook', methods=['POST'])
+def vimeo_webhook():
+    """Vimeo posts here when a new video is uploaded. We verify the HMAC
+    signature, then enqueue the video id for the next cron run to pick up.
+
+    Vimeo sends X-Vimeo-Signature: sha256=<hex>, signed with the secret set
+    when the webhook was created. See https://developer.vimeo.com/api/webhooks.
+    """
+    secret = os.environ.get('VIMEO_WEBHOOK_SECRET')
+    if not secret:
+        abort(500, 'VIMEO_WEBHOOK_SECRET not configured')
+
+    signature = request.headers.get('X-Vimeo-Signature', '')
+    expected = 'sha256=' + hmac.new(
+        secret.encode(), request.get_data(), hashlib.sha256,
+    ).hexdigest()
+    if not hmac.compare_digest(signature, expected):
+        abort(401, 'bad signature')
+
+    payload = request.get_json(silent=True) or {}
+    # Vimeo's video.upload event payload puts the URI on data.video.uri.
+    video = (payload.get('data') or {}).get('video') or {}
+    uri = video.get('uri') or ''
+    vimeo_id = uri.rsplit('/', 1)[-1] if uri else None
+    if not vimeo_id:
+        return jsonify({'ok': False, 'reason': 'no video id in payload'}), 400
+
+    # Use the same DB the cron job will read.
+    conn = sqlite3.connect(SERMON_DB_PATH)
+    try:
+        conn.execute(
+            '''CREATE TABLE IF NOT EXISTS queue (
+                 vimeo_id TEXT PRIMARY KEY,
+                 enqueued_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                 attempts INTEGER NOT NULL DEFAULT 0,
+                 last_error TEXT)'''
+        )
+        conn.execute(
+            'INSERT OR IGNORE INTO queue (vimeo_id) VALUES (?)', (vimeo_id,),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+    return jsonify({'ok': True, 'queued': vimeo_id})
 
 
 @app.route('/live')
