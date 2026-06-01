@@ -6,6 +6,21 @@ on:
   # week with a bonus video. For one-off backfills use workflow_dispatch.
   schedule:
     - cron: '0 20 * * 0'
+  # Auto-deploy on any push that changes app code, templates, scripts,
+  # translations, or the curated collections file. Sermon processing is
+  # skipped on push triggers (see `if: github.event_name != 'push'`
+  # below) — we just rebuild the image and ship it.
+  push:
+    branches: [main]
+    paths:
+      - 'app.py'
+      - 'scripts/**'
+      - 'templates/**'
+      - 'translations/**'
+      - 'data/collections.yaml'
+      - 'requirements.txt'
+      - 'Dockerfile'
+      - '.github/workflows/process-sermons.yml'
   # Manual button in the Actions tab for backfilling or retry.
   workflow_dispatch:
     inputs:
@@ -54,6 +69,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Sync Vimeo library -> DB
+        if: github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           VIMEO_TOKEN: ${{ secrets.VIMEO_TOKEN }}
@@ -65,6 +81,7 @@ jobs:
       # transcript. Happens before the main process step so even an empty
       # queue tick can clear up the backlog. Costs ~$0.001/video.
       - name: Backfill missing display titles
+        if: github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m scripts.backfill_titles
@@ -77,6 +94,7 @@ jobs:
       # the first time we push anything so the deploy steps below still fire.
       - name: Process queued videos
         id: commit
+        if: github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           VIMEO_TOKEN: ${{ secrets.VIMEO_TOKEN }}
@@ -165,21 +183,21 @@ jobs:
       # forces a DO redeploy so the new sermon is visible on the live site
       # within minutes.
       - name: Install doctl
-        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true'
+        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true' || github.event_name == 'push'
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Set up Docker buildx
-        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true'
+        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true' || github.event_name == 'push'
         uses: docker/setup-buildx-action@v3
 
       - name: Log into DOCR
-        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true'
+        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true' || github.event_name == 'push'
         run: doctl registry login --expiry-seconds 1200
 
       - name: Build + push linux/amd64 image
-        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true'
+        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true' || github.event_name == 'push'
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -188,7 +206,7 @@ jobs:
           tags: registry.digitalocean.com/foundry-registry/openkerk:latest
 
       - name: Trigger DigitalOcean redeploy
-        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true'
+        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true' || github.event_name == 'push'
         run: |
           APP_ID=$(doctl apps list --format ID,Spec.Name --no-header \
                    | awk '$2 == "openkerk" {print $1}')
