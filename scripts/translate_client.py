@@ -35,7 +35,7 @@ LANG_NAMES = {
 def _client() -> OpenAI:
     if not os.environ.get('OPENAI_API_KEY'):
         raise RuntimeError('OPENAI_API_KEY env var not set')
-    return OpenAI()
+    return OpenAI(max_retries=5)
 
 
 def _glossary_for(lang: str) -> dict[str, str]:

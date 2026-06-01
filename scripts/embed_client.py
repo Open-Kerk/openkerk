@@ -14,7 +14,7 @@ BATCH = 96  # OpenAI accepts up to 2048 inputs; 96 keeps payload sizes sane.
 def _client() -> OpenAI:
     if not os.environ.get('OPENAI_API_KEY'):
         raise RuntimeError('OPENAI_API_KEY env var not set')
-    return OpenAI()
+    return OpenAI(max_retries=5)
 
 
 def embed(texts: Sequence[str]) -> list[list[float]]:

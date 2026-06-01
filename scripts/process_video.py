@@ -203,17 +203,27 @@ def run(ids: Iterable[str] | None, *, max_n: int, reprocess: bool) -> int:
         return 0
 
     failures = 0
+    successes = 0
     for vid in targets:
         print(f'process_video: {vid}')
         try:
             process(vid, reprocess=reprocess)
+            successes += 1
         except Exception as e:
             failures += 1
             traceback.print_exc()
             with db.connect() as conn:
                 _record_failure(conn, vid, f'{type(e).__name__}: {e}')
 
-    return 1 if failures else 0
+    # Always exit 0 as long as at least one video succeeded (or there were
+    # no targets). A transient per-video failure (e.g. OpenAI connection
+    # error) used to bubble up as exit 1 and the workflow would skip the
+    # commit step, throwing away the other successful videos' transcripts.
+    # Failures are still visible via the queue table (attempts, last_error).
+    print(f'process_video: {successes} ok, {failures} failed')
+    if successes == 0 and failures > 0:
+        return 1
+    return 0
 
 
 if __name__ == '__main__':

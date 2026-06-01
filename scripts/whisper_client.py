@@ -40,7 +40,10 @@ class Transcript:
 def _client() -> OpenAI:
     if not os.environ.get('OPENAI_API_KEY'):
         raise RuntimeError('OPENAI_API_KEY env var not set')
-    return OpenAI()
+    # Whisper transcribe is a long upload; transient TLS/connection drops
+    # have been observed in CI. Bump retries from the default 2 to 5 so a
+    # short network blip doesn't burn a per-video attempt.
+    return OpenAI(max_retries=5, timeout=600.0)
 
 
 def _download(url: str, dest: str) -> None:
