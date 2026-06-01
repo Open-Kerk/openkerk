@@ -177,7 +177,36 @@ SERMON_DB_PATH = os.environ.get(
     'SERMON_DB_PATH',
     os.path.join(os.path.dirname(__file__), 'data', 'sermons.db'),
 )
-TEACHINGS_PER_PAGE = 20
+TEACHINGS_PER_PAGE = 10
+
+
+def _page_window(current: int, total_pages: int, *,
+                 edge: int = 1, around: int = 2) -> list[int | None]:
+    """Compact list of page numbers to render, with None marking ellipses.
+
+    Always includes the first `edge` and last `edge` pages, plus `around`
+    pages on each side of `current`. Gaps between groups collapse to a
+    single None.
+
+    Example for current=7, total_pages=25, edge=1, around=2:
+        [1, None, 5, 6, 7, 8, 9, None, 25]
+    """
+    if total_pages <= 1:
+        return [1] if total_pages == 1 else []
+    keep: set[int] = set()
+    keep.update(p for p in range(1, edge + 1) if p <= total_pages)
+    keep.update(
+        p for p in range(total_pages, total_pages - edge, -1) if p >= 1)
+    keep.update(
+        p for p in range(current - around, current + around + 1)
+        if 1 <= p <= total_pages)
+    ordered = sorted(keep)
+    out: list[int | None] = []
+    for i, p in enumerate(ordered):
+        if i > 0 and p != ordered[i - 1] + 1:
+            out.append(None)
+        out.append(p)
+    return out
 
 # Lazy-imported so the app still starts when sqlite-vec is unavailable
 # (e.g. on macOS Python without extension loading). Search will degrade
@@ -201,6 +230,34 @@ def _seg_text(sec):
     h, rem = divmod(sec, 3600)
     m, s = divmod(rem, 60)
     return f'{h}:{m:02d}:{s:02d}' if h else f'{m}:{s:02d}'
+
+
+COLLECTIONS_PATH = os.path.join(BRAND_DIR, '..', 'data', 'collections.yaml')
+_COLLECTIONS_CACHE = {'data': None, 'mtime': 0.0}
+
+
+def get_collections():
+    """Return the curated-collection definitions from data/collections.yaml.
+
+    Reads { key: {label: {lang: text}, vimeo_ids: [...]}, ... }.
+    Caches by file mtime so editing the YAML hot-reloads in debug; in
+    production the file is baked into the image so it's only parsed once.
+    """
+    try:
+        mtime = os.path.getmtime(COLLECTIONS_PATH)
+    except OSError:
+        return {}
+    if _COLLECTIONS_CACHE['data'] is None or mtime != _COLLECTIONS_CACHE['mtime']:
+        try:
+            with open(COLLECTIONS_PATH, encoding='utf-8') as f:
+                doc = yaml.load(f, Loader=_YamlLoader) or {}
+            _COLLECTIONS_CACHE['data'] = doc.get('collections') or {}
+            _COLLECTIONS_CACHE['mtime'] = mtime
+        except Exception as exc:
+            app.logger.warning('failed to parse collections.yaml: %s', exc)
+            _COLLECTIONS_CACHE['data'] = {}
+            _COLLECTIONS_CACHE['mtime'] = mtime
+    return _COLLECTIONS_CACHE['data']
 
 
 def _resolve_title(row, lang):
@@ -244,23 +301,57 @@ def teachings():
     conn = _sermon_db()
     if conn is None:
         return render_template('teachings.html', videos=[], total=0,
-                               page=1, pages=1, q='', results=None)
+                               page=1, pages=1, page_window=[],
+                               q='', results=None,
+                               collections=[], current_collection=None)
     try:
         page = max(1, int(request.args.get('page', 1)))
         offset = (page - 1) * TEACHINGS_PER_PAGE
-        total = conn.execute(
-            "SELECT COUNT(*) FROM videos WHERE transcript_status = 'done'"
-        ).fetchone()[0]
-        rows = conn.execute(
-            '''SELECT vimeo_id, title, thumbnail_url, published_at, speaker, duration_sec,
-                      display_title_nl, display_title_en, display_title_fr, display_title_es
-               FROM videos
-               WHERE transcript_status = 'done'
-               ORDER BY published_at DESC
-               LIMIT ? OFFSET ?''',
-            (TEACHINGS_PER_PAGE, offset),
-        ).fetchall()
         lang = get_locale()
+        collections = get_collections()
+
+        # Optional ?collection=<key> filters the listing to a curated set
+        # of vimeo_ids defined in data/collections.yaml. Unknown keys are
+        # treated as no filter (so a stale URL doesn't 404).
+        collection_key = request.args.get('collection') or None
+        collection_def = collections.get(collection_key) if collection_key else None
+        filter_ids = (collection_def or {}).get('vimeo_ids') or []
+
+        if collection_def is not None and filter_ids:
+            # Use a parameterized IN(...) so the WHERE clause is safe.
+            placeholders = ','.join(['?'] * len(filter_ids))
+            total = conn.execute(
+                f"SELECT COUNT(*) FROM videos "
+                f"WHERE transcript_status = 'done' AND vimeo_id IN ({placeholders})",
+                [str(v) for v in filter_ids],
+            ).fetchone()[0]
+            rows = conn.execute(
+                f'''SELECT vimeo_id, title, thumbnail_url, published_at, speaker, duration_sec,
+                           display_title_nl, display_title_en, display_title_fr, display_title_es
+                    FROM videos
+                    WHERE transcript_status = 'done' AND vimeo_id IN ({placeholders})
+                    ORDER BY published_at DESC
+                    LIMIT ? OFFSET ?''',
+                [str(v) for v in filter_ids] + [TEACHINGS_PER_PAGE, offset],
+            ).fetchall()
+        elif collection_def is not None:
+            # Collection exists but is empty — show nothing instead of all.
+            total = 0
+            rows = []
+        else:
+            total = conn.execute(
+                "SELECT COUNT(*) FROM videos WHERE transcript_status = 'done'"
+            ).fetchone()[0]
+            rows = conn.execute(
+                '''SELECT vimeo_id, title, thumbnail_url, published_at, speaker, duration_sec,
+                          display_title_nl, display_title_en, display_title_fr, display_title_es
+                   FROM videos
+                   WHERE transcript_status = 'done'
+                   ORDER BY published_at DESC
+                   LIMIT ? OFFSET ?''',
+                (TEACHINGS_PER_PAGE, offset),
+            ).fetchall()
+
         videos = []
         for r in rows:
             v = dict(r)
@@ -268,9 +359,29 @@ def teachings():
             v['duration_label'] = _seg_text(v['duration_sec'] or 0)
             videos.append(v)
         pages = max(1, (total + TEACHINGS_PER_PAGE - 1) // TEACHINGS_PER_PAGE)
-        return render_template('teachings.html',
-                               videos=videos, total=total, page=page, pages=pages,
-                               q='', results=None)
+        page = min(page, pages)
+
+        # Build a template-friendly view of collections with the user's
+        # current-language label resolved + the tab's URL.
+        collection_tabs = [
+            {
+                'key': k,
+                'label': (d.get('label') or {}).get(lang)
+                         or (d.get('label') or {}).get('nl')
+                         or k,
+                'count': len((d.get('vimeo_ids') or [])),
+            }
+            for k, d in collections.items()
+        ]
+
+        return render_template(
+            'teachings.html',
+            videos=videos, total=total, page=page, pages=pages,
+            page_window=_page_window(page, pages),
+            q='', results=None,
+            collections=collection_tabs,
+            current_collection=collection_key if collection_def else None,
+        )
     finally:
         conn.close()
 
@@ -316,6 +427,23 @@ def teaching(vimeo_id):
             code for code in LANGUAGES
             if os.path.isfile(os.path.join(sub_dir, f'{vimeo_id}.{code}.vtt'))
         ]
+
+        # Local-dev fallback: when we're hit on localhost without a Vimeo
+        # token, serve the on-disk nieuwbouw mp4 + its VTTs so the player
+        # styling can be debugged end-to-end without hitting Vimeo.
+        host = (request.host or '').split(':', 1)[0]
+        if not play_url and host in ('localhost', '127.0.0.1', '0.0.0.0'):
+            local_mp4 = os.path.join(BRAND_DIR, 'assets', 'video',
+                                     'OPEN_KERK_NIEUWBOUW.mp4')
+            if os.path.isfile(local_mp4):
+                play_url = url_for(
+                    'static', filename='video/OPEN_KERK_NIEUWBOUW.mp4')
+                subtitle_langs = [
+                    code for code in LANGUAGES
+                    if os.path.isfile(os.path.join(
+                        sub_dir, f'nieuwbouw.{code}.vtt'))
+                ]
+                video['_subtitle_slug'] = 'nieuwbouw'
 
         return render_template(
             'teaching.html',
@@ -475,7 +603,15 @@ def kampen():
 
 @app.route('/nieuwbouw')
 def nieuwbouw():
-    return render_template('nieuwbouw.html')
+    # Reuse the teaching player's caption convention: include a <track> for
+    # every language whose VTT exists on disk. The nieuwbouw video is a
+    # static asset, so we key by the filename slug rather than a vimeo_id.
+    sub_dir = os.path.join(BRAND_DIR, 'assets', 'subtitles')
+    subtitle_langs = [
+        code for code in LANGUAGES
+        if os.path.isfile(os.path.join(sub_dir, f'nieuwbouw.{code}.vtt'))
+    ]
+    return render_template('nieuwbouw.html', subtitle_langs=subtitle_langs)
 
 
 @app.route('/geven')

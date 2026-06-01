@@ -1,0 +1,31 @@
+# Curated sermon collections shown as tabs on /teachings.
+#
+# Edit the `vimeo_ids` lists below — add or remove ids — commit, and the
+# next deploy picks them up. Order is preserved (top of the list first
+# in the UI).
+#
+# To find vimeo_ids: open /teachings, hover any row — the URL is
+#   /teachings/<vimeo_id>
+# Or query the DB:
+#   sqlite3 data/sermons.db "select vimeo_id, display_title_nl from videos where transcript_status='done'"
+
+collections:
+
+  eerdere_reeksen:
+    label:
+      nl: Eerdere reeksen
+      en: Previous series
+      fr: Séries précédentes
+      es: Series anteriores
+    vimeo_ids: []
+      # - 1192968558
+      # - 1190894882
+
+  essenties:
+    label:
+      nl: Essenties
+      en: Essentials
+      fr: Essentiels
+      es: Esenciales
+    vimeo_ids: []
+      # - 1175906597

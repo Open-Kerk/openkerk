@@ -5,23 +5,158 @@
 {% block body_class %}archive teachings-page{% endblock %}
 
 {% block content %}
-{# Page-scoped overrides: Reality SF's list CSS assumes 5 columns; we use 4
-   (Title+Speaker / Summary / Date / Duration). Reallocate the 'Teacher'
-   column's 15% to the Title column so the layout still adds to ~97%. #}
+{# Page-scoped overrides: Reality SF's stock widths assume short titles
+   (15/15/47/10/10). Our sermon titles run long, so we widen Title at the
+   expense of Summary. Total stays ≈98% to leave room for the
+   status-indicator on the left. #}
 <style>
   .teachings-page .audio-filter.audio-title-filter,
-  .teachings-page .play-list-item .audio-title { width: 30%; }
+  .teachings-page .play-list-item .audio-title       { width: 28%; }
+  .teachings-page .audio-filter.audio-teacher-filter,
+  .teachings-page .play-list-item .audio-teacher     { width: 14%; }
   .teachings-page .audio-filter.audio-summary-filter,
-  .teachings-page .play-list-item .audio-summary { width: 45%; }
+  .teachings-page .play-list-item .audio-summary     { width: 38%; }
   .teachings-page .audio-filter.audio-date-filter,
-  .teachings-page .play-list-item .audio-date { width: 12%; }
+  .teachings-page .play-list-item .audio-date        { width: 10%; }
   .teachings-page .audio-filter.audio-duration-filter,
-  .teachings-page .play-list-item .audio-duration { width: 10%; }
-  .teachings-page .play-list-item .audio-title {
-    display: flex; align-items: center; gap: 12px;
+  .teachings-page .play-list-item .audio-duration    { width: 8%;  }
+
+  .teachings-page .play-list-item .audio-teacher {
+    display: flex; align-items: center; gap: 0; min-width: 0;
   }
-  .teachings-page .play-list-item .audio-title .sermon-content { flex: 1; min-width: 0; }
+  .teachings-page .play-list-item .audio-teacher .teacher-ellipsis { min-width: 0; }
   .teachings-page .play-list-item-parent { font-family: var(--font-heading), sans-serif; }
+
+  /* Per-row thumbnail in the Title cell — uses v.thumbnail_url from the
+     DB (Vimeo's auto-generated 640x360 frame), falling back to the local
+     Prayer-Worship image when a row has no Vimeo thumbnail. */
+  .teachings-page .play-list-item .audio-title {
+    display: flex; align-items: center; gap: 12px; min-width: 0;
+  }
+  .teachings-page .row-thumb {
+    width: 64px; height: 36px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .teachings-page .play-list-item .audio-title .title { min-width: 0; }
+
+  /* Initials avatar — placeholder until we add real speaker portraits. */
+  .teachings-page .teacher-image-initials {
+    display: inline-flex; flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 100%;
+    background: #1c1c1c; color: #fff;
+    align-items: center; justify-content: center;
+    font-family: var(--font-heading), sans-serif;
+    font-size: 11px; letter-spacing: 0.5px;
+    margin-right: 8px;
+  }
+
+  /* Series header: the base Reality SF theme assumes a dark background
+     and renders the h1 white. We're sitting on the page's light bg, so
+     force the title + body text to dark. */
+  .teachings-page .flex-cat-parent .series-parent-flex h1 {
+    color: #1c1c1c;
+    margin-bottom: 12px;
+  }
+  .teachings-page .flex-cat-parent #series-description p {
+    color: #333;
+    line-height: 1.7;
+  }
+  .teachings-page .flex-cat-parent .small-grey-text {
+    color: #7d7d7d;
+  }
+
+  /* Search row above the column headers. Lives at the same horizontal
+     padding as .audio-filter-container so the input + button line up
+     with the columns below. */
+  .teachings-page .teachings-search-row {
+    display: flex; gap: 10px; align-items: center;
+    margin: 56px var(--side-padding) 0;
+  }
+  .teachings-page .teachings-search-row input[type="text"] {
+    flex: 1;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 2px;
+    background: #fff;
+    font-family: 'Maisonneue book', sans-serif;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .teachings-page .teachings-search-row input[type="text"]:focus {
+    border-color: var(--brand-primary, #b8860b);
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+  }
+  .teachings-page .teachings-search-row .button { flex-shrink: 0; }
+
+  /* Search results render right under the search row, at the same horizontal
+     padding as the columns. */
+  .teachings-page .teachings-results-row {
+    margin: 24px var(--side-padding) 60px;
+  }
+  .teachings-page .teachings-results-row h2 {
+    margin: 0 0 20px; font-size: 22px;
+  }
+
+  /* Numbered pagination at the bottom of the listing. */
+  .teachings-page .teachings-pagination {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    gap: 6px;
+    margin: 56px auto 80px;
+  }
+  .teachings-page .page-link {
+    display: inline-flex;
+    min-width: 36px; height: 36px;
+    padding: 0 10px;
+    align-items: center; justify-content: center;
+    font-family: var(--font-heading), sans-serif;
+    font-size: 13px; letter-spacing: 0.5px;
+    color: #333; text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: color .2s, border-color .2s, background .2s;
+  }
+  .teachings-page .page-link:hover {
+    color: var(--brand-primary, #b8860b);
+    border-color: rgba(0,0,0,0.12);
+  }
+  .teachings-page .page-link--current {
+    color: #fff;
+    background: var(--brand-primary, #b8860b);
+    border-color: var(--brand-primary, #b8860b);
+    cursor: default;
+  }
+  .teachings-page .page-link--nav { font-size: 18px; line-height: 1; }
+  .teachings-page .page-link--ellipsis {
+    color: #999; cursor: default; padding: 0 4px;
+  }
+  .teachings-page .page-link--disabled {
+    color: #ccc; cursor: not-allowed;
+  }
+  .teachings-page .page-link--disabled:hover { border-color: transparent; color: #ccc; }
+
+  /* Filter-link carets — Reality SF uses inline SVG; we use Font Awesome
+     and animate the same way (hidden until active/hover, flips on .asc). */
+  .teachings-page .audio-filter-container .filter-link i.fa-caret-down {
+    display: inline-block;
+    width: 0; overflow: hidden;
+    margin-left: 5px;
+    transition: width 0.3s ease, transform 0.3s ease;
+    vertical-align: middle;
+  }
+  .teachings-page .audio-filter-container .filter-link.active-audio-filter i.fa-caret-down,
+  .teachings-page .audio-filter-container .filter-link:hover i.fa-caret-down {
+    width: 12px;
+  }
+  .teachings-page .audio-filter-container .filter-link.asc i.fa-caret-down {
+    transform: rotate(180deg);
+  }
 </style>
 
 <div id="main">
@@ -29,12 +164,16 @@
   <div id="page-hero-content" style="padding:140px 0 90px;">
    <h1>{{ t('teachings.hero_heading') }}</h1>
    <div id="hero-sub-title">{{ t('teachings.hero_subtitle') }}</div>
-   <form id="teachings-search" role="search" autocomplete="off" style="margin-top:28px;">
-    <input type="text" name="q" id="teachings-q"
-           placeholder="{{ t('teachings.search_placeholder') }}"
-           aria-label="{{ t('teachings.search_placeholder') }}">
-    <button type="submit" class="button">{{ t('teachings.search_button') }}</button>
-   </form>
+   {# "Back to all teachings" button — only meaningful when a search is
+      active. Both the server-rendered URL state (?q=…) and the JS-driven
+      "showing results" state toggle the .hero-back-button visibility:
+      the server sets the initial inline style, then the search submit
+      handler shows/hides it alongside showResults(). #}
+   <a id="hero-back-button" class="button hero-back-button"
+      href="{{ url_for('teachings') }}"
+      style="margin-top:28px; {% if not request.args.get('q') %}display:none;{% endif %}">
+    ← {{ t('teachings.back_to_all') }}
+   </a>
   </div>
   <div id="page-hero-background"
        style="background-image: url('assets/images/openkerk/Kempen_B001_1.jpg');
@@ -43,10 +182,45 @@
   </div>
  </div>
 
- <div id="teachings-results" hidden style="max-width:1200px; margin:48px auto 0; padding:0 24px;">
-  <h2 style="margin:0 0 24px;">{{ t('teachings.search_results_title') }}</h2>
-  <div id="teachings-results-list"></div>
-  <div aria-hidden="true" class="wp-block-spacer" style="height:60px"></div>
+ {# Tab nav fed by data/collections.yaml. The "All" tab is the default
+    /teachings view (no ?collection= filter); each curated collection
+    appears with its localised label. .current flips based on whether
+    a ?collection= query is active. #}
+ <div class="tab-nav-container">
+  <a href="{{ url_for('teachings') }}"
+     class="sub-nav-link {% if not current_collection %}current{% endif %}">
+   {{ t('teachings.tab_current') }}
+  </a>
+  {% for c in collections %}
+   <a href="{{ url_for('teachings', collection=c.key) }}"
+      class="sub-nav-link {% if current_collection == c.key %}current{% endif %}">
+    {{ c.label }}
+   </a>
+  {% endfor %}
+  <a href="#" class="search-icon w-inline-block" aria-label="{{ t('teachings.search_placeholder') }}">
+   <img src="{{ url_for('static', filename='images/icon-search.svg') }}" alt="">
+   <span class="close-search-input">×</span>
+  </a>
+  <form id="search-box" action="{{ url_for('teachings') }}" method="get">
+   <input placeholder="{{ t('teachings.search_placeholder') }}" name="q" id="s" type="text">
+  </form>
+ </div>
+
+ {# Series header: image + meta + title + description above the listing.
+    Acts as the intro for the whole archive today; once we populate
+    videos.series we'll drive it per active series. #}
+ <div class="flex-cat-parent" style="max-width:1200px; margin:48px auto 0; padding:0 var(--side-padding); box-sizing:border-box;">
+  <img src="https://realitysf.com/wp-content/uploads/2026/03/Faith-as-Reality-SQ.jpg"
+       alt="" class="cat-image" width="282">
+  <div class="series-parent-flex no-top centered">
+   <div class="flexed centered">
+    <div class="small-grey-text">{{ total }} {{ t('teachings.teachings_count') }}</div>
+   </div>
+   <h1>{{ t('teachings.intro_heading') }}</h1>
+   <div id="series-description" class="hold-series-description">
+    <p>{{ t('teachings.intro_body') }}</p>
+   </div>
+  </div>
  </div>
 
  {% if total == 0 %}
@@ -55,47 +229,92 @@
    {{ t('teachings.empty_state') }}
   </div>
  {% else %}
-  {# Reality SF-style sortable column header + sermon list, restyled by our
-     existing theme CSS so the Maisonneue + gold accents carry through. We
-     drop the dedicated 'Teacher' column (single-speaker channel) and merge
-     speaker info into the title column for density. #}
-  <div class="audio-filter-container" style="margin-top:48px;">
+  {# Search row sits directly above the column headers — it's a
+     listing-level control, not a hero element. The form still posts to
+     the existing /teachings/search backend via the inline JS below. #}
+  <form id="teachings-search" class="teachings-search-row" role="search" autocomplete="off">
+   <input type="text" name="q" id="teachings-q"
+          value="{{ request.args.get('q', '') }}"
+          placeholder="{{ t('teachings.search_placeholder') }}"
+          aria-label="{{ t('teachings.search_placeholder') }}">
+   <button type="submit" class="button">{{ t('teachings.search_button') }}</button>
+  </form>
+
+  {# Search results live directly under the search row. The inline JS
+     toggles this box (and hides the column header + list + pagination)
+     while a query is active. #}
+  <div id="teachings-results" hidden class="teachings-results-row">
+   <h2>{{ t('teachings.search_results_title') }}</h2>
+   <div id="teachings-results-list"></div>
+  </div>
+
+  {# Reality SF-style sortable column header. Each .filter-link gets an
+     id that the bundle.js click handler recognises (audio-title-filter,
+     audio-teacher-filter, audio-date-filter, audio-duration-filter) and
+     sorts the rows in place via their data-* attributes. #}
+  <div class="audio-filter-container" style="margin-top:24px;">
    <div class="audio-filter audio-title-filter">
-    <span class="filter-link">
-     {{ t('teachings.col_title') }}
-    </span>
+    <a id="audio-title-filter" href="#" class="filter-link">
+     {{ t('teachings.col_title') }}<i class="fa fa-caret-down"></i>
+    </a>
+   </div>
+   <div class="audio-filter audio-teacher-filter">
+    <a id="audio-teacher-filter" href="#" class="filter-link">
+     {{ t('teachings.col_teacher') }}<i class="fa fa-caret-down"></i>
+    </a>
    </div>
    <div class="audio-filter audio-summary-filter">
-    <span class="filter-link">{{ t('teachings.col_summary') }}</span>
+    <a id="audio-summary-filter" href="#" class="filter-link">
+     {{ t('teachings.col_summary') }}<i class="fa fa-caret-down"></i>
+    </a>
    </div>
    <div class="audio-filter dates audio-date-filter">
-    <span class="filter-link active-audio-filter">{{ t('teachings.col_date') }}</span>
+    <a id="audio-date-filter" href="#" class="filter-link active-audio-filter desc">
+     {{ t('teachings.col_date') }}<i class="fa fa-caret-down"></i>
+    </a>
    </div>
    <div class="audio-filter audio-duration-filter">
-    <span class="filter-link">{{ t('teachings.col_duration') }}</span>
+    <a id="audio-duration-filter" href="#" class="filter-link">
+     {{ t('teachings.col_duration') }}<i class="fa fa-caret-down"></i>
+    </a>
    </div>
   </div>
 
   <div class="overflow-player-section">
    {% for v in videos %}
-    <div class="play-list-item-parent" data-href="{{ url_for('teaching', vimeo_id=v.vimeo_id) }}">
+    {# Initials avatar — first letters of up to two words in the speaker
+       name. "OPEN. Kerk" → "OK". Used as a placeholder until we add a
+       per-speaker portrait field. #}
+    {% set _words = (v.speaker or '?').split() %}
+    {% set _initials = (_words[0][0] ~ (_words[-1][0] if _words|length > 1 else '')) | upper %}
+    {# data-* attributes are what bundle.js's sort handler reads when a
+       filter-link is clicked. data-date is a numeric epoch so it can be
+       compared with -. duration_sec is already numeric. #}
+    <div class="play-list-item-parent"
+         data-href="{{ url_for('teaching', vimeo_id=v.vimeo_id) }}"
+         data-title="{{ v.display_title or v.title }}"
+         data-teacher="{{ v.speaker or '' }}"
+         data-date="{{ (v.published_at[:10] | replace('-','')) if v.published_at else '0' }}"
+         data-duration="{{ v.duration_sec or 0 }}">
      <div class="play-list-item">
       <div class="status-indicator">
+       <div class="audioControl">
+        <span></span><span></span><span></span><span></span>
+       </div>
        <div class="status-play-button">
         <i class="fas fa-play"></i>
        </div>
       </div>
       <div class="audio-title">
-       {% if v.thumbnail_url %}
-        <img alt="" class="teacher-image" src="{{ v.thumbnail_url }}"
-             width="40" style="border-radius:2px; object-fit:cover;">
-       {% endif %}
-       <div class="sermon-content" style="min-width:0;">
-        <div class="teacher-ellipsis title">{{ v.display_title or v.title }}</div>
-        {% if v.speaker %}
-         <div class="teacher-ellipsis" style="font-size:13px; color:#888;">{{ v.speaker }}</div>
-        {% endif %}
-       </div>
+       {# Per-video Vimeo thumbnail (i.vimeocdn.com); falls back to the
+          shared Prayer-Worship image if a row has no thumbnail_url. #}
+       <img src="{{ v.thumbnail_url or url_for('static', filename='images/openkerk/Prayer-Worship.jpg') }}"
+            class="row-thumb" alt="" loading="lazy">
+       <div class="teacher-ellipsis title">{{ v.display_title or v.title }}</div>
+      </div>
+      <div class="audio-teacher">
+       <span class="teacher-image-initials" aria-hidden="true">{{ _initials }}</span>
+       <div class="teacher-ellipsis">{{ v.speaker or '' }}</div>
       </div>
       <div class="audio-summary">
        <div class="ellipsed-text">
@@ -114,17 +333,35 @@
   </div>
 
   {% if pages > 1 %}
-   <nav class="teachings-pagination"
-        style="display:flex; justify-content:center; gap:16px;
-               margin:48px 0 80px; align-items:center;">
+   {# Numbered pagination — first/last always shown, plus a window of
+      pages around the current. None entries in page_window render as
+      ellipsis. Page size and the page list are computed server-side
+      (see _page_window in app.py). #}
+   <nav class="teachings-pagination" aria-label="Pagination">
     {% if page > 1 %}
-     <a href="{{ url_for('teachings', page=page-1) }}"
-        class="button">{{ t('teachings.prev_page') }}</a>
+     <a class="page-link page-link--nav" rel="prev"
+        href="{{ url_for('teachings', page=page-1, collection=current_collection) }}"
+        aria-label="{{ t('teachings.prev_page') }}">‹</a>
+    {% else %}
+     <span class="page-link page-link--nav page-link--disabled" aria-hidden="true">‹</span>
     {% endif %}
-    <span style="color:#666;">{{ page }} / {{ pages }}</span>
+
+    {% for p in page_window %}
+     {% if p is none %}
+      <span class="page-link page-link--ellipsis" aria-hidden="true">…</span>
+     {% elif p == page %}
+      <span class="page-link page-link--current" aria-current="page">{{ p }}</span>
+     {% else %}
+      <a class="page-link" href="{{ url_for('teachings', page=p, collection=current_collection) }}">{{ p }}</a>
+     {% endif %}
+    {% endfor %}
+
     {% if page < pages %}
-     <a href="{{ url_for('teachings', page=page+1) }}"
-        class="button">{{ t('teachings.next_page') }}</a>
+     <a class="page-link page-link--nav" rel="next"
+        href="{{ url_for('teachings', page=page+1, collection=current_collection) }}"
+        aria-label="{{ t('teachings.next_page') }}">›</a>
+    {% else %}
+     <span class="page-link page-link--nav page-link--disabled" aria-hidden="true">›</span>
     {% endif %}
    </nav>
   {% endif %}
@@ -158,6 +395,9 @@
   var listSection = document.querySelector('.overflow-player-section');
   var filterBar   = document.querySelector('.audio-filter-container');
   var pag         = document.querySelector('.teachings-pagination');
+  var seriesHead  = document.querySelector('.flex-cat-parent');
+  var tabNav      = document.querySelector('.tab-nav-container');
+  var backBtn     = document.getElementById('hero-back-button');
   if (!form) return;
 
   var noResults = {{ t('teachings.no_results') | tojson }};
@@ -182,12 +422,16 @@
         ? '<span style="color:#b8860b; font-weight:600;">'
           + escape(watchFrom + ' ' + h.start_label) + '</span> · '
         : '';
+      // Render the thumbnail as an <img> so attribute escaping happens
+      // safely — building style="background-image:url(...)" with a URL
+      // that contains "&" terminated the style attribute and showed black.
+      var thumbSrc = h.thumbnail_url || '/assets/images/openkerk/Prayer-Worship.jpg';
       return ''
         + '<a href="' + escape(h.url) + '" style="text-decoration:none; color:inherit;'
         + ' display:flex; gap:20px; padding:16px 0; border-bottom:1px solid #eee;">'
-        +   '<div style="flex:0 0 200px; aspect-ratio:16/9; background:#222 center/cover no-repeat;'
-        +     (h.thumbnail_url ? ' background-image:url(' + JSON.stringify(h.thumbnail_url) + ');' : '')
-        +     ' border-radius:3px;"></div>'
+        +   '<img src="' + escape(thumbSrc) + '" alt="" loading="lazy"'
+        +     ' style="flex:0 0 200px; aspect-ratio:16/9; width:200px; height:auto;'
+        +     ' object-fit:cover; background:#222; border-radius:3px;">'
         +   '<div style="flex:1; min-width:0;">'
         +     '<h3 style="margin:0 0 6px; font-size:18px;">' + escape(h.title) + '</h3>'
         +     '<div style="font-size:13px; color:#888; margin-bottom:8px;">' + meta.join(' · ') + '</div>'
@@ -203,6 +447,9 @@
     if (filterBar)   filterBar.style.display   = show ? 'none' : '';
     if (listSection) listSection.style.display = show ? 'none' : '';
     if (pag)         pag.style.display         = show ? 'none' : '';
+    if (seriesHead)  seriesHead.style.display  = show ? 'none' : '';
+    if (tabNav)      tabNav.style.display      = show ? 'none' : '';
+    if (backBtn)     backBtn.style.display     = show ? '' : 'none';
   }
 
   form.addEventListener('submit', function (e) {
