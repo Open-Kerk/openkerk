@@ -10,10 +10,13 @@
    expense of Summary. Total stays ≈98% to leave room for the
    status-indicator on the left. #}
 <style>
-  .teachings-page .audio-filter.audio-title-filter,
-  .teachings-page .play-list-item .audio-title       { width: 28%; }
+  /* Speaker column hidden — every sermon is currently tagged as
+     "OPEN. Kerk", so the column adds no signal. Title gets that space. */
   .teachings-page .audio-filter.audio-teacher-filter,
-  .teachings-page .play-list-item .audio-teacher     { width: 14%; }
+  .teachings-page .play-list-item .audio-teacher { display: none; }
+
+  .teachings-page .audio-filter.audio-title-filter,
+  .teachings-page .play-list-item .audio-title       { width: 42%; }
   .teachings-page .audio-filter.audio-summary-filter,
   .teachings-page .play-list-item .audio-summary     { width: 38%; }
   .teachings-page .audio-filter.audio-date-filter,
@@ -21,11 +24,28 @@
   .teachings-page .audio-filter.audio-duration-filter,
   .teachings-page .play-list-item .audio-duration    { width: 8%;  }
 
-  .teachings-page .play-list-item .audio-teacher {
-    display: flex; align-items: center; gap: 0; min-width: 0;
-  }
-  .teachings-page .play-list-item .audio-teacher .teacher-ellipsis { min-width: 0; }
   .teachings-page .play-list-item-parent { font-family: var(--font-heading), sans-serif; }
+
+  /* Reveal animation: each child of #main starts at opacity:0 and fades
+     in on scroll. The dark rows are transparent during the fade, so the
+     white page bg shows through and produces a one-second white band
+     until the animation completes. Give the list wrapper the same dark
+     fill so there's no gap to flash. Also disable the reveal on the
+     list itself — it's a long block and the staggered fade looks worse
+     than no animation. */
+  .teachings-page .overflow-player-section {
+    background-color: #2f2f2f;
+  }
+  .teachings-page .overflow-player-section.reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .teachings-page .audio-filter-container.reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 
   /* Per-row thumbnail in the Title cell — uses v.thumbnail_url from the
      DB (Vimeo's auto-generated 640x360 frame), falling back to the local
@@ -40,6 +60,56 @@
     flex-shrink: 0;
   }
   .teachings-page .play-list-item .audio-title .title { min-width: 0; }
+
+  /* Keep the Reality SF dark-panel default for rows (#2f2f2f bg, light
+     text). On hover: slightly lift the row, brighten the title to white,
+     and nudge a gold left-border. Suppress the original hover behaviour
+     that reveals an absolute-positioned play button on the row's left
+     edge — on narrow viewports it overlapped the title text. */
+  .teachings-page .play-list-item-parent {
+    border-left: 3px solid transparent;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .teachings-page .play-list-item-parent:hover {
+    background-color: #262626;
+    border-left-color: var(--brand-primary, #b8860b);
+    color: #fff;
+  }
+  .teachings-page .play-list-item-parent:hover .audio-title .title,
+  .teachings-page .play-list-item-parent:hover .ellipsed-text,
+  .teachings-page .play-list-item-parent:hover .audio-date,
+  .teachings-page .play-list-item-parent:hover .audio-duration {
+    color: #fff;
+  }
+  .teachings-page .play-list-item-parent:hover .status-indicator { opacity: 0; }
+
+  /* Mobile: show ONLY the title. Everything else (thumb, teacher,
+     summary, date, duration) is hidden so the title can use the full
+     row width and wrap cleanly without overlap. Sort headers hide too
+     so the column header row doesn't look misaligned. */
+  @media (max-width: 768px) {
+    .teachings-page .row-thumb,
+    .teachings-page .audio-filter.audio-teacher-filter,
+    .teachings-page .play-list-item .audio-teacher,
+    .teachings-page .audio-filter.audio-summary-filter,
+    .teachings-page .play-list-item .audio-summary,
+    .teachings-page .audio-filter.audio-date-filter,
+    .teachings-page .play-list-item .audio-date,
+    .teachings-page .play-list-item .dates.audio-date,
+    .teachings-page .audio-filter.audio-duration-filter,
+    .teachings-page .play-list-item .audio-duration { display: none !important; }
+
+    .teachings-page .audio-filter.audio-title-filter,
+    .teachings-page .play-list-item .audio-title { width: 100%; min-width: 100%; }
+
+    .teachings-page .play-list-item .audio-title .title {
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+    }
+  }
 
   /* Initials avatar — placeholder until we add real speaker portraits. */
   .teachings-page .teacher-image-initials {

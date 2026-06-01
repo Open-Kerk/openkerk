@@ -42,12 +42,22 @@
    {# Native HTML5 player so captions, fullscreen and iOS Safari work
       out of the box. The browser's built-in CC menu lists every <track>
       below; the one with `default` is shown when the video starts. #}
+   {# preload="none" so the page renders fast and the video doesn't try
+      to pull metadata (or whole moov atom) up-front. Vimeo's MP4s often
+      have the moov at the end of the file, which turns a "metadata"
+      preload into a near-full download and blocks window.load — which
+      in turn delays the body.loaded class (and the nav/hero reveal).
+      Buffering kicks in on user-initiated play. #}
    <video id="teaching-player"
-          controls preload="metadata" crossorigin="anonymous"
+          controls preload="none" crossorigin="anonymous"
           poster="{{ video.thumbnail_url or '' }}"
           style="display:block; width:100%; aspect-ratio:16/9;
                  background:#000; border-radius:4px; margin-bottom:32px;">
-    <source src="{{ play_url }}" type="video/mp4">
+    {# Media-fragment #t=N on the src URL is honoured by browsers as the
+       starting offset — handles the ?t=… deeplink without us having to
+       wait for the loadedmetadata event (which doesn't fire until the
+       user clicks play once preload="none" is set). #}
+    <source src="{{ play_url }}{% if start_t %}#t={{ start_t }}{% endif %}" type="video/mp4">
     {% set _sub_slug = video.get('_subtitle_slug') or video.vimeo_id %}
     {% for code in subtitle_langs %}
      <track kind="subtitles"
@@ -63,23 +73,20 @@
      var video = document.getElementById('teaching-player');
      if (!video) return;
 
-     {% if start_t %}
-     // Honour ?t=<sec> from search-result deeplinks once metadata is loaded.
-     video.addEventListener('loadedmetadata', function () {
-       try { video.currentTime = {{ start_t }}; } catch (_) {}
-     });
-     {% endif %}
-
      // Ensure the user's site-language track is the active one even if
-     // their browser preferences would pick differently. We do this on
-     // 'loadedmetadata' because tracks aren't enumerable until then.
+     // their browser preferences would pick differently. With
+     // preload="none" the textTracks aren't enumerable until first
+     // play, so we listen for both events. The seek to ?t=<sec> is
+     // handled via a #t=N media fragment on the <source> URL above.
      var wantLang = {{ current_lang | tojson }};
-     video.addEventListener('loadedmetadata', function () {
+     function setActiveTrack() {
        for (var i = 0; i < video.textTracks.length; i++) {
          var t = video.textTracks[i];
          t.mode = (t.language === wantLang) ? 'showing' : 'disabled';
        }
-     });
+     }
+     video.addEventListener('loadedmetadata', setActiveTrack);
+     video.addEventListener('play', setActiveTrack);
    })();
    </script>
   {% else %}
@@ -94,13 +101,6 @@
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
             style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
-   </div>
-  {% endif %}
-
-  {% if video.description %}
-   <div class="teaching-description"
-        style="font-size:16px; line-height:1.7; color:#333; white-space:pre-line;">
-    {{ video.description }}
    </div>
   {% endif %}
 

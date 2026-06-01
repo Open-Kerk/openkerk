@@ -23,10 +23,14 @@
   {# Critical CSS: prevents a flash of default-blue underlined links in
      the nav before the big main.css stylesheet finishes parsing. We
      also keep the navbar hidden until JS adds .loading/.loaded so it
-     can't briefly render in an in-between state. #}
+     can't briefly render in an in-between state.
+
+     Note: don't use `#navbar a` here — it'd outrank main.css's
+     `.lang-option` rule and turn the language dropdown items white. #}
   <style>
    a { color: inherit; text-decoration: none; }
-   #navbar, #navbar a { color: #fff; }
+   #navbar { color: #fff; }
+   .lang-dropdown { color: #444; }
    body:not(.loading):not(.loaded) #navbar { opacity: 0; }
   </style>
   <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
