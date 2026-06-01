@@ -629,6 +629,39 @@ def contact():
     return render_template('contact.html')
 
 
+# ── robots.txt ─────────────────────────────────────────────────────────
+# Default-deny policy: block crawlers from everything except the public
+# top-level pages and the assets needed to render them. Internal endpoints
+# (language switcher, the Vimeo webhook, the JSON search API, individual
+# sermon pages) stay un-indexed. Modern crawlers (Googlebot, Bingbot) honour
+# the Allow: directive overriding Disallow: /.
+_ROBOTS_TXT = """\
+User-agent: *
+Disallow: /
+
+# Public pages — exact-match using $ where needed so we don't accidentally
+# expose deeper paths under the same prefix.
+Allow: /$
+Allow: /activiteiten$
+Allow: /kampen$
+Allow: /nieuwbouw$
+Allow: /geven$
+Allow: /anbi$
+Allow: /contact$
+Allow: /live$
+
+# Static assets (CSS, fonts, JS, images) so crawlers can render the pages
+# for ranking purposes.
+Allow: /assets/
+"""
+
+
+@app.route('/robots.txt')
+def robots_txt():
+    from flask import Response
+    return Response(_ROBOTS_TXT, mimetype='text/plain')
+
+
 # ── Dev server ────────────────────────────────────────────────────────
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
