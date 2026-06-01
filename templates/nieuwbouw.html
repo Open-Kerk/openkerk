@@ -5,6 +5,10 @@
 {% block body_class %}page-template-default nieuwbouw-page{% endblock %}
 
 {% block content %}
+  {# Per-language subtitle label shown in the browser's native CC menu. #}
+  {% set _sub_label = {
+    'nl': 'Nederlands', 'en': 'English', 'fr': 'Français', 'es': 'Español'
+  } %}
   <div class="audio-video" id="video-overlay">
    <a href="{{ url_for('index') }}" id="video-close">
     <i class="fal fa-times"></i>
@@ -45,18 +49,46 @@
    <div aria-hidden="true" class="wp-block-spacer" style="height:80px"></div>
 
    {# ── Nieuwbouw video ── #}
+   {# Mirrors the teachings player: native HTML5 <video> with a <track> per
+      language. The browser's built-in CC menu lists every track; the one
+      matching current_lang is the default. #}
    <div class="bouw-video">
     <video
+      id="nieuwbouw-player"
       class="bouw-video__player"
       width="1280" height="720"
       preload="none"
       controls controlsList="nodownload"
+      crossorigin="anonymous"
       playsinline
       poster="assets/images/openkerk/Nieuwbouw-Open-Kerk.jpg">
      <source src="assets/video/OPEN_KERK_NIEUWBOUW.mp4" type="video/mp4">
+     {% for code in subtitle_langs %}
+      <track kind="subtitles"
+             srclang="{{ code }}"
+             label="{{ _sub_label[code] }}"
+             src="{{ url_for('static', filename='subtitles/nieuwbouw.' ~ code ~ '.vtt') }}"
+             {% if code == current_lang %}default{% endif %}>
+     {% endfor %}
      {{ t('nieuwbouw.video_fallback') }}
     </video>
    </div>
+
+   {% if subtitle_langs %}
+   <script>
+   (function () {
+     var video = document.getElementById('nieuwbouw-player');
+     if (!video) return;
+     var wantLang = {{ current_lang | tojson }};
+     video.addEventListener('loadedmetadata', function () {
+       for (var i = 0; i < video.textTracks.length; i++) {
+         var t = video.textTracks[i];
+         t.mode = (t.language === wantLang) ? 'showing' : 'disabled';
+       }
+     });
+   })();
+   </script>
+   {% endif %}
 
    <div aria-hidden="true" class="wp-block-spacer" style="height:100px"></div>
 

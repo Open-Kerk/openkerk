@@ -10,18 +10,33 @@
   'nl': 'Nederlands', 'en': 'English', 'fr': 'Français', 'es': 'Español'
 } %}
 <div id="main">
- <div class="teaching-detail" style="max-width:960px; margin:0 auto; padding:120px 24px 80px;">
 
-  <a href="{{ url_for('teachings') }}" style="display:inline-block; margin-bottom:24px;
-     color:#888; font-size:14px; text-decoration:none;">← {{ t('teachings.back_to_list') }}</a>
-
-  <h1 style="margin:0 0 12px;">{{ video.display_title or video.title }}</h1>
-  <div style="color:#888; font-size:14px; margin-bottom:24px;">
-   {% if video.speaker %}{{ video.speaker }}{% endif %}
-   {% if video.speaker and video.published_at %} · {% endif %}
-   {% if video.published_at %}{{ video.published_at[:10] }}{% endif %}
-   {% if video.duration_label %} · {{ video.duration_label }}{% endif %}
+ {# Standard short-header hero so the detail page looks consistent with
+    /teachings, /nieuwbouw, etc. Uses the sermon thumbnail as background
+    when available; otherwise falls back to the same Kempen image the
+    list page uses. #}
+ <div class="short-header parallax-on not-live" id="page-hero">
+  <div id="page-hero-content" style="padding:160px 0 90px;">
+   <h1 style="line-height:1.1em;">{{ video.display_title or video.title }}</h1>
+   <div id="hero-sub-title">
+    {% if video.speaker %}{{ video.speaker }}{% endif %}
+    {% if video.speaker and video.published_at %} · {% endif %}
+    {% if video.published_at %}{{ video.published_at[:10] }}{% endif %}
+    {% if video.duration_label %} · {{ video.duration_label }}{% endif %}
+   </div>
+   {# Same button style as the search-results back button on /teachings. #}
+   <a class="button" href="{{ url_for('teachings') }}" style="margin-top:28px;">
+    ← {{ t('teachings.back_to_all') }}
+   </a>
   </div>
+  <div id="page-hero-background"
+       style="background-image: url('{{ video.thumbnail_url or url_for('static', filename='images/openkerk/Kempen_B001_1.jpg') }}');
+              background-position: center center; background-size: cover;">
+   <div id="page-her-background-after" style="background: rgba(10,10,10,0.6);"></div>
+  </div>
+ </div>
+
+ <div class="teaching-detail" style="max-width:960px; margin:0 auto; padding:60px 24px 80px;">
 
   {% if play_url %}
    {# Native HTML5 player so captions, fullscreen and iOS Safari work
@@ -33,11 +48,12 @@
           style="display:block; width:100%; aspect-ratio:16/9;
                  background:#000; border-radius:4px; margin-bottom:32px;">
     <source src="{{ play_url }}" type="video/mp4">
+    {% set _sub_slug = video.get('_subtitle_slug') or video.vimeo_id %}
     {% for code in subtitle_langs %}
      <track kind="subtitles"
             srclang="{{ code }}"
             label="{{ _sub_label[code] }}"
-            src="{{ url_for('static', filename='subtitles/' ~ video.vimeo_id ~ '.' ~ code ~ '.vtt') }}"
+            src="{{ url_for('static', filename='subtitles/' ~ _sub_slug ~ '.' ~ code ~ '.vtt') }}"
             {% if code == current_lang %}default{% endif %}>
     {% endfor %}
    </video>

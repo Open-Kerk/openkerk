@@ -5,7 +5,7 @@ nav:
   contact: Contact
   act:
     featured_title: Together every week
-    featured_text: At Open Kerk there is something to experience every week — from the Sunday service and children's church to prayer, life groups and youth groups.
+    featured_text: At Open Kerk there is something to experience every week from the Sunday service and children's church to prayer, life groups and youth groups.
     featured_link: View calendar
     kerkdienst: Sunday Service
     kinderkerk: Children's Church
@@ -18,7 +18,7 @@ nav:
     zomerkampen: Summer Camps
   kamp:
     featured_title: Summer 2025
-    featured_text: Every year we organise camps for children, teens and men — days full of faith, friendship and adventure.
+    featured_text: Every year we organise camps for children, teens and men days full of faith, friendship and adventure.
     featured_link: View all camps
     kinderkamp: Children's Camp
     kinderkamp_meta: 16–19 Aug · €95
@@ -53,7 +53,7 @@ footer:
 lang:
   label: Taal / Language
 home:
-  title: OPEN. Kerk — Open to God, open to you.
+  title: OPEN. Kerk Open to God, open to you.
   hero_title: Open to God,<br>open to you.
   hero_subtitle: The church is a house of prayer. Jesus said, ‘My temple will be called a house of prayer for all nations.’ It is our goal to create a place of God's presence by seeking Him
   hero_subtitle_underline: in worship and prayer.
@@ -79,11 +79,11 @@ home:
   leader_2_name: Vanessa Laurey
   leader_2_role: Pastor of OpenKerk.
 activiteiten:
-  page_title: Activities — OPEN. Kerk
+  page_title: Activities OPEN. Kerk
   hero_heading: What is there to<br><span class="underline">do at the church?</span>
   hero_subtitle: Every week there is plenty to experience at Open Kerk.<br>From the Sunday service to lifegroups, prayer and camps —<br>there is a place for you.
   intro_title: All activities at Open. Kerk
-  intro_text: A living church comes together — not only on Sunday, but throughout the whole week. Below you will find everything that is happening. Download our app for the latest updates, times and locations.
+  intro_text: A living church comes together not only on Sunday, but throughout the whole week. Below you will find everything that is happening. Download our app for the latest updates, times and locations.
   kerkdienst_meta: Every Sunday · 10:30 – 12:30u
   kerkdienst_title: Church service
   kerkdienst_desc: Every Sunday at 10.30u. Give yourself a whole year to come to church every week. Learn about God. And discover how everything starts to look better.
@@ -114,7 +114,7 @@ activiteiten:
   app_title: Stay up to date
   app_text: We share all activities in the Open. Kerk app. You can download it using the QR code that regularly appears on screen during the church services of Open. Kerk.
 live:
-  page_title: Live — OPEN. Kerk
+  page_title: Live OPEN. Kerk
   hero_heading: <span class="underline">Live</span>
   hero_subtitle: Can't be there in person? Watch along live.<br>Every Sunday at 10:30.
   hero_button: Watch the stream
@@ -131,7 +131,7 @@ geven:
   hero_subtitle: Thank you for your gift! Together we are building a house of prayer,<br>teaching and community.
   hero_button: How you can give
   intro_heading: Would you like to support us financially?
-  intro_p1: You can make a donation using the bank details below. Are you giving for a specific purpose? Then mention it in the description when transferring. Open Kerk has registered ANBI status — donations are therefore tax-deductible.
+  intro_p1: You can make a donation using the bank details below. Are you giving for a specific purpose? Then mention it in the description when transferring. Open Kerk has registered ANBI status donations are therefore tax-deductible.
   intro_p2: Are you giving to our <strong>building project</strong>? Wonderful! Then add <strong>"Build The House"</strong> in the description.
   card_label_bank: Bank
   card_label_iban: IBAN
@@ -147,15 +147,15 @@ geven:
   card_be_bic: KREDBEBB
   card_be_qr_label: Scan with Payconiq
   anbi_heading: ANBI & tax deduction
-  anbi_p1: Open Kerk has registered ANBI status (Public Benefit Organisation). This means your donations are tax-deductible. Do you have questions about giving, periodic donations or bequests? Feel free to contact us — we are happy to help you think it through.
+  anbi_p1: Open Kerk has registered ANBI status (Public Benefit Organisation). This means your donations are tax-deductible. Do you have questions about giving, periodic donations or bequests? Feel free to contact us we are happy to help you think it through.
   anbi_contact_link: Get in touch
 anbi:
   title: ANBI
   hero_heading: <span class="underline">ANBI</span>
   hero_subtitle: OPEN. Kerk has registered ANBI status.<br>Here you will find our details, our board and our accountability.
   doelstelling_heading: Mission
-  doelstelling_p1: OPEN. Kerk is a Protestant evangelical church. We believe in Jesus Christ; God and Saviour of all people on earth. We come together as believers to honour God the Father, in the name of Jesus Christ our Saviour, and work inspired by the Holy Spirit to carry out the good works of the church of Jesus Christ in the Kempen region. The aim of our church is to inform the people in our region that there is a God who loves them — and to show that Jesus Christ lives and that living according to His commandments offers a life of blessing and abundance as a result.
-  doelstelling_p2: All our activities are based on this good cause. The church teaches its visitors about the love of Jesus, sings songs to honour God the Father, and gives children, in a playful and educational way, the awareness that God is always there for them. It gives to the poor and offers help to people in the various needs of this life — in sickness, sorrow and personal problems. The church is also active in youth work, so that young people can develop into their future position in society as a child of God.
+  doelstelling_p1: OPEN. Kerk is a Protestant evangelical church. We believe in Jesus Christ; God and Saviour of all people on earth. We come together as believers to honour God the Father, in the name of Jesus Christ our Saviour, and work inspired by the Holy Spirit to carry out the good works of the church of Jesus Christ in the Kempen region. The aim of our church is to inform the people in our region that there is a God who loves them and to show that Jesus Christ lives and that living according to His commandments offers a life of blessing and abundance as a result.
+  doelstelling_p2: All our activities are based on this good cause. The church teaches its visitors about the love of Jesus, sings songs to honour God the Father, and gives children, in a playful and educational way, the awareness that God is always there for them. It gives to the poor and offers help to people in the various needs of this life in sickness, sorrow and personal problems. The church is also active in youth work, so that young people can develop into their future position in society as a child of God.
   doelstelling_p3: In short, the church strives for all people to live in the love, grace and protection of Jesus Christ, our God.
   gegevens_heading: Details
   gegevens_card1_label: Place of meeting
@@ -366,9 +366,9 @@ kampen:
   questions_button: Get in touch
 teachings:
   title: Teachings
-  page_title: Teachings — OPEN. Kerk
-  hero_heading: Teachings
-  hero_subtitle: Browse every sermon — searchable and subtitled in four languages.
+  page_title: Teachings OPEN. Kerk
+  hero_heading: Sermons Archive
+  hero_subtitle: Browse every sermon, searchable and subtitled in four languages. Please do not share this link only for OPEN. Kerk people.
   search_placeholder: Search the sermons…
   search_button: Search
   search_results_title: Search results
@@ -376,14 +376,22 @@ teachings:
   empty_state: Sermons will appear here soon.
   watch_from: Watch from
   back_to_list: Back to the list
+  back_to_all: Back to all teachings
   prev_page: Previous
   next_page: Next
   speaker_label: Speaker
   date_label: Date
   duration_label: Length
   subtitles_label: Subtitles
-  col_title: Title & speaker
+  col_title: Title
+  col_teacher: Speaker
   col_summary: Summary
   col_date: Date
   col_duration: Length
   watch_label: Watch
+  tab_current: Current Series
+  tab_past: Past Series
+  tab_essentials: Essentials
+  teachings_count: Teachings
+  intro_heading: Welcome to the OPEN. Kerk sermon archive
+  intro_body: This is where every OPEN. Kerk sermon lives so you can revisit it whenever you like jump to any moment in the video, search across the talks for a word or passage, and follow along with subtitles in four languages (Dutch, English, French and Spanish). Whether you want to study a topic again, share a sermon with a friend in another language, or simply catch up on a service you missed, the whole archive is here for you.

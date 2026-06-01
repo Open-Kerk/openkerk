@@ -1,8 +1,10 @@
 <div id="navbar">
  <div id="inner-navbar">
   <a href="/" id="nav-logo">
-   <img alt="OPEN. Kerk" id="white-logo" src="assets/images/openkerk/Logo-OPEN-Zwart.png">
-   <img alt="OPEN. Kerk" id="black-logo" src="assets/images/openkerk/Logo-OPEN-Zwart.png">
+   <img alt="OPEN. Kerk" id="white-logo"
+        src="{{ url_for('static', filename='images/openkerk/Logo-OPEN-Zwart.png') }}">
+   <img alt="OPEN. Kerk" id="black-logo"
+        src="{{ url_for('static', filename='images/openkerk/Logo-OPEN-Zwart.png') }}">
   </a>
   <div id="menu-toggle">
    <div class="menu-line" id="top-line">

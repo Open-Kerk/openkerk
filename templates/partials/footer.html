@@ -1,7 +1,8 @@
 <footer class="footer" style="background-image: url('https://openkerk.com/wp-content/uploads/2022/12/IMG_8032-scaled.jpg');">
  <div id="footer-inner">
   <div class="footer-brand-col">
-   <img alt="OPEN. Kerk logo" src="assets/images/openkerk/Logo-OPEN-Zwart.png">
+   <img alt="OPEN. Kerk logo"
+        src="{{ url_for('static', filename='images/openkerk/Logo-OPEN-Zwart.png') }}">
    <p>
     {{ t('footer.tagline_1') }}
     <br>
@@ -47,7 +48,7 @@
     <li><a href="{{ url_for('contact') }}">{{ t('footer.contact') }}</a></li>
     <li><a href="{{ url_for('geven') }}">{{ t('footer.geven') }}</a></li>
     <li><a href="{{ url_for('anbi') }}">{{ t('footer.anbi') }}</a></li>
-    <li><a href="assets/Vrijwilligerspakket.pdf" target="_blank" rel="noopener">{{ t('footer.vrijwilligerspakket') }}</a></li>
+    <li><a href="{{ url_for('static', filename='Vrijwilligerspakket.pdf') }}" target="_blank" rel="noopener">{{ t('footer.vrijwilligerspakket') }}</a></li>
    </ul>
   </details>
  </div>

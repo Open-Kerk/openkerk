@@ -5,7 +5,7 @@ nav:
   contact: Contact
   act:
     featured_title: Elke week samen
-    featured_text: Bij Open Kerk is er elke week iets te beleven — van zondagsdienst en kinderkerk tot gebed, lifegroups en jongerengroepen.
+    featured_text: Bij Open Kerk is er elke week iets te beleven van zondagsdienst en kinderkerk tot gebed, lifegroups en jongerengroepen.
     featured_link: Bekijk agenda
     kerkdienst: Kerkdienst
     kinderkerk: Kinderkerk
@@ -18,7 +18,7 @@ nav:
     zomerkampen: Zomerkampen
   kamp:
     featured_title: Zomer 2025
-    featured_text: Elk jaar organiseren we kampen voor kinderen, jongeren en mannen — dagen vol geloof, vriendschap en avontuur.
+    featured_text: Elk jaar organiseren we kampen voor kinderen, jongeren en mannen dagen vol geloof, vriendschap en avontuur.
     featured_link: Bekijk alle kampen
     kinderkamp: Kinderkamp
     kinderkamp_meta: 16–19 aug · €95
@@ -53,7 +53,7 @@ footer:
 lang:
   label: Taal / Language
 home:
-  title: OPEN. Kerk — Open voor God, open voor jou.
+  title: OPEN. Kerk Open voor God, open voor jou.
   hero_title: Open voor God,<br>open voor jou.
   hero_subtitle: De kerk is een huis van gebed. Jezus zei, ‘Mijn tempel zal een gebedshuis voor alle volken worden genoemd.’ Het is ons doel om een plaats van de aanwezigheid voor God te maken door Hem te zoeken
   hero_subtitle_underline: in aanbidding en gebed.
@@ -79,11 +79,11 @@ home:
   leader_2_name: Vanessa Laurey
   leader_2_role: Voorganger van OpenKerk.
 activiteiten:
-  page_title: Activiteiten — OPEN. Kerk
+  page_title: Activiteiten OPEN. Kerk
   hero_heading: Wat is er zoal te<br><span class="underline">doen in de kerk?</span>
   hero_subtitle: Iedere week is er volop te beleven bij Open Kerk.<br>Van de zondagse dienst tot lifegroups, gebed en kampen —<br>er is een plek voor jou.
   intro_title: Alle activiteiten van Open. Kerk
-  intro_text: Een levende kerk komt samen — niet alleen op zondag, maar de hele week door. Hieronder vind je alles wat er te doen is. Download onze app voor de laatste updates, tijden en locaties.
+  intro_text: Een levende kerk komt samen niet alleen op zondag, maar de hele week door. Hieronder vind je alles wat er te doen is. Download onze app voor de laatste updates, tijden en locaties.
   kerkdienst_meta: Elke zondag · 10:30 – 12:30u
   kerkdienst_title: Kerkdienst
   kerkdienst_desc: Iedere zondag om 10.30u. Geef jezelf een heel jaar om wekelijks naar de kerk te komen. Leer over God. En ontdek hoe alles er beter uit komt te zien.
@@ -114,7 +114,7 @@ activiteiten:
   app_title: Blijf op de hoogte
   app_text: We communiceren alle activiteiten in de app van Open. Kerk. Deze kun je downloaden met de QR-code die regelmatig op het scherm verschijnt tijdens de kerkdiensten van Open. Kerk.
 live:
-  page_title: Live — OPEN. Kerk
+  page_title: Live OPEN. Kerk
   hero_heading: <span class="underline">Live</span>
   hero_subtitle: Kan je er niet bij zijn? Kijk live mee.<br>Iedere zondag om 10:30 uur.
   hero_button: Bekijk de stream
@@ -131,7 +131,7 @@ geven:
   hero_subtitle: Bedankt voor je gift! Samen bouwen we aan een huis van gebed,<br>onderwijs en gemeenschap.
   hero_button: Hoe je kunt geven
   intro_heading: Wil jij ons financieel steunen?
-  intro_p1: Met onderstaande bankgegevens kun je een gift overmaken. Geef je voor een bepaald doel? Vermeld dat dan in de omschrijving bij het overmaken. Open Kerk heeft een geregistreerde ANBI-status — giften zijn daarom aftrekbaar van de belasting.
+  intro_p1: Met onderstaande bankgegevens kun je een gift overmaken. Geef je voor een bepaald doel? Vermeld dat dan in de omschrijving bij het overmaken. Open Kerk heeft een geregistreerde ANBI-status giften zijn daarom aftrekbaar van de belasting.
   intro_p2: Geef je voor ons <strong>bouwproject</strong>? Geweldig! Zet dan in de omschrijving <strong>"Build The House"</strong>.
   card_label_bank: Bank
   card_label_iban: IBAN
@@ -147,15 +147,15 @@ geven:
   card_be_bic: KREDBEBB
   card_be_qr_label: Scan met Payconiq
   anbi_heading: ANBI & belastingaftrek
-  anbi_p1: Open Kerk heeft een geregistreerde ANBI-status (Algemeen Nut Beogende Instelling). Daardoor zijn je giften fiscaal aftrekbaar. Heb je vragen over geven, periodiek schenken of nalaten? Neem gerust contact met ons op — we denken graag met je mee.
+  anbi_p1: Open Kerk heeft een geregistreerde ANBI-status (Algemeen Nut Beogende Instelling). Daardoor zijn je giften fiscaal aftrekbaar. Heb je vragen over geven, periodiek schenken of nalaten? Neem gerust contact met ons op we denken graag met je mee.
   anbi_contact_link: Neem contact op
 anbi:
   title: ANBI
   hero_heading: <span class="underline">ANBI</span>
   hero_subtitle: OPEN. Kerk heeft een geregistreerde ANBI-status.<br>Hier vind je onze gegevens, ons bestuur en onze verantwoording.
   doelstelling_heading: Doelstelling
-  doelstelling_p1: OPEN. Kerk is een protestants evangelische kerk. Wij geloven in Jezus Christus; God en Verlosser van alle mensen op aarde. Wij komen samen als gelovigen om God de Vader te eren, in de naam van Jezus Christus onze Redder, en werken geïnspireerd door de Heilige Geest om de goede werken van de kerk van Jezus Christus uit te voeren in het gebied de Kempen. Het doel van onze kerk is om de mensen in onze regio te informeren dat er een God is die van hen houdt — en om te laten zien dat Jezus Christus leeft en dat het leven naar Zijn geboden een leven van zegen en overvloed als resultaat biedt.
-  doelstelling_p2: Al onze werkzaamheden zijn gebaseerd op dit goede doel. De kerk onderwijst haar bezoekers over de liefde van Jezus, zingt liederen om God de Vader te eren, en geeft de kinderen op een speelse pedagogische wijze het bewustzijn dat God er altijd voor hen is. Zij geeft aan de armen en biedt hulp aan mensen in de verschillende noden van dit leven — in ziekte, verdriet en persoonlijke problemen. Ook is de kerk actief op het gebied van jeugdwerk, zodat jongeren zich kunnen ontwikkelen in hun toekomstige positie in de maatschappij als kind van God.
+  doelstelling_p1: OPEN. Kerk is een protestants evangelische kerk. Wij geloven in Jezus Christus; God en Verlosser van alle mensen op aarde. Wij komen samen als gelovigen om God de Vader te eren, in de naam van Jezus Christus onze Redder, en werken geïnspireerd door de Heilige Geest om de goede werken van de kerk van Jezus Christus uit te voeren in het gebied de Kempen. Het doel van onze kerk is om de mensen in onze regio te informeren dat er een God is die van hen houdt en om te laten zien dat Jezus Christus leeft en dat het leven naar Zijn geboden een leven van zegen en overvloed als resultaat biedt.
+  doelstelling_p2: Al onze werkzaamheden zijn gebaseerd op dit goede doel. De kerk onderwijst haar bezoekers over de liefde van Jezus, zingt liederen om God de Vader te eren, en geeft de kinderen op een speelse pedagogische wijze het bewustzijn dat God er altijd voor hen is. Zij geeft aan de armen en biedt hulp aan mensen in de verschillende noden van dit leven in ziekte, verdriet en persoonlijke problemen. Ook is de kerk actief op het gebied van jeugdwerk, zodat jongeren zich kunnen ontwikkelen in hun toekomstige positie in de maatschappij als kind van God.
   doelstelling_p3: Kortom, de kerk streeft ernaar dat alle mensen leven in de liefde, genade en bescherming van Jezus Christus, onze God.
   gegevens_heading: Gegevens
   gegevens_card1_label: Plaats van samenkomst
@@ -366,9 +366,9 @@ kampen:
   questions_button: Neem contact op
 teachings:
   title: Prediking
-  page_title: Prediking — OPEN. Kerk
-  hero_heading: Prediking
-  hero_subtitle: Bekijk al onze preken — doorzoekbaar en met ondertiteling in vier talen.
+  page_title: Prediking OPEN. Kerk
+  hero_heading: Predikingenarchief
+  hero_subtitle: Doorzoek elke preek met ondertiteling in vier talen. Deel deze link alstublieft niet, alleen voor mensen van OPEN. Kerk.
   search_placeholder: Zoek in de preken…
   search_button: Zoeken
   search_results_title: Zoekresultaten
@@ -376,14 +376,22 @@ teachings:
   empty_state: De preken worden binnenkort hier verzameld.
   watch_from: Bekijk vanaf
   back_to_list: Terug naar het overzicht
+  back_to_all: Terug naar alle predikingen
   prev_page: Vorige
   next_page: Volgende
   speaker_label: Spreker
   date_label: Datum
   duration_label: Lengte
   subtitles_label: Ondertitels
-  col_title: Titel & spreker
+  col_title: Titel
+  col_teacher: Spreker
   col_summary: Samenvatting
   col_date: Datum
   col_duration: Lengte
   watch_label: Bekijken
+  tab_current: Huidige reeks
+  tab_past: Eerdere reeksen
+  tab_essentials: Essenties
+  teachings_count: predikingen
+  intro_heading: Welkom in het predikingenarchief
+  intro_body: "Hier verzamelen we elke preek van OPEN. Kerk zodat je ze later opnieuw kunt beluisteren vanaf elk moment in de video, doorzoekbaar op woord of passage, en met ondertiteling in vier talen (Nederlands, Engels, Frans en Spaans). Of je nu een onderwerp wilt nakijken, een vriend in een andere taal wilt laten meekijken, of gewoon een dienst hebt gemist: alles staat klaar om terug te kijken."

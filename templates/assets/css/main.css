@@ -17177,24 +17177,39 @@ a {
 				#page-hero-content .underline {
 					display: inline-block;
 					white-space: nowrap;
-					/*
-					background-size:205px;
-					max-width: 0;
-					*/
 					background-position: left 99%;
 					line-height: 1.1em;
-					background-image: url('../images/underline.png');
+					/* Underline image lives on ::after so its reveal doesn't
+					   change the text's layout width and reflow the
+					   surrounding paragraph on narrow viewports. */
+					background-image: none;
+					position: relative;
 				}
-				
+
+				#page-hero-content .underline::after {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					bottom: 0;
+					width: 0;
+					overflow: hidden;
+					pointer-events: none;
+					background-image: url('../images/underline.png');
+					background-position: left 99%;
+					background-repeat: no-repeat;
+					background-size: var(--underline-width, 400px) auto;
+				}
+
 					#page-hero-content #hero-sub-title .underline {
 						line-height: 2em;
 					}
-					
-					body.loaded #page-hero-content .underline,
-					body.loading #page-hero-content .underline {
-						transition: max-width .8s;
+
+					body.loaded #page-hero-content .underline::after,
+					body.loading #page-hero-content .underline::after {
+						transition: width .8s;
 						transition-delay: 1s;
-						max-width: var(--underline-width, 400px) !important;
+						width: 100%;
 					}
 			
 		

@@ -1,5 +1,5 @@
 {
-  "_comment": "Theological vocabulary glossary for sermon translation. Each NL term maps to the preferred translation in EN/FR/ES. The translator prompt injects these as authoritative term mappings so GPT-4o-mini does not paraphrase doctrinal language. Edit freely; commit changes — re-translation is cheap. Terms are matched case-insensitively but whole-word.",
+  "_comment": "Theological vocabulary glossary for sermon translation. Each NL term maps to the preferred translation in EN/FR/ES. The translator prompt injects these as authoritative term mappings so GPT-4o-mini does not paraphrase doctrinal language. Edit freely; commit changes re-translation is cheap. Terms are matched case-insensitively but whole-word.",
   "terms": {
     "genade":            { "en": "grace",            "fr": "grâce",           "es": "gracia" },
     "verbond":           { "en": "covenant",         "fr": "alliance",        "es": "pacto" },

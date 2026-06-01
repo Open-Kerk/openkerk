@@ -2081,8 +2081,16 @@ jQuery(window).on('load',function(){
 		});
 		
 		window.audio = a[0];
-	
-		loadTrack();
+
+		// Skip the Reality SF audio-sermon-bar bootstrap when no <audio>
+		// element exists on the page (we use HTML5 <video> for teachings,
+		// so there's nothing for audiojs to wire up). Without this guard
+		// audio is undefined and audio.load() throws, which kills the
+		// chain that adds body.loading / body.loaded — leaving the navbar
+		// and #page-hero stuck at opacity:0 across the whole site.
+		if (window.audio) {
+			loadTrack();
+		}
 	
 	jQuery('.play-pause .play').html('<i class="fas fa-play"></i>');
 	jQuery('.play-pause .pause').html('<i class="fas fa-pause"></i>');
@@ -2811,16 +2819,21 @@ function cutOutFooter(){
 //SET UNDERLINE WIDTH ------------------------------------------------------//
 //////////////////// ------------------------------------------------------//
 function underlineWidth(){
-
+	// Measure the natural text width and expose it as --underline-width.
+	// The actual wipe animation runs on a ::after pseudo-element whose
+	// width transitions from 0 to 100%, so the underline draws in over a
+	// fixed-size background image (the original visual). The text element
+	// itself keeps its natural layout width at all times — animating its
+	// own max-width caused the surrounding paragraph to reflow and jump
+	// on narrow viewports.
 	jQuery('.underline').each(function(){
-		
+
 		var thisItem = jQuery(this);
-		
-		thisItem.css({'max-width':'auto'});
-		
+
+		thisItem.css({'max-width':'none'});
+
 		var thisWidth = thisItem.outerWidth() + 'px';
 
-		thisItem.css({'max-width':'0', 'background-size' : thisWidth});
 		this.style.setProperty('--underline-width', thisWidth);
 	});
 }

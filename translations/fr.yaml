@@ -5,7 +5,7 @@ nav:
   contact: Contact
   act:
     featured_title: Ensemble chaque semaine
-    featured_text: Chez Open Kerk, il y a quelque chose à vivre chaque semaine — du culte du dimanche et de l'église des enfants à la prière, aux groupes de vie et aux groupes de jeunes.
+    featured_text: Chez Open Kerk, il y a quelque chose à vivre chaque semaine du culte du dimanche et de l'église des enfants à la prière, aux groupes de vie et aux groupes de jeunes.
     featured_link: Voir l'agenda
     kerkdienst: Culte du dimanche
     kinderkerk: Église des enfants
@@ -18,7 +18,7 @@ nav:
     zomerkampen: Camps d'été
   kamp:
     featured_title: Été 2025
-    featured_text: Chaque année, nous organisons des camps pour les enfants, les jeunes et les hommes — des journées pleines de foi, d'amitié et d'aventure.
+    featured_text: Chaque année, nous organisons des camps pour les enfants, les jeunes et les hommes des journées pleines de foi, d'amitié et d'aventure.
     featured_link: Voir tous les camps
     kinderkamp: Camp d'enfants
     kinderkamp_meta: 16–19 août · €95
@@ -53,7 +53,7 @@ footer:
 lang:
   label: Taal / Language
 home:
-  title: OPEN. Kerk — Ouvert à Dieu, ouvert à toi.
+  title: OPEN. Kerk Ouvert à Dieu, ouvert à toi.
   hero_title: Ouvert à Dieu,<br>ouvert à toi.
   hero_subtitle: 'L''église est une maison de prière. Jésus a dit : ‘Mon temple sera appelé une maison de prière pour toutes les nations.’ Notre but est de créer un lieu de la présence de Dieu en Le cherchant'
   hero_subtitle_underline: dans l'adoration et la prière.
@@ -79,11 +79,11 @@ home:
   leader_2_name: Vanessa Laurey
   leader_2_role: Pasteur d'OpenKerk.
 activiteiten:
-  page_title: Activités — OPEN. Kerk
+  page_title: Activités OPEN. Kerk
   hero_heading: Qu'y a-t-il à<br><span class="underline">faire à l'église ?</span>
   hero_subtitle: Chaque semaine, il y a beaucoup à vivre à Open Kerk.<br>Du culte du dimanche aux lifegroups, à la prière et aux camps —<br>il y a une place pour toi.
   intro_title: Toutes les activités d'Open. Kerk
-  intro_text: Une église vivante se rassemble — pas seulement le dimanche, mais tout au long de la semaine. Ci-dessous, tu trouveras tout ce qui se passe. Télécharge notre application pour les dernières mises à jour, horaires et lieux.
+  intro_text: Une église vivante se rassemble pas seulement le dimanche, mais tout au long de la semaine. Ci-dessous, tu trouveras tout ce qui se passe. Télécharge notre application pour les dernières mises à jour, horaires et lieux.
   kerkdienst_meta: Chaque dimanche · 10:30 – 12:30u
   kerkdienst_title: Culte
   kerkdienst_desc: Chaque dimanche à 10.30u. Donne-toi une année entière pour venir à l'église chaque semaine. Apprends à connaître Dieu. Et découvre comment tout commence à s'améliorer.
@@ -114,7 +114,7 @@ activiteiten:
   app_title: Reste informé
   app_text: Nous communiquons toutes les activités dans l'application Open. Kerk. Tu peux la télécharger à l'aide du code QR qui apparaît régulièrement à l'écran pendant les cultes d'Open. Kerk.
 live:
-  page_title: Live — OPEN. Kerk
+  page_title: Live OPEN. Kerk
   hero_heading: <span class="underline">Live</span>
   hero_subtitle: Tu ne peux pas être présent ? Suis-nous en direct.<br>Chaque dimanche à 10:30.
   hero_button: Voir le direct
@@ -131,7 +131,7 @@ geven:
   hero_subtitle: Merci pour votre don ! Ensemble, nous construisons une maison de prière,<br>d'enseignement et de communauté.
   hero_button: Comment donner
   intro_heading: Souhaitez-vous nous soutenir financièrement ?
-  intro_p1: Vous pouvez faire un don à l'aide des coordonnées bancaires ci-dessous. Vous donnez dans un but précis ? Mentionnez-le alors dans la description lors du virement. Open Kerk possède un statut ANBI enregistré — les dons sont donc déductibles des impôts.
+  intro_p1: Vous pouvez faire un don à l'aide des coordonnées bancaires ci-dessous. Vous donnez dans un but précis ? Mentionnez-le alors dans la description lors du virement. Open Kerk possède un statut ANBI enregistré les dons sont donc déductibles des impôts.
   intro_p2: Vous donnez pour notre <strong>projet de construction</strong> ? Magnifique ! Indiquez alors dans la description <strong>"Build The House"</strong>.
   card_label_bank: Banque
   card_label_iban: IBAN
@@ -147,15 +147,15 @@ geven:
   card_be_bic: KREDBEBB
   card_be_qr_label: Scanner avec Payconiq
   anbi_heading: ANBI & déduction fiscale
-  anbi_p1: Open Kerk possède un statut ANBI enregistré (organisme d'intérêt général). Vos dons sont donc déductibles des impôts. Vous avez des questions sur les dons, les donations périodiques ou les legs ? N'hésitez pas à nous contacter — nous serons heureux de réfléchir avec vous.
+  anbi_p1: Open Kerk possède un statut ANBI enregistré (organisme d'intérêt général). Vos dons sont donc déductibles des impôts. Vous avez des questions sur les dons, les donations périodiques ou les legs ? N'hésitez pas à nous contacter nous serons heureux de réfléchir avec vous.
   anbi_contact_link: Contactez-nous
 anbi:
   title: ANBI
   hero_heading: <span class="underline">ANBI</span>
   hero_subtitle: OPEN. Kerk possède un statut ANBI enregistré.<br>Vous trouverez ici nos coordonnées, notre conseil d'administration et notre reddition de comptes.
   doelstelling_heading: Objectif
-  doelstelling_p1: OPEN. Kerk est une église protestante évangélique. Nous croyons en Jésus-Christ ; Dieu et Sauveur de tous les hommes sur la terre. Nous nous rassemblons en tant que croyants pour honorer Dieu le Père, au nom de Jésus-Christ notre Sauveur, et œuvrons, inspirés par le Saint-Esprit, à accomplir les bonnes œuvres de l'église de Jésus-Christ dans la région de la Kempen. Le but de notre église est d'informer les gens de notre région qu'il existe un Dieu qui les aime — et de montrer que Jésus-Christ est vivant et que vivre selon Ses commandements offre en résultat une vie de bénédiction et d'abondance.
-  doelstelling_p2: Toutes nos activités reposent sur cette bonne cause. L'église enseigne à ses visiteurs l'amour de Jésus, chante des cantiques pour honorer Dieu le Père, et donne aux enfants, d'une manière ludique et pédagogique, la conscience que Dieu est toujours là pour eux. Elle donne aux pauvres et offre de l'aide aux personnes dans les différents besoins de cette vie — dans la maladie, le chagrin et les problèmes personnels. L'église est également active dans le domaine du travail auprès des jeunes, afin que les jeunes puissent se développer dans leur future position dans la société en tant qu'enfant de Dieu.
+  doelstelling_p1: OPEN. Kerk est une église protestante évangélique. Nous croyons en Jésus-Christ ; Dieu et Sauveur de tous les hommes sur la terre. Nous nous rassemblons en tant que croyants pour honorer Dieu le Père, au nom de Jésus-Christ notre Sauveur, et œuvrons, inspirés par le Saint-Esprit, à accomplir les bonnes œuvres de l'église de Jésus-Christ dans la région de la Kempen. Le but de notre église est d'informer les gens de notre région qu'il existe un Dieu qui les aime et de montrer que Jésus-Christ est vivant et que vivre selon Ses commandements offre en résultat une vie de bénédiction et d'abondance.
+  doelstelling_p2: Toutes nos activités reposent sur cette bonne cause. L'église enseigne à ses visiteurs l'amour de Jésus, chante des cantiques pour honorer Dieu le Père, et donne aux enfants, d'une manière ludique et pédagogique, la conscience que Dieu est toujours là pour eux. Elle donne aux pauvres et offre de l'aide aux personnes dans les différents besoins de cette vie dans la maladie, le chagrin et les problèmes personnels. L'église est également active dans le domaine du travail auprès des jeunes, afin que les jeunes puissent se développer dans leur future position dans la société en tant qu'enfant de Dieu.
   doelstelling_p3: En bref, l'église aspire à ce que tous les hommes vivent dans l'amour, la grâce et la protection de Jésus-Christ, notre Dieu.
   gegevens_heading: Coordonnées
   gegevens_card1_label: Lieu de rassemblement
@@ -366,9 +366,9 @@ kampen:
   questions_button: Nous contacter
 teachings:
   title: Enseignements
-  page_title: Enseignements — OPEN. Kerk
-  hero_heading: Enseignements
-  hero_subtitle: Parcourez tous les sermons — avec recherche et sous-titres en quatre langues.
+  page_title: Enseignements OPEN. Kerk
+  hero_heading: Archives des prédications
+  hero_subtitle: Parcourez chaque prédication, avec recherche et sous-titres en quatre langues. Merci de ne pas partager ce lien réservé aux membres d'OPEN. Kerk.
   search_placeholder: Rechercher dans les sermons…
   search_button: Rechercher
   search_results_title: Résultats de recherche
@@ -376,14 +376,22 @@ teachings:
   empty_state: Les sermons apparaîtront bientôt ici.
   watch_from: Regarder à partir de
   back_to_list: Retour à la liste
+  back_to_all: Retour à toutes les prédications
   prev_page: Précédent
   next_page: Suivant
   speaker_label: Prédicateur
   date_label: Date
   duration_label: Durée
   subtitles_label: Sous-titres
-  col_title: Titre et prédicateur
+  col_title: Titre
+  col_teacher: Prédicateur
   col_summary: Résumé
   col_date: Date
   col_duration: Durée
   watch_label: Regarder
+  tab_current: Série actuelle
+  tab_past: Séries précédentes
+  tab_essentials: Essentiels
+  teachings_count: prédications
+  intro_heading: Bienvenue dans les archives des prédications d'OPEN. Kerk
+  intro_body: Vous trouverez ici toutes les prédications d'OPEN. Kerk pour pouvoir les revoir quand vous le souhaitez reprendre la lecture à n'importe quel moment de la vidéo, faire une recherche dans l'ensemble des messages par mot ou passage, et suivre avec des sous-titres en quatre langues (néerlandais, anglais, français et espagnol). Que vous souhaitiez approfondir un sujet, partager une prédication avec un proche dans une autre langue ou simplement rattraper un culte manqué, toutes les archives sont à votre disposition.
