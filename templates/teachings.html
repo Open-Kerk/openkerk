@@ -164,6 +164,22 @@
   }
   .teachings-page .teachings-search-row .button { flex-shrink: 0; }
 
+  @media (max-width: 768px) {
+    /* The base .button is 187px wide, which on a narrow viewport pushes
+       the button past the form's right margin so it visually hugs the
+       edge. Shrink it to fit its label so the same --side-padding gap
+       that lives on the left side of the input is visible on the right
+       of the button. */
+    .teachings-page .teachings-search-row .button {
+      width: auto;
+      min-width: 0;
+      padding: 0 18px;
+      height: 44px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+  }
+
   /* Search results render right under the search row, at the same horizontal
      padding as the columns. */
   .teachings-page .teachings-results-row {
@@ -267,13 +283,6 @@
     {{ c.label }}
    </a>
   {% endfor %}
-  <a href="#" class="search-icon w-inline-block" aria-label="{{ t('teachings.search_placeholder') }}">
-   <img src="{{ url_for('static', filename='images/icon-search.svg') }}" alt="">
-   <span class="close-search-input">×</span>
-  </a>
-  <form id="search-box" action="{{ url_for('teachings') }}" method="get">
-   <input placeholder="{{ t('teachings.search_placeholder') }}" name="q" id="s" type="text">
-  </form>
  </div>
 
  {# Series header: image + meta + title + description above the listing.
