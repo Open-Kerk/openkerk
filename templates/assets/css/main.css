@@ -24393,7 +24393,7 @@ body.form-loaded #mailchimp #newsletter-loading {
 .wp-block {}
 
 /* ================================================================
-   FOOTER — replaced with design-realitysf-v2 footer
+   FOOTER 
    ================================================================ */
 
    FOOTER  (from footer.css — exact values)
@@ -26274,9 +26274,9 @@ html {
 }
 
 /* ================================================================
-   HEADINGS — Maison Neue (self-hosted, as on realitysf.com)
+   HEADINGS — Maison Neue 
    Weight 500 = MaisonNeue-Medium (the family only ships Book/Medium/Demi,
-   no Black; 500 matches Reality SF's h1). Body/running text stays Playfair
+   no Black; 500 matches h1). Body/running text stays Playfair
    Display (see "Main text" block above). This block is last in source order
    so it wins over the earlier Playfair heading rules.
    ================================================================ */
