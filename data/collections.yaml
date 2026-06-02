@@ -34,32 +34,6 @@ collections:
       - 1124573460  # Geef Jezus Alles - Open je Hart voor de Koning
       - 1102883047  # Terugbrengen in geloof: Vertrouwen in de Goede Vader
 
-  eerdere_reeksen:
-    label:
-      nl: Eerdere reeksen
-      en: Previous series
-      fr: Séries précédentes
-      es: Series anteriores
-    # Two distinct multi-part teaching series from Dec 2022, kept together
-    # because they were a single conference weekend:
-    #   • "Bidden & Vasten" (5+ episodes on prayer and fasting)
-    #   • "OPEN over Relaties" weekend (family, marriage, parenting, etc.)
-    vimeo_ids:
-      - 781934753   # Goddelijke kinderen opvoeden: Focus op Jezus
-      - 781928678   # Heilig huwelijk: Het is goed met mijn ziel, nu!
-      - 781918669   # Dating: Keuzes die je leven bepalen
-      - 781918375   # Bidden & Vasten: De Kracht van Gebed en Vasten
-      - 781918123   # Bidden & Vasten - Een tijd niet eten
-      - 781917264   # Singles: De Waarheid Over Relaties
-      - 781917015   # Opvoeding: De Basis van Relaties
-      - 781916708   # Familie: Relaties in het Licht van de Bijbel
-      - 781916583   # Bidden & Vasten - Dag 1: Verlangen naar God
-      - 781916514   # Bidden & Vasten - Dag 2: Waarom zou ik vasten?
-      - 781916324   # Bidden & Vasten - Dag 5: Niet mijn wil, maar Uw wil
-      - 781904820   # Bidden & Vasten - Waarom het Huis van Gebed
-      - 781903957   # OPEN over Nieuwe Wijn in Relaties
-      - 781903299   # Specifieke vragen over het huwelijk
-
   gebed_aanbidding:
     label:
       nl: Gebed & Aanbidding
@@ -67,7 +41,8 @@ collections:
       fr: Prière & Adoration
       es: Oración y Adoración
     # Sermons centered on prayer, fasting, and worship as the church's
-    # core posture before God.
+    # core posture before God. Includes the full "Bidden & Vasten" Dec 2022
+    # teaching series (6 episodes) appended at the end.
     vimeo_ids:
       - 1190894882  # Pinksteren: De Heilige Geest en onze Vastenperiode
       - 1180249931  # Aanbidding aan de Naam van Jezus
@@ -89,6 +64,13 @@ collections:
       - 826616650   # Aanbidding en de Komst van de Geest
       - 800258987   # Heer, ik geef u mijn hart: een gebed van overgave
       - 789431609   # Vasten en Toewijding
+      # ── Bidden & Vasten series (Dec 2022) ──
+      - 781918375   # Bidden & Vasten: De Kracht van Gebed en Vasten
+      - 781918123   # Bidden & Vasten - Een tijd niet eten om je te richten op God
+      - 781916583   # Bidden & Vasten - Dag 1: Verlangen naar God en Zijn nabijheid
+      - 781916514   # Bidden & Vasten - Dag 2: Waarom zou ik vasten?
+      - 781916324   # Bidden & Vasten - Dag 5: Niet mijn wil, maar Uw wil geschiedde
+      - 781904820   # Bidden & Vasten - Waarom het Huis van Gebed op Gods Hart ligt
 
   geven_vrijgevigheid:
     label:
