@@ -5,7 +5,7 @@
 {% block body_class %}archive teachings-page{% endblock %}
 
 {% block content %}
-{# Page-scoped overrides: Reality SF's stock widths assume short titles
+{# Page-scoped overrides: assume short titles
    (15/15/47/10/10). Our sermon titles run long, so we widen Title at the
    expense of Summary. Total stays ≈98% to leave room for the
    status-indicator on the left. #}
@@ -243,6 +243,63 @@
   .teachings-page .audio-filter-container .filter-link.asc i.fa-caret-down {
     transform: rotate(180deg);
   }
+
+  /* ─── Tab nav: mobile horizontal scroll ─────────────────────────────────
+     The base theme floats each .sub-nav-link with 60px of horizontal space
+     per item; that wraps into a messy 4-line stack on phones once we have
+     5+ collection tabs. On ≤768px we override to a flex/nowrap row that
+     scrolls horizontally, with smaller pills and a fade hint on the right
+     edge that more content is off-screen. */
+  @media (max-width: 768px) {
+    .teachings-page .tab-nav-container {
+      /* Bleed to the screen edges so the scroll strip uses the full width,
+         and clip scroll content inside it. Margins are restored by per-tab
+         padding so the first/last pills still have breathing room. */
+      margin-left: 0; margin-right: 0;
+      padding: 16px 0 0;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;            /* Firefox */
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+    .teachings-page .tab-nav-container::-webkit-scrollbar { display: none; }
+    .teachings-page .tab-nav-container::after { content: none; } /* clearfix kill */
+
+    .teachings-page .tab-nav-container .sub-nav-link {
+      float: none;
+      display: inline-block;
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 8px 14px;
+      line-height: 1.3;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      scroll-snap-align: start;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 999px;
+      color: #333;
+      background: #fff;
+    }
+    .teachings-page .tab-nav-container .sub-nav-link + .sub-nav-link { margin-left: 6px; }
+    .teachings-page .tab-nav-container .sub-nav-link:first-child { margin-left: var(--side-padding); }
+    .teachings-page .tab-nav-container .sub-nav-link:last-child  { margin-right: var(--side-padding); }
+    .teachings-page .tab-nav-container .sub-nav-link.current {
+      color: #fff;
+      background: var(--brand-primary, #b8860b);
+      border-color: var(--brand-primary, #b8860b);
+    }
+
+    /* The search icon + Reality SF search form live inside the same tab
+       row in markup; on mobile they don't fit alongside the pills. Hide
+       them — the hero already has our search input/button. */
+    .teachings-page .tab-nav-container .search-icon,
+    .teachings-page .tab-nav-container #search-box { display: none; }
+  }
 </style>
 
 <div id="main">
@@ -289,8 +346,8 @@
     Acts as the intro for the whole archive today; once we populate
     videos.series we'll drive it per active series. #}
  <div class="flex-cat-parent" style="max-width:1200px; margin:48px auto 0; padding:0 var(--side-padding); box-sizing:border-box;">
-  <img src="https://realitysf.com/wp-content/uploads/2026/03/Faith-as-Reality-SQ.jpg"
-       alt="" class="cat-image" width="282">
+  <img src="assets/images/openkerk/jesus.png"
+       alt="" class="cat-image" width="382">
   <div class="series-parent-flex no-top centered">
    <div class="flexed centered">
     <div class="small-grey-text">{{ total }} {{ t('teachings.teachings_count') }}</div>
