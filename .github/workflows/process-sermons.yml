@@ -63,15 +63,23 @@ jobs:
           # archive). Bandwidth cost is negligible on the GH-hosted runner.
           lfs: true
 
+      # On push events we only rebuild + redeploy the Docker image; the
+      # heavy host-side deps (ffmpeg, Python 3.12, all pip packages
+      # including PyTorch + silero-vad ~700 MB) aren't needed. Skipping
+      # them frees ~2 GB of runner disk, which matters now that the
+      # LFS-tracked sermons.db pulls into the workspace too.
       - name: Install system deps
+        if: github.event_name != 'push'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
       - uses: actions/setup-python@v5
+        if: github.event_name != 'push'
         with:
           python-version: '3.12'
           cache: 'pip'
 
       - name: Install Python deps
+        if: github.event_name != 'push'
         run: pip install -r requirements.txt
 
       - name: Sync Vimeo library -> DB
