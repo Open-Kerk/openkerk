@@ -152,7 +152,7 @@
     border: 1px solid rgba(0,0,0,0.15);
     border-radius: 2px;
     background: #fff;
-    font-family: 'Maisonneue book', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: #333;
     outline: none;
@@ -301,8 +301,9 @@
       width: fit-content;
     }
     .teachings-page .camp-tabnav a.camp-tab {
-      padding: 16px 14px;
-      letter-spacing: 1px;
+      padding: 14px 10px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
       white-space: nowrap;     /* don't let a label itself wrap either */
     }
   }
@@ -525,6 +526,8 @@
      <span class="page-link page-link--nav page-link--disabled" aria-hidden="true">›</span>
     {% endif %}
    </nav>
+  {% else %}
+   <div aria-hidden="true" class="wp-block-spacer reveal-item revealed" style="height:120px"></div>
   {% endif %}
  {% endif %}
 </div>

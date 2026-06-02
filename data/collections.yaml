@@ -14,12 +14,12 @@
 
 collections:
 
-  essenties:
+  de_basis:
     label:
-      nl: Essenties
-      en: Essentials
-      fr: Essentiels
-      es: Esenciales
+      nl: De Basis
+      en: The Basics
+      fr: Les Bases
+      es: Lo Esencial
     # Foundational sermons for new visitors — welcome message, the gospel,
     # the person of Jesus, grace, repentance, scripture, surrender, trust.
     # Time-bound or seasonal "Welkom" sermons (e.g. Paasmaand, schooljaar)
@@ -33,6 +33,26 @@ collections:
       - 1158094840  # Gods Woord: De Rots van ons Leven en de Betekenis van Open Kerk
       - 1124573460  # Geef Jezus Alles - Open je Hart voor de Koning
       - 1102883047  # Terugbrengen in geloof: Vertrouwen in de Goede Vader
+
+  evangelisatie:
+    label:
+      nl: Evangelisatie
+      en: Evangelism
+      fr: Évangélisation
+      es: Evangelización
+    # Sharing the gospel — welcome messages, testimonies, the cross, the
+    # great commission, the necessity of new birth, witnessing in the world.
+    vimeo_ids:
+      - 1178146583  # Pasen: De Opstanding van Jezus en het Goede Nieuws
+      - 1137386033  # Gebedsverhoring: Paulus' Getuigenis van Vertrouwen en Geloof
+      - 1135037529  # Getuigenis van Chris en Ria: Geloof in moeilijke tijden
+      - 1087486642  # Hemelvaart: De Grote Opdracht van Jezus aan Zijn Volgelingen
+      - 1019104423  # Open Kerk online dienst: Keuze voor het leven in Christus
+      - 1011736435  # Vergeving en Overwinning in Jezus: Ons Ware Evangelie
+      - 1009585364  # Welkom in de Kerk: Het Goede Nieuws van Jezus
+      - 895506858   # Gods Liefde en de Noodzaak van Wedergeboorte (Johannes 3)
+      - 865261294   # Jezus Kennen: De Sleutel tot een Veranderde Wereld
+      - 839429811   # God Spreekt Door Honing: Een Getuigenis van Overvloed
 
   gebed_aanbidding:
     label:
@@ -127,3 +147,41 @@ collections:
       - 781916708   # Familie
       - 781903957   # OPEN over Nieuwe Wijn in Relaties
       - 781903299   # Specifieke vragen over het huwelijk
+
+  geestelijke_wereld:
+    label:
+      nl: Geestelijke Wereld
+      en: Spiritual Realm
+      fr: Monde Spirituel
+      es: Mundo Espiritual
+    # Spiritual warfare, the authority of Christ, freedom through the
+    # blood of Jesus, deliverance from occult / addictions / strongholds.
+    vimeo_ids:
+      - 1106850670  # Toewijding en Reinheid door het Bloed van Jezus
+      - 1034910052  # Vrijgezet door het Bloed van Jezus: Leviticus 17 Verklaard
+      - 1028118527  # Vrijheid in Christus: De Bermuda Driehoek en Gewoonten
+      - 1025843223  # Vrijkomen van Verslavingen - Leven als Overwinnaars
+      - 1005073859  # Vrijheid in Christus: Goed Doen Zonder Op Te Geven
+      - 940374723   # Vrijgemaakt door Zijn Bloed - Hemelvaart en de Basics
+      - 929258260   # Online Dienst: Leven in Vrijheid door het Bloed van Jezus
+      - 926799841   # Jezus Spreekt en Heerst met Autoriteit Over Stormen
+      - 907165591   # Kracht in het Bloed: Gehoorzaamheid aan Gods Wil
+      - 874496611   # Mensen van het Licht: De Kracht van Gebed in de Geestelijke Wereld
+      - 870001224   # Occultisme = Misleiding
+      - 835149727   # Gods Kracht in Ons: De Autoriteit van Christus Ontdekken
+
+  wederkomst_eindtijd:
+    label:
+      nl: Wederkomst & Eindtijd
+      en: Second Coming & End Times
+      fr: Retour du Christ & Fin des Temps
+      es: Segunda Venida y Fin de los Tiempos
+    # The return of Christ, the kingdom to come, prophetic themes, Israel
+    # in God's redemptive plan, and living with eternity in view.
+    vimeo_ids:
+      - 1188778839  # Israël: Verbond, Zegen en Bekering in het Koninkrijk van God
+      - 1139780127  # Opstanding van kinderen in de schaduw van de Allerhoogste
+      - 1052730187  # Heer, markeer een generatie: Volg het Lam met heel je hart
+      - 934468254   # De Tweede Komst: Heerschappij van Christus en Ons Leven
+      - 893028641   # De komst van de Messias: Vrijheid in het Koninkrijk
+      - 781909715   # De Geest van Elia in de Eindtijd (Vaderdag)

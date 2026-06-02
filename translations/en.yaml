@@ -389,7 +389,7 @@ teachings:
   col_date: Date
   col_duration: Length
   watch_label: Watch
-  tab_current: Current Series
+  tab_current: All
   tab_past: Past Series
   tab_essentials: Essentials
   teachings_count: Teachings

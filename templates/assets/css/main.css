@@ -1,24 +1,5 @@
-/* Maisonneue weight variants — maps 500 & 600 to the correct files
-   so font-family:'Maisonneue book' works at all weights */
-@font-face {
-    font-family: 'Maisonneue book';
-    src: url('../fonts/MaisonNeue-Medium.woff2') format('woff2'),
-         url('../fonts/MaisonNeue-Medium.woff')  format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Maisonneue book';
-    src: url('../fonts/MaisonNeue-Demi.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Maisonneue book';
-    src: url('../fonts/MaisonNeue-Demi.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
+/* Inter (free, Google Fonts) replaces the previous Maison Neue stack.
+   Loaded via base.html <link>; no local @font-face needed. */
 
 /* === all.min.css === */
 /*!
@@ -56,7 +37,7 @@
    Start of custom Webflow CSS
    ========================================================================== */
 body {
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #000;
   font-size: 18px;
   line-height: 1.6em;
@@ -65,7 +46,7 @@ body {
 h1 {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 64px;
   line-height: 70px;
   font-weight: 500;
@@ -74,7 +55,7 @@ h1 {
 h2 {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 36px;
   line-height: 52px;
@@ -94,7 +75,7 @@ h3 {
 h5 {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 17px;
   font-weight: 400;
@@ -202,7 +183,7 @@ li {
   margin-right: auto;
   margin-left: auto;
   padding-top: 8px;
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 14px;
   font-weight: 600;
@@ -841,7 +822,7 @@ li {
 
 .footer-link {
   margin-bottom: 29px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #fff;
   font-size: 14px;
   line-height: 1.4em;
@@ -870,7 +851,7 @@ li {
 
 .grey-text.location {
   width: 142px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a1a1a1;
   font-size: 12px;
 }
@@ -912,7 +893,7 @@ li {
 .light-heading {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #fff;
   font-size: 14px;
   line-height: 13px;
@@ -960,7 +941,7 @@ li {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 20px;
@@ -981,14 +962,14 @@ li {
 
 .footer-text {
   margin-bottom: 35px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 25px;
   font-weight: 400;
   text-align: left;
 }
 
 .footer-text.dark {
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
 }
 
@@ -1069,7 +1050,7 @@ li {
 
 .nav-text {
   display: block;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -1130,7 +1111,7 @@ li {
   padding-right: 2px;
   padding-bottom: 0px;
   padding-left: 2px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #fff;
   letter-spacing: 2.1px;
   text-decoration: none;
@@ -1245,7 +1226,7 @@ li {
 
 .gold-text-link {
   display: inline-block;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a5c1c3;
   font-size: 14px;
   line-height: 22px;
@@ -1266,7 +1247,7 @@ li {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   text-align: right;
   letter-spacing: 2px;
@@ -1302,7 +1283,7 @@ li {
 
 .sub-nav-text {
   margin-bottom: 20px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 24px;
@@ -1565,7 +1546,7 @@ li {
 }
 
 .sermon-text {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a1a1a1;
   font-size: 14px;
   line-height: 1em;
@@ -1638,7 +1619,7 @@ li {
 }
 
 .total-time {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #878787;
   letter-spacing: 1.4px;
 }
@@ -1661,7 +1642,7 @@ li {
 }
 
 .time-start {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   letter-spacing: 1.4px;
 }
 
@@ -1682,7 +1663,7 @@ li {
   width: 972px;
   max-width: 100%;
   margin: 29px auto 0px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 22px;
   line-height: 34px;
@@ -1693,7 +1674,7 @@ li {
   max-width: none;
   margin-right: -2.5%;
   margin-left: -2.5%;
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 36px;
   line-height: 48px;
@@ -1735,7 +1716,7 @@ li {
   width: 85%;
   max-width: 90%;
   margin-top: 40px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   line-height: 30px;
   letter-spacing: 0.4px;
@@ -1867,7 +1848,7 @@ li {
 
 .mild-grey-text {
   margin-bottom: 0px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 22px;
 }
@@ -1909,7 +1890,7 @@ li {
 .slider-text {
   margin-top: 30px;
   margin-bottom: 35px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 16px;
   line-height: 27px;
@@ -1994,14 +1975,14 @@ li {
 .event-title {
   margin-top: 0px;
   margin-bottom: 9px;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-weight: 500;
 }
 
 .event-description {
   padding-top: 8px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 15px;
   line-height: 27px;
@@ -2048,7 +2029,7 @@ li {
 
 .cs-lewis {
   margin-top: -20px;
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -2170,7 +2151,7 @@ li {
 }
 
 .description-text-width.left-mobile {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .description-text-width.left-mobile.v2 {
@@ -2190,7 +2171,7 @@ li {
   width: 33.333333333333336%;
   max-width: 22vw;
   margin-bottom: 90px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .description-text-width.series-version.v2 {
@@ -2253,7 +2234,7 @@ li {
 }
 
 .sub-hero-text {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   letter-spacing: 1.3px;
   text-transform: uppercase;
@@ -2279,7 +2260,7 @@ li {
 }
 
 .div-block-5 {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   letter-spacing: 0.3px;
 }
 
@@ -2303,7 +2284,7 @@ li {
 
 .featured-tag {
   margin-bottom: 35px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a1a1a1;
   font-size: 14px;
   letter-spacing: 2px;
@@ -2313,7 +2294,7 @@ li {
 .featured-tag.grey-version {
   margin-top: 60px;
   margin-bottom: 0px;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
   font-size: 14px;
   font-weight: 500;
@@ -2588,7 +2569,7 @@ li {
   margin-right: auto;
   margin-bottom: 34px;
   margin-left: auto;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   line-height: 30px;
   font-weight: 500;
@@ -2600,7 +2581,7 @@ li {
 }
 
 .bolded {
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
 }
 
@@ -2646,7 +2627,7 @@ li {
 .about-hero-text {
   width: 540px;
   max-width: 100%;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   letter-spacing: 0.3px;
 }
 
@@ -2660,7 +2641,7 @@ li {
 .about-sub-title {
   margin-top: 35px;
   margin-bottom: 35px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 18px;
   line-height: 34px;
@@ -2669,14 +2650,14 @@ li {
 
 .about-text {
   margin-bottom: 35px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   line-height: 34px;
 }
 
 .about-text._5 {
   margin-bottom: 5px;
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   line-height: 30px;
   font-weight: 400;
@@ -2763,7 +2744,7 @@ li {
   width: 55%;
   margin-bottom: 0px;
   padding-left: 20px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
 }
 
@@ -2781,7 +2762,7 @@ li {
 
 .video-caption {
   margin-top: 20px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1em;
   text-align: left;
 }
@@ -2885,7 +2866,7 @@ li {
 .golden-number {
   margin-top: 5px;
   margin-bottom: 15px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a5c1c3;
   font-size: 32px;
   line-height: 23px;
@@ -2894,7 +2875,7 @@ li {
 .community-sub {
   margin-top: 0px;
   margin-bottom: 3px;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 22px;
   line-height: 34px;
@@ -2938,12 +2919,12 @@ li {
 
 .sub-sub-heading.community {
   margin-bottom: 60px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
 }
 
 .doors-open {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 18px;
@@ -2971,7 +2952,7 @@ li {
 .small-text {
   width: 347px;
   max-width: 100%;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 18px;
@@ -3006,7 +2987,7 @@ li {
 
 .teaching-text {
   margin-bottom: 34px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   line-height: 30px;
 }
@@ -3033,7 +3014,7 @@ li {
   margin-right: 25px;
   padding-right: 45px;
   padding-bottom: 7px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a1a1a1;
   font-size: 16px;
   line-height: 20px;
@@ -3124,7 +3105,7 @@ li {
   background-color: #2f2f2f;
   -webkit-transition: color 200ms ease, background-color 200ms ease;
   transition: color 200ms ease, background-color 200ms ease;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #a1a1a1;
   font-size: 14px;
   line-height: 16px;
@@ -3410,7 +3391,7 @@ li {
   display: block;
   margin-top: 0px;
   margin-right: 3px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 30px;
@@ -3513,7 +3494,7 @@ li {
 }
 
 .white-heading {
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #fff;
   font-weight: 500;
 }
@@ -3530,7 +3511,7 @@ li {
 }
 
 .hold-series-description {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .series-banner {
@@ -3575,7 +3556,7 @@ li {
   width: 761px;
   margin-right: auto;
   margin-left: auto;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #7d7d7d;
   font-size: 22px;
   line-height: 33px;
@@ -3589,7 +3570,7 @@ li {
 .practice-sub-heading {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: 'Maisonneue demi', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 20px;
   line-height: 23px;
@@ -3712,7 +3693,7 @@ li {
 }
 
 .event-location {
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
@@ -3749,7 +3730,7 @@ li {
   top: auto;
   right: auto;
   bottom: 0%;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #fff;
   font-size: 36px;
   line-height: 65px;
@@ -3781,7 +3762,7 @@ li {
 
 .lewis {
   margin-top: -15px;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   letter-spacing: 2.1px;
   text-transform: uppercase;
@@ -3861,7 +3842,7 @@ li {
 .dark-heading {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #171717;
   font-size: 14px;
   line-height: 13px;
@@ -3936,7 +3917,7 @@ li {
   background-color: #a5c1c3;
   -webkit-transition: color 200ms ease, background-color 200ms ease;
   transition: color 200ms ease, background-color 200ms ease;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
   font-size: 14px;
   line-height: 16px;
@@ -3970,7 +3951,7 @@ li {
 
 .half-width {
   width: 60%;
-  font-family: 'Maisonneue book', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   letter-spacing: 0.3px;
 }
@@ -3981,7 +3962,7 @@ li {
 
 .dark-sub-heading {
   margin-bottom: 14px;
-  font-family: Maisonneue, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
   line-height: 45px;
 }
@@ -5264,7 +5245,7 @@ li {
   }
   .nav-sub-link {
     margin-bottom: 15px;
-    font-family: 'Maisonneue book', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.4px;
@@ -6313,7 +6294,7 @@ li {
     padding-left: 0px;
   }
   .div-block-5 {
-    font-family: 'Maisonneue book', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
   }
   .stories-hero {
@@ -16276,36 +16257,7 @@ li {
     grid-column-start: 1;
   }
 }
-@font-face {
-  font-family: 'Maisonneue demi';
-  src: url('../fonts/MaisonNeue-Demi.woff2') format('woff2'), url('../fonts/MaisonNeue-Book.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Maisonneue book';
-  src: url('../fonts/MaisonNeue-Book.woff2') format('woff2'), url('../fonts/MaisonNeue-Book.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Maisonneue';
-  src: url('../fonts/MaisonNeue-BookItalic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Maisonneue';
-  src: url('../fonts/MaisonNeue-Medium.woff2') format('woff2'), url('../fonts/MaisonNeue-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Maisonneue';
-  src: url('../fonts/MaisonNeue-BookItalic.woff') format('woff');
-  font-weight: 500;
-  font-style: italic;
-}
+/* Removed second Maison Neue @font-face block; Inter loads via base.html. */
 
 /* === reset.css === */
 /*--------------------------------*/
@@ -16328,7 +16280,7 @@ li {
 
 /* === body.css === */
 body {
-	font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+	font-family: 'Inter', 'Montserrat', sans-serif;
 	
 	--side-padding: 8vw;
 }
@@ -16700,7 +16652,7 @@ a {
 		    text-align: center;
 		    text-transform: uppercase;
 		    display: inline-block;
-			font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+			font-family: 'Inter', 'Montserrat', sans-serif;
 			letter-spacing: 2.1px;
 			text-decoration: none;
 			color: #fff;
@@ -17137,7 +17089,7 @@ a {
 		/*--FEATURED TAG--*/		
 		.featured-tag {
 			margin-bottom: 35px;
-			font-family: 'Maisonneue book', sans-serif;
+			font-family: 'Inter', sans-serif;
 			color: #a1a1a1;
 			font-size: 14px;
 			letter-spacing: 2px;
@@ -17944,7 +17896,7 @@ a {
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-	font-family: 'Maisonneue book', sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 11px;
 	text-align: right;
 	letter-spacing: 1px;
@@ -18070,7 +18022,7 @@ a {
 					padding-bottom: 3px;
 				}
 				#summary-title .summary-sub-heading {
-					font-family: 'Maisonneue book', sans-serif;
+					font-family: 'Inter', sans-serif;
 					color: #5d5d5d;
 					font-size: 14px;
 					line-height: 1em;
@@ -18093,7 +18045,7 @@ a {
 			display: none;
 		}
 			#sermon-summary-container .sermon-links a {
-				font-family: 'Maisonneue book', sans-serif;
+				font-family: 'Inter', sans-serif;
 				font-size: 11px;
 				text-align: right;
 				letter-spacing: 1px;
@@ -18374,7 +18326,7 @@ nav .textwidget a,
 	position: relative;
 	
 	display: inline-block;
-	font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+	font-family: 'Inter', 'Montserrat', sans-serif;
 	color: #a5c1c3;
 	font-size: 14px;
 	line-height: 22px;
@@ -18490,7 +18442,7 @@ nav .textwidget a,
 			margin-right: auto;
 			margin-left: auto;
 			padding-top: 0;
-			font-family: 'Maisonneue demi', sans-serif;
+			font-family: 'Inter', sans-serif;
 			color: #333;
 			font-size: 14px;
 			font-weight: 600;
@@ -18628,7 +18580,7 @@ nav .textwidget a,
 }
 	h1 {
 		margin-bottom: 0;
-		font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+		font-family: 'Inter', 'Montserrat', sans-serif;
     	font-size: 64px;
     	line-height: 70px;
    		font-weight: 500;
@@ -18654,7 +18606,7 @@ nav .textwidget a,
 	#main > h2 {
 	    margin-top: 0px;
 	    margin-bottom: 10px;
-	    font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+	    font-family: 'Inter', 'Montserrat', sans-serif;
 	    color: #333;
 	    font-size: 36px;
 	    line-height: 52px;
@@ -18672,7 +18624,7 @@ nav .textwidget a,
     width: 972px;
     max-width: 90%;
     margin: 29px auto 0px;
-    font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+    font-family: 'Inter', 'Montserrat', sans-serif;
     font-size: 22px;
     line-height: 30px;
     
@@ -18696,7 +18648,7 @@ nav .textwidget a,
 	}
 	
 	#main > p.big {
-	    font-family: 'Maisonneue demi', sans-serif;
+	    font-family: 'Inter', sans-serif;
 	    color: #333;
 	    font-size: 2.6vw;
 	    line-height: 48px;
@@ -18754,7 +18706,7 @@ nav .textwidget a,
     width: 972px;
     max-width: 90%;
     margin: 29px auto 0px;
-    font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+    font-family: 'Inter', 'Montserrat', sans-serif;
     color: #7d7d7d;
     font-size: 22px;
     font-weight: 600;
@@ -18793,7 +18745,7 @@ nav .textwidget a,
 	width: 972px;
     max-width: 90%;
     margin: 29px auto 0px;
-    font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+    font-family: 'Inter', 'Montserrat', sans-serif;
     color: #7d7d7d;
     font-size: 22px;
     line-height: 34px;
@@ -18968,7 +18920,7 @@ nav .textwidget a,
 				    /*width: 85%;
 				    max-width: 90%;*/
 				    margin-top: 40px;
-				    font-family: 'Maisonneue book', sans-serif;
+				    font-family: 'Inter', sans-serif;
 				    color: #7d7d7d;
 				    line-height: 30px;
 				    letter-spacing: 0.4px;
@@ -19003,7 +18955,7 @@ nav .textwidget a,
 		color: #a5c1c3;
 	    font-size: 32px;
 	    font-weight: 600;
-	    font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+	    font-family: 'Inter', 'Montserrat', sans-serif;
 	    margin: 0;
 	    display: inline-block;
 	    width: 50px;	
@@ -19241,7 +19193,7 @@ body.post-type-archive-sermon .footer {
 		margin-right: 30px;
 		padding-right: 30px;
 		padding-bottom: 7px;
-		font-family: 'Maisonneue book', sans-serif;
+		font-family: 'Inter', sans-serif;
 		color: #a1a1a1;
 		font-size: 14px;
 		line-height: 20px;
@@ -19412,7 +19364,7 @@ body.post-type-archive-sermon .footer {
     background-color: #2f2f2f;
     -webkit-transition: color 200ms ease, background-color 200ms ease;
     transition: color 200ms ease, background-color 200ms ease;
-    font-family: 'Maisonneue book', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: #a1a1a1;
     font-size: 14px;
     line-height: 16px;
@@ -20101,7 +20053,7 @@ body.post-type-archive-sermon .footer {
 		.slider-text {
 			margin-top: 30px;
 			margin-bottom: 30px;
-			font-family: 'Maisonneue book', sans-serif;
+			font-family: 'Inter', sans-serif;
 			color: #7d7d7d;
 			font-size: 16px;
 			line-height: 27px;
@@ -20224,7 +20176,7 @@ body.post-type-archive-sermon .footer {
 						.event-title {
 							margin-top: 0px;
 							margin-bottom: 9px;
-							font-family: Maisonneue, sans-serif;
+							font-family: 'Inter', sans-serif;
 							color: #333;
 							font-weight: 500;
 							line-height: 30px;
@@ -20637,7 +20589,7 @@ body.post-type-archive-sermon .footer {
 			.series-parent-flex h1 {
 			    font-size: 36px;
 			    line-height: 1.2em;
-			    font-family: Maisonneue, sans-serif;
+			    font-family: 'Inter', sans-serif;
 			    color: #fff;
 			    font-weight: 500;
 			}
@@ -21235,7 +21187,7 @@ body.post-type-archive-sermon .footer {
 				padding: 0;
 				font-weight: 600 !important;
 				text-transform: uppercase;
-				font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+				font-family: 'Inter', 'Montserrat', sans-serif;
 				letter-spacing: 1px;
 			}
 			
@@ -21312,7 +21264,7 @@ body.post-type-archive-sermon .footer {
 								padding: 0;
 								font-weight: 500;
 								transition: color .3s;
-								font-family: 'Maisonneue book', 'Montserrat', sans-serif;
+								font-family: 'Inter', 'Montserrat', sans-serif;
 							}
 								/*HOVER*/
 								#mega-menu-wrap-footer #mega-menu-footer > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover {
@@ -21361,7 +21313,7 @@ body.post-type-archive-sermon .footer {
 					    top: auto;
 					    right: auto;
 					    bottom: 0%;
-					    font-family: 'Maisonneue book', sans-serif;
+					    font-family: 'Inter', sans-serif;
 					    color: #fff;
 					    font-size: 36px;
 					    line-height: 65px;
@@ -26274,14 +26226,13 @@ html {
 }
 
 /* ================================================================
-   HEADINGS — Maison Neue 
-   Weight 500 = MaisonNeue-Medium (the family only ships Book/Medium/Demi,
-   no Black; 500 matches h1). Body/running text stays Playfair
-   Display (see "Main text" block above). This block is last in source order
-   so it wins over the earlier Playfair heading rules.
+   HEADINGS — Inter (Google Fonts, free; swapped in for Maison Neue).
+   Body/running text stays Playfair Display (see "Main text" block
+   above). This block is last in source order so it wins over the
+   earlier Playfair heading rules.
    ================================================================ */
 :root {
-  --font-heading: 'Maisonneue', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6,
