@@ -295,6 +295,10 @@
     .teachings-page .camp-tabnav {
       gap: 4px;
       flex-wrap: nowrap;
+      /* Shrink to content so the .camp-tabnav border-bottom hugs the
+         last tab instead of trailing across the empty right side of
+         the 1200 px container. */
+      width: fit-content;
     }
     .teachings-page .camp-tabnav a.camp-tab {
       padding: 16px 14px;
