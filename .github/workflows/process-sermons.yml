@@ -115,14 +115,15 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m scripts.backfill_titles
 
-      # Opt-in step: re-title sermons stuck on the generic "Open Kerk online
-      # dienst" placeholder by sampling the MIDDLE of their transcript and
-      # asking gpt-4o for a specific theme. Only runs when explicitly
-      # requested via workflow_dispatch to avoid silently re-titling on
-      # every cron tick. ~$0.005 per video, idempotent (skips rows that
-      # are no longer generic after a previous run).
+      # Self-healing step: re-title sermons stuck on the generic
+      # "Open Kerk online dienst" placeholder by sampling the MIDDLE of
+      # their transcript (where the actual preaching happens) and asking
+      # gpt-4o for a specific theme. Runs every cron tick — idempotent,
+      # only acts on rows whose current display_title_nl is still
+      # generic, so on a typical Sunday with no newly-generic titles
+      # this is a no-op. ~$0.005 per video that genuinely needs fixing.
       - name: Relabel generic-titled sermons
-        if: github.event.inputs.relabel_generic == 'true'
+        if: github.event_name != 'push'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m scripts.relabel_generic
@@ -218,6 +219,27 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
           exit 0
+
+      # Free disk on the runner before Docker buildx fills it. The
+      # process_video step downloads MP4s + extracts audio to /tmp; on a
+      # cron run with two long sermons that's 2-3 GB of leftover files.
+      # The buildx step then has to install PyTorch (huge wheel) inside
+      # the container — without this cleanup we've hit "No space left on
+      # device" mid-pip-install. apt-get clean + /tmp purge frees ~5 GB
+      # consistently on the github-hosted runners.
+      - name: Free disk before Docker build
+        if: steps.commit.outputs.changed == 'true' || github.event.inputs.force_deploy == 'true' || github.event_name == 'push'
+        run: |
+          df -h /
+          sudo rm -rf /tmp/tmp* /tmp/*.mp4 /tmp/*.ogg /tmp/sermons.backup.db 2>/dev/null || true
+          sudo apt-get clean
+          # Remove preinstalled toolchains we don't use to reclaim space on
+          # standard github-hosted runners. Safe — none of these are used
+          # by the Docker buildx step.
+          sudo rm -rf /usr/share/dotnet /opt/ghc /opt/hostedtoolcache/CodeQL \
+                      /usr/local/lib/android /usr/share/swift 2>/dev/null || true
+          docker system prune -af --volumes 2>/dev/null || true
+          df -h /
 
       # Below: only fires when the commit step actually committed. Rebuilds
       # the Docker image with the new DB+VTTs baked in, pushes to DOCR, and
