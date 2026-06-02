@@ -20,11 +20,19 @@ collections:
       en: Essentials
       fr: Essentiels
       es: Esenciales
-    # Hand-pick 5-10 starting-point sermons for new visitors. Suggestions
-    # to consider: foundational teachings, "Welkom in Open Kerk" intro
-    # sermons, "Genade", core gospel content. Left empty so you curate
-    # this one yourself.
-    vimeo_ids: []
+    # Foundational sermons for new visitors — welcome message, the gospel,
+    # the person of Jesus, grace, repentance, scripture, surrender, trust.
+    # Time-bound or seasonal "Welkom" sermons (e.g. Paasmaand, schooljaar)
+    # deliberately excluded.
+    vimeo_ids:
+      - 1173724658  # Welkom in Open Kerk: Ontdek de Heer in je leven
+      - 1059428265  # Genade: Het Onverdiende Geschenk van God
+      - 900522136   # Jezus als Centrum van ons Leven
+      - 1009585364  # Welkom in de Kerk: Het Goede Nieuws van Jezus
+      - 1032781865  # Kom tot Jezus: Leg alles bij het kruis neer
+      - 1158094840  # Gods Woord: De Rots van ons Leven en de Betekenis van Open Kerk
+      - 1124573460  # Geef Jezus Alles - Open je Hart voor de Koning
+      - 1102883047  # Terugbrengen in geloof: Vertrouwen in de Goede Vader
 
   eerdere_reeksen:
     label:
