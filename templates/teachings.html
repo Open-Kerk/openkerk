@@ -255,61 +255,43 @@
     background-color: inherit !important;
   }
 
-  /* ─── Tab nav: mobile horizontal scroll ─────────────────────────────────
-     The base theme floats each .sub-nav-link with 60px of horizontal space
-     per item; that wraps into a messy 4-line stack on phones once we have
-     5+ collection tabs. On ≤768px we override to a flex/nowrap row that
-     scrolls horizontally, with smaller pills and a fade hint on the right
-     edge that more content is off-screen. */
+  /* ─── Collections tabs (reuses /kampen's camp-tab styling) ────────────
+     The camp-tab CSS in main.css drives the active state via
+     `:checked ~ .camp-tabnav label[for=...]` — but our tabs are <a>
+     elements (one URL per collection), so :checked never matches. Mirror
+     the same active treatment here for `<a>.camp-tab.current`, both
+     desktop (underline accent) and mobile (yellow left-border + tint).
+     Also constrain the container so it spans the page width sensibly
+     instead of the kampen-tab's fixed 1100px. */
+  .teachings-page .camp-tabs.collections-tabs {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+    box-sizing: border-box;
+  }
+  /* camp-tab was authored for <label> elements; <a> needs the default
+     underline + visited-link color killed off. */
+  .teachings-page .camp-tabnav a.camp-tab,
+  .teachings-page .camp-tabnav a.camp-tab:visited {
+    text-decoration: none;
+  }
+  /* Active desktop tab — underline accent in brand-secondary. */
+  .teachings-page .camp-tabnav a.camp-tab.current {
+    color: #1c1c1c;
+    border-bottom-color: var(--brand-secondary, #ffd862);
+  }
   @media (max-width: 768px) {
-    .teachings-page .tab-nav-container {
-      /* Bleed to the screen edges so the scroll strip uses the full width,
-         and clip scroll content inside it. Margins are restored by per-tab
-         padding so the first/last pills still have breathing room. */
-      margin-left: 0; margin-right: 0;
-      padding: 16px 0 0;
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x proximity;
-      scrollbar-width: none;            /* Firefox */
-      -webkit-overflow-scrolling: touch;
-      position: relative;
+    .teachings-page .camp-tabs.collections-tabs {
+      padding: 0;
     }
-    .teachings-page .tab-nav-container::-webkit-scrollbar { display: none; }
-    .teachings-page .tab-nav-container::after { content: none; } /* clearfix kill */
-
-    .teachings-page .tab-nav-container .sub-nav-link {
-      float: none;
-      display: inline-block;
-      flex: 0 0 auto;
-      margin: 0;
-      padding: 8px 14px;
-      line-height: 1.3;
-      font-size: 13px;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-      scroll-snap-align: start;
-      border: 1px solid rgba(0,0,0,0.10);
-      border-radius: 999px;
-      color: #333;
-      background: #fff;
+    /* Active mobile tab — yellow left accent + soft fill, matches kampen. */
+    .teachings-page .camp-tabnav a.camp-tab.current {
+      border-color: var(--brand-primary, #a5c1c3);
+      border-left-color: var(--brand-secondary, #ffd862);
+      background: rgba(255, 216, 98, 0.14);
+      color: #1c1c1c;
     }
-    .teachings-page .tab-nav-container .sub-nav-link + .sub-nav-link { margin-left: 6px; }
-    .teachings-page .tab-nav-container .sub-nav-link:first-child { margin-left: var(--side-padding); }
-    .teachings-page .tab-nav-container .sub-nav-link:last-child  { margin-right: var(--side-padding); }
-    .teachings-page .tab-nav-container .sub-nav-link.current {
-      color: #fff;
-      background: var(--brand-primary, #b8860b);
-      border-color: var(--brand-primary, #b8860b);
-    }
-
-    /* The search icon + Reality SF search form live inside the same tab
-       row in markup; on mobile they don't fit alongside the pills. Hide
-       them — the hero already has our search input/button. */
-    .teachings-page .tab-nav-container .search-icon,
-    .teachings-page .tab-nav-container #search-box { display: none; }
   }
 </style>
 
@@ -339,18 +321,25 @@
  {# Tab nav fed by data/collections.yaml. The "All" tab is the default
     /teachings view (no ?collection= filter); each curated collection
     appears with its localised label. .current flips based on whether
-    a ?collection= query is active. #}
- <div class="tab-nav-container">
-  <a href="{{ url_for('teachings') }}"
-     class="sub-nav-link {% if not current_collection %}current{% endif %}">
-   {{ t('teachings.tab_current') }}
-  </a>
-  {% for c in collections %}
-   <a href="{{ url_for('teachings', collection=c.key) }}"
-      class="sub-nav-link {% if current_collection == c.key %}current{% endif %}">
-    {{ c.label }}
+    a ?collection= query is active.
+
+    Markup adopts the same look as /kampen's camp-tab switcher — horizontal
+    underlined tabs on desktop, stacked yellow-accent pills on mobile. Our
+    tabs are real URLs (one page per collection) so we use <a> instead of
+    the CSS-radio pattern the kampen page uses. #}
+ <div class="camp-tabs collections-tabs">
+  <div class="camp-tabnav" role="tablist">
+   <a href="{{ url_for('teachings') }}"
+      class="camp-tab {% if not current_collection %}current{% endif %}">
+    {{ t('teachings.tab_current') }}
    </a>
-  {% endfor %}
+   {% for c in collections %}
+    <a href="{{ url_for('teachings', collection=c.key) }}"
+       class="camp-tab {% if current_collection == c.key %}current{% endif %}">
+     {{ c.label }}
+    </a>
+   {% endfor %}
+  </div>
  </div>
 
  {# Series header: image + meta + title + description above the listing.
@@ -550,7 +539,7 @@
   var filterBar   = document.querySelector('.audio-filter-container');
   var pag         = document.querySelector('.teachings-pagination');
   var seriesHead  = document.querySelector('.flex-cat-parent');
-  var tabNav      = document.querySelector('.tab-nav-container');
+  var tabNav      = document.querySelector('.collections-tabs');
   var backBtn     = document.getElementById('hero-back-button');
   if (!form) return;
 
