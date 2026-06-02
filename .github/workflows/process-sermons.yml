@@ -39,6 +39,10 @@ on:
         description: 'Build + push image + deploy even if no DB changes (use for template-only updates)'
         required: false
         default: 'false'
+      relabel_generic:
+        description: 'Re-title sermons stuck on the generic "Open Kerk online dienst" placeholder, then deploy'
+        required: false
+        default: 'false'
 
 # Only one run at a time — they all write to the same sermons.db.
 concurrency:
@@ -90,6 +94,17 @@ jobs:
           VIMEO_USER_ID: ${{ secrets.VIMEO_USER_ID }}
         run: python -m scripts.sync_vimeo
 
+      # Idempotent — only acts on videos with no privacy_whitelist_at
+      # timestamp (i.e. just synced for the first time). Existing rows
+      # were backfilled by the migration so the typical Sunday run
+      # touches just the new sermon(s).
+      - name: Whitelist embed privacy for newly-synced videos
+        if: github.event_name != 'push'
+        env:
+          VIMEO_TOKEN: ${{ secrets.VIMEO_TOKEN }}
+          VIMEO_USER_ID: ${{ secrets.VIMEO_USER_ID }}
+        run: python -m scripts.set_privacy
+
       # Self-healing step: any 'done' video that still has NULL display_title_nl
       # gets a clean title + en/fr/es translations generated from its existing
       # transcript. Happens before the main process step so even an empty
@@ -99,6 +114,18 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m scripts.backfill_titles
+
+      # Opt-in step: re-title sermons stuck on the generic "Open Kerk online
+      # dienst" placeholder by sampling the MIDDLE of their transcript and
+      # asking gpt-4o for a specific theme. Only runs when explicitly
+      # requested via workflow_dispatch to avoid silently re-titling on
+      # every cron tick. ~$0.005 per video, idempotent (skips rows that
+      # are no longer generic after a previous run).
+      - name: Relabel generic-titled sermons
+        if: github.event.inputs.relabel_generic == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python -m scripts.relabel_generic
 
       # Per-video loop: process ONE video, commit + push, repeat. This
       # keeps progress durable on long backfill runs — if the job is

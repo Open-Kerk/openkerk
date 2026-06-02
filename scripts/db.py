@@ -147,6 +147,17 @@ def _migrate(conn: sqlite3.Connection) -> None:
         col = f'display_title_{lang}'
         if col not in cols:
             conn.execute(f'ALTER TABLE videos ADD COLUMN {col} TEXT')
+    # Tracks when set_privacy successfully whitelisted this video's
+    # embed setting on Vimeo. NULL = needs whitelisting (a brand-new
+    # video freshly inserted by sync_vimeo). Existing rows at migration
+    # time were all whitelisted during the initial bulk run, so we
+    # backfill them with CURRENT_TIMESTAMP so the cron doesn't redo them.
+    if 'privacy_whitelist_at' not in cols:
+        conn.execute('ALTER TABLE videos ADD COLUMN privacy_whitelist_at TEXT')
+        conn.execute(
+            'UPDATE videos SET privacy_whitelist_at = CURRENT_TIMESTAMP '
+            'WHERE privacy_whitelist_at IS NULL'
+        )
 
 
 def init_db(path: str = DB_PATH) -> None:
