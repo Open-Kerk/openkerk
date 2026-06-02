@@ -8,18 +8,11 @@
 #   /teachings/<vimeo_id>
 # Or query the DB:
 #   sqlite3 data/sermons.db "select vimeo_id, display_title_nl from videos where transcript_status='done'"
+#
+# Each vimeo_id has a NL-title comment beside it for editing convenience;
+# the title text is informational only — the system uses just the id.
 
 collections:
-
-  eerdere_reeksen:
-    label:
-      nl: Eerdere reeksen
-      en: Previous series
-      fr: Séries précédentes
-      es: Series anteriores
-    vimeo_ids: []
-      # - 1192968558
-      # - 1190894882
 
   essenties:
     label:
@@ -27,5 +20,120 @@ collections:
       en: Essentials
       fr: Essentiels
       es: Esenciales
+    # Hand-pick 5-10 starting-point sermons for new visitors. Suggestions
+    # to consider: foundational teachings, "Welkom in Open Kerk" intro
+    # sermons, "Genade", core gospel content. Left empty so you curate
+    # this one yourself.
     vimeo_ids: []
-      # - 1175906597
+
+  eerdere_reeksen:
+    label:
+      nl: Eerdere reeksen
+      en: Previous series
+      fr: Séries précédentes
+      es: Series anteriores
+    # Two distinct multi-part teaching series from Dec 2022, kept together
+    # because they were a single conference weekend:
+    #   • "Bidden & Vasten" (5+ episodes on prayer and fasting)
+    #   • "OPEN over Relaties" weekend (family, marriage, parenting, etc.)
+    vimeo_ids:
+      - 781934753   # Goddelijke kinderen opvoeden: Focus op Jezus
+      - 781928678   # Heilig huwelijk: Het is goed met mijn ziel, nu!
+      - 781918669   # Dating: Keuzes die je leven bepalen
+      - 781918375   # Bidden & Vasten: De Kracht van Gebed en Vasten
+      - 781918123   # Bidden & Vasten - Een tijd niet eten
+      - 781917264   # Singles: De Waarheid Over Relaties
+      - 781917015   # Opvoeding: De Basis van Relaties
+      - 781916708   # Familie: Relaties in het Licht van de Bijbel
+      - 781916583   # Bidden & Vasten - Dag 1: Verlangen naar God
+      - 781916514   # Bidden & Vasten - Dag 2: Waarom zou ik vasten?
+      - 781916324   # Bidden & Vasten - Dag 5: Niet mijn wil, maar Uw wil
+      - 781904820   # Bidden & Vasten - Waarom het Huis van Gebed
+      - 781903957   # OPEN over Nieuwe Wijn in Relaties
+      - 781903299   # Specifieke vragen over het huwelijk
+
+  gebed_aanbidding:
+    label:
+      nl: Gebed & Aanbidding
+      en: Prayer & Worship
+      fr: Prière & Adoration
+      es: Oración y Adoración
+    # Sermons centered on prayer, fasting, and worship as the church's
+    # core posture before God.
+    vimeo_ids:
+      - 1190894882  # Pinksteren: De Heilige Geest en onze Vastenperiode
+      - 1180249931  # Aanbidding aan de Naam van Jezus
+      - 1165115041  # Worship: Hart van Dankbaarheid en Generositeit
+      - 1153311294  # Bidden voor Vrijheid in Iran
+      - 1120556193  # Aanbidding door Geven: 1 Corinthe 16
+      - 1044049031  # Jezus, Mijn Enige Verlangen: Een Gebed
+      - 1030449835  # Heilige Ochtend: Samen Bidden voor Israël
+      - 1000041430  # De prioriteit van gezamenlijk gebed
+      - 987936095   # Worship is Geven: De Geur van Dankbaarheid
+      - 952812797   # Bidden voor Vaders
+      - 931703815   # Hoe te Bidden: Een Leerschool voor Gelovigen
+      - 924318337   # Bidden voor Genezing en Herstel
+      - 904899835   # Vasten en Zaaien: De Oogst van Geestelijke Groei
+      - 874496611   # Mensen van het Licht: De Kracht van Gebed
+      - 872269728   # Israël, Gods Volk: Een Oproep tot Gebed
+      - 854102960   # Aanbidding in Eén Geest
+      - 852070391   # Open Kerk online dienst: De Kracht van Gebed en Aanbidding
+      - 826616650   # Aanbidding en de Komst van de Geest
+      - 800258987   # Heer, ik geef u mijn hart: een gebed van overgave
+      - 789431609   # Vasten en Toewijding
+
+  geven_vrijgevigheid:
+    label:
+      nl: Geven & Vrijgevigheid
+      en: Giving & Generosity
+      fr: Don & Générosité
+      es: Dar y Generosidad
+    # Biblical stewardship — a recurring teaching pillar at Open Kerk.
+    vimeo_ids:
+      - 1175906597  # Geven en Ontvangen: De Kracht van het Bloed
+      - 1162991205  # Geven vanuit een Hart: Besluit en Bemoediging
+      - 1128593931  # Glow for Jesus: Licht en Vrijgevigheid
+      - 1100968198  # Verantwoord omgaan met wat God ons heeft gegeven
+      - 1100959483  # Geven en Rijkdom: Schat in de Hemel (Matthäus 6)
+      - 1081211665  # Geef aan de Heer: Rijkdom in Lukas 12
+      - 1068563617  # Geven met een Blij Hart: Samen Delen
+      - 1041494514  # Samen bouwen aan dankbaarheid en geven
+      - 1037158326  # Collecte inleiding: Gul geven met een blij hart
+      - 1021394317  # Zoek de Rijkdommen in de Hemel
+      - 1013987084  # Geven voor het Nieuwe Gebouw
+      - 918833080   # Geven als Zaadzaaien: De Belofte van Oogst
+      - 909696024   # Geven met een Blij Hart: De Kracht van Goddelijke Liefde
+      - 862854082   # Geopende Deuren: Wandelen op de Smalle Weg van Geven
+      - 847715372   # Geld en Geven: Wie Dien Je?
+      - 845660814   # Vrijgevigheid leidt tot dankzegging aan God
+      - 833008254   # Geven als Aanbidding
+      - 796002201   # Geven en Oogsten: De Wet van Zaaien
+
+  gezin_relaties:
+    label:
+      nl: Gezin & Relaties
+      en: Family & Relationships
+      fr: Famille & Relations
+      es: Familia y Relaciones
+    # Marriage, parenting, singles, dating — covers the relationship
+    # series from Dec 2022 plus standalone family sermons over the years.
+    vimeo_ids:
+      - 1184524041  # Gezegende Gezinnen: Eenheid in de Naam van Jezus
+      - 1139780127  # Opstanding van kinderen in de schaduw
+      - 1114618592  # Zegen voor Gezinnen en Vertrouwen in God
+      - 1104869915  # Samen zorgen voor onze kinderen en jongelui
+      - 1085424779  # Gezinnen in Jezus' Naam: Opvoeden
+      - 1023680649  # Vrijheid in Relaties - Onderwijs over Verbondenheid
+      - 955447767   # Babyzegendienst: God is Liefdevol en Goed
+      - 952812797   # Bidden voor Vaders
+      - 942930224   # Zegenen van Moeders
+      - 883695038   # Huwelijk in de Heilige Geest: Bescherming en Eenheid
+      - 879114242   # Relaties: Gods Cultuur
+      - 781934753   # Goddelijke kinderen opvoeden
+      - 781928678   # Heilig huwelijk
+      - 781918669   # Dating: Keuzes die je leven bepalen
+      - 781917264   # Singles
+      - 781917015   # Opvoeding
+      - 781916708   # Familie
+      - 781903957   # OPEN over Nieuwe Wijn in Relaties
+      - 781903299   # Specifieke vragen over het huwelijk
