@@ -56,6 +56,12 @@ jobs:
         with:
           # We commit back; need a token that can push.
           token: ${{ secrets.GITHUB_TOKEN }}
+          # data/sermons.db has crossed the 100 MB single-file limit so it's
+          # tracked via Git LFS. Without lfs:true the working tree gets the
+          # pointer files (~134 bytes) instead of the real DB, which would
+          # silently break the Docker build (Flask app would see an empty
+          # archive). Bandwidth cost is negligible on the GH-hosted runner.
+          lfs: true
 
       - name: Install system deps
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
