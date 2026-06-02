@@ -244,6 +244,17 @@
     transform: rotate(180deg);
   }
 
+  /* Defuse the Reality SF audio-player .playing state on /teachings rows.
+     If the theme's delegated click handler ever escapes our stopPropagation
+     (race, future change, etc.), the row would otherwise flip to white
+     text on white background and look "scrolled away". Neutralise. */
+  .teachings-page .play-list-item-parent.playing,
+  .teachings-page .play-list-item-parent.featured,
+  .teachings-page .play-list-item-parent.listening-to {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
   /* ─── Tab nav: mobile horizontal scroll ─────────────────────────────────
      The base theme floats each .sub-nav-link with 60px of horizontal space
      per item; that wraps into a messy 4-line stack on phones once we have
@@ -507,15 +518,22 @@
 <script>
 (function () {
   // Whole-row navigation for keyboard + mouse. Avoid swallowing clicks on
-  // genuine inner anchors (none today, but future-proof).
+  // genuine inner anchors (none today, but future-proof). We attach in
+  // CAPTURE phase and stopPropagation so the Reality SF audio-player
+  // delegated handler at the document level (bundle.js line 1925) never
+  // fires for our rows. That handler assumes there's a `.sermon-bar`
+  // audio widget on the page, throws partway through on mobile, and
+  // leaves the row in a `.playing` state — which is what was causing
+  // the white-on-white text "scroll" visual on tap.
   document.querySelectorAll('.play-list-item-parent[data-href]').forEach(function (row) {
     row.style.cursor = 'pointer';
     row.setAttribute('role', 'link');
     row.setAttribute('tabindex', '0');
     row.addEventListener('click', function (e) {
+      e.stopPropagation();
       if (e.target.closest('a')) return;
       window.location.href = row.dataset.href;
-    });
+    }, true);
     row.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
