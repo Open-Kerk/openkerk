@@ -281,17 +281,25 @@
     color: #1c1c1c;
     border-bottom-color: var(--brand-secondary, #ffd862);
   }
-  /* Tighten the desktop tabs so 5 long labels ("Geven & Vrijgevigheid",
-     etc.) fit on one row instead of the last one wrapping below. The
-     camp-tab default is 26px side-padding + 1.5px letter-spacing which
-     pushes the row over our 1200-px container; reduce both, keep the
-     same visual weight. The camp-tabnav also has flex-wrap:wrap which
-     we keep as a safety net for narrower viewports. */
+  /* Tighten the desktop tabs and lock the row to a single line. The
+     camp-tab default (26 px side-pad + 1.5 px letter-spacing) plus the
+     inherited flex-wrap:wrap was kicking the last tab onto a second
+     row at wide-monitor widths because the 1200 px max-width on the
+     container could not always absorb the rounding from the upstream
+     font-weight 700 uppercase rendering. Belt + braces:
+       - tighten padding + letter-spacing
+       - flex-wrap: nowrap so no wrapping is even possible
+       - keep the underline rule on the parent (.camp-tabnav) so the
+         visible "tab strip" line still spans the row at any width */
   @media (min-width: 769px) {
-    .teachings-page .camp-tabnav { gap: 4px; }
+    .teachings-page .camp-tabnav {
+      gap: 4px;
+      flex-wrap: nowrap;
+    }
     .teachings-page .camp-tabnav a.camp-tab {
       padding: 16px 14px;
       letter-spacing: 1px;
+      white-space: nowrap;     /* don't let a label itself wrap either */
     }
   }
   @media (max-width: 768px) {
