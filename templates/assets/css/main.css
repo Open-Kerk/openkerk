@@ -24964,6 +24964,9 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
   color: #666 !important;
   margin: 0 !important;
 }
+.ok-wie-zijn-wij p + p {
+  margin-top: 1.2em !important;
+}
 @media (max-width: 768px) {
   .ok-wie-zijn-wij { padding: 0 24px; margin: 56px auto 32px; }
 }
