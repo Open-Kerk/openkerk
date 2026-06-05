@@ -1,5 +1,5 @@
-/* Inter (free, Google Fonts) replaces the previous Maison Neue stack.
-   Loaded via base.html <link>; no local @font-face needed. */
+/* Plus Jakarta Sans (free, Google Fonts) — the single font family for
+   the whole site. Loaded via base.html <link>; no local @font-face. */
 
 /* === all.min.css === */
 /*!
@@ -37,7 +37,7 @@
    Start of custom Webflow CSS
    ========================================================================== */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #000;
   font-size: 18px;
   line-height: 1.6em;
@@ -46,7 +46,7 @@ body {
 h1 {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 64px;
   line-height: 70px;
   font-weight: 500;
@@ -55,7 +55,7 @@ h1 {
 h2 {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-size: 36px;
   line-height: 52px;
@@ -75,7 +75,7 @@ h3 {
 h5 {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 16px;
   line-height: 17px;
   font-weight: 400;
@@ -183,7 +183,7 @@ li {
   margin-right: auto;
   margin-left: auto;
   padding-top: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-size: 14px;
   font-weight: 600;
@@ -774,7 +774,7 @@ li {
   background-position: 50% 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -822,7 +822,7 @@ li {
 
 .footer-link {
   margin-bottom: 29px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   font-size: 14px;
   line-height: 1.4em;
@@ -851,7 +851,7 @@ li {
 
 .grey-text.location {
   width: 142px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a1a1a1;
   font-size: 12px;
 }
@@ -893,7 +893,7 @@ li {
 .light-heading {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   font-size: 14px;
   line-height: 13px;
@@ -941,7 +941,7 @@ li {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 20px;
@@ -962,14 +962,14 @@ li {
 
 .footer-text {
   margin-bottom: 35px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 25px;
   font-weight: 400;
   text-align: left;
 }
 
 .footer-text.dark {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
 }
 
@@ -1050,7 +1050,7 @@ li {
 
 .nav-text {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -1111,7 +1111,7 @@ li {
   padding-right: 2px;
   padding-bottom: 0px;
   padding-left: 2px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   letter-spacing: 2.1px;
   text-decoration: none;
@@ -1226,7 +1226,7 @@ li {
 
 .gold-text-link {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a5c1c3;
   font-size: 14px;
   line-height: 22px;
@@ -1247,7 +1247,7 @@ li {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   text-align: right;
   letter-spacing: 2px;
@@ -1283,7 +1283,7 @@ li {
 
 .sub-nav-text {
   margin-bottom: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 24px;
@@ -1546,7 +1546,7 @@ li {
 }
 
 .sermon-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a1a1a1;
   font-size: 14px;
   line-height: 1em;
@@ -1619,7 +1619,7 @@ li {
 }
 
 .total-time {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #878787;
   letter-spacing: 1.4px;
 }
@@ -1642,7 +1642,7 @@ li {
 }
 
 .time-start {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   letter-spacing: 1.4px;
 }
 
@@ -1663,7 +1663,7 @@ li {
   width: 972px;
   max-width: 100%;
   margin: 29px auto 0px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 22px;
   line-height: 34px;
@@ -1674,7 +1674,7 @@ li {
   max-width: none;
   margin-right: -2.5%;
   margin-left: -2.5%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-size: 36px;
   line-height: 48px;
@@ -1716,7 +1716,7 @@ li {
   width: 85%;
   max-width: 90%;
   margin-top: 40px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   line-height: 30px;
   letter-spacing: 0.4px;
@@ -1848,7 +1848,7 @@ li {
 
 .mild-grey-text {
   margin-bottom: 0px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 22px;
 }
@@ -1890,7 +1890,7 @@ li {
 .slider-text {
   margin-top: 30px;
   margin-bottom: 35px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 16px;
   line-height: 27px;
@@ -1975,14 +1975,14 @@ li {
 .event-title {
   margin-top: 0px;
   margin-bottom: 9px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-weight: 500;
 }
 
 .event-description {
   padding-top: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 15px;
   line-height: 27px;
@@ -2029,7 +2029,7 @@ li {
 
 .cs-lewis {
   margin-top: -20px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -2151,7 +2151,7 @@ li {
 }
 
 .description-text-width.left-mobile {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .description-text-width.left-mobile.v2 {
@@ -2171,7 +2171,7 @@ li {
   width: 33.333333333333336%;
   max-width: 22vw;
   margin-bottom: 90px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .description-text-width.series-version.v2 {
@@ -2234,7 +2234,7 @@ li {
 }
 
 .sub-hero-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   letter-spacing: 1.3px;
   text-transform: uppercase;
@@ -2260,7 +2260,7 @@ li {
 }
 
 .div-block-5 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   letter-spacing: 0.3px;
 }
 
@@ -2284,7 +2284,7 @@ li {
 
 .featured-tag {
   margin-bottom: 35px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a1a1a1;
   font-size: 14px;
   letter-spacing: 2px;
@@ -2294,7 +2294,7 @@ li {
 .featured-tag.grey-version {
   margin-top: 60px;
   margin-bottom: 0px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
   font-size: 14px;
   font-weight: 500;
@@ -2569,7 +2569,7 @@ li {
   margin-right: auto;
   margin-bottom: 34px;
   margin-left: auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   line-height: 30px;
   font-weight: 500;
@@ -2581,7 +2581,7 @@ li {
 }
 
 .bolded {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
 }
 
@@ -2627,7 +2627,7 @@ li {
 .about-hero-text {
   width: 540px;
   max-width: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   letter-spacing: 0.3px;
 }
 
@@ -2641,7 +2641,7 @@ li {
 .about-sub-title {
   margin-top: 35px;
   margin-bottom: 35px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-size: 18px;
   line-height: 34px;
@@ -2650,14 +2650,14 @@ li {
 
 .about-text {
   margin-bottom: 35px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   line-height: 34px;
 }
 
 .about-text._5 {
   margin-bottom: 5px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   line-height: 30px;
   font-weight: 400;
@@ -2744,7 +2744,7 @@ li {
   width: 55%;
   margin-bottom: 0px;
   padding-left: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
 }
 
@@ -2762,7 +2762,7 @@ li {
 
 .video-caption {
   margin-top: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1em;
   text-align: left;
 }
@@ -2866,7 +2866,7 @@ li {
 .golden-number {
   margin-top: 5px;
   margin-bottom: 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a5c1c3;
   font-size: 32px;
   line-height: 23px;
@@ -2875,7 +2875,7 @@ li {
 .community-sub {
   margin-top: 0px;
   margin-bottom: 3px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-size: 22px;
   line-height: 34px;
@@ -2919,12 +2919,12 @@ li {
 
 .sub-sub-heading.community {
   margin-bottom: 60px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
 }
 
 .doors-open {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 18px;
@@ -2952,7 +2952,7 @@ li {
 .small-text {
   width: 347px;
   max-width: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 18px;
@@ -2987,7 +2987,7 @@ li {
 
 .teaching-text {
   margin-bottom: 34px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   line-height: 30px;
 }
@@ -3014,7 +3014,7 @@ li {
   margin-right: 25px;
   padding-right: 45px;
   padding-bottom: 7px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a1a1a1;
   font-size: 16px;
   line-height: 20px;
@@ -3105,7 +3105,7 @@ li {
   background-color: #2f2f2f;
   -webkit-transition: color 200ms ease, background-color 200ms ease;
   transition: color 200ms ease, background-color 200ms ease;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #a1a1a1;
   font-size: 14px;
   line-height: 16px;
@@ -3391,7 +3391,7 @@ li {
   display: block;
   margin-top: 0px;
   margin-right: 3px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 14px;
   line-height: 30px;
@@ -3494,7 +3494,7 @@ li {
 }
 
 .white-heading {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   font-weight: 500;
 }
@@ -3511,7 +3511,7 @@ li {
 }
 
 .hold-series-description {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .series-banner {
@@ -3556,7 +3556,7 @@ li {
   width: 761px;
   margin-right: auto;
   margin-left: auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #7d7d7d;
   font-size: 22px;
   line-height: 33px;
@@ -3570,7 +3570,7 @@ li {
 .practice-sub-heading {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #333;
   font-size: 20px;
   line-height: 23px;
@@ -3693,7 +3693,7 @@ li {
 }
 
 .event-location {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
@@ -3730,7 +3730,7 @@ li {
   top: auto;
   right: auto;
   bottom: 0%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   font-size: 36px;
   line-height: 65px;
@@ -3762,7 +3762,7 @@ li {
 
 .lewis {
   margin-top: -15px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   letter-spacing: 2.1px;
   text-transform: uppercase;
@@ -3842,7 +3842,7 @@ li {
 .dark-heading {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #171717;
   font-size: 14px;
   line-height: 13px;
@@ -3917,7 +3917,7 @@ li {
   background-color: #a5c1c3;
   -webkit-transition: color 200ms ease, background-color 200ms ease;
   transition: color 200ms ease, background-color 200ms ease;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
   font-size: 14px;
   line-height: 16px;
@@ -3951,7 +3951,7 @@ li {
 
 .half-width {
   width: 60%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 16px;
   letter-spacing: 0.3px;
 }
@@ -3962,7 +3962,7 @@ li {
 
 .dark-sub-heading {
   margin-bottom: 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: hsla(219.99999999999997, 11.54%, 10.20%, 1.00);
   line-height: 45px;
 }
@@ -5245,7 +5245,7 @@ li {
   }
   .nav-sub-link {
     margin-bottom: 15px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.4px;
@@ -6294,7 +6294,7 @@ li {
     padding-left: 0px;
   }
   .div-block-5 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 16px;
   }
   .stories-hero {
@@ -16280,7 +16280,7 @@ li {
 
 /* === body.css === */
 body {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 	
 	--side-padding: 8vw;
 }
@@ -16652,7 +16652,7 @@ a {
 		    text-align: center;
 		    text-transform: uppercase;
 		    display: inline-block;
-			font-family: 'Inter', 'Montserrat', sans-serif;
+			font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 			letter-spacing: 2.1px;
 			text-decoration: none;
 			color: #fff;
@@ -17089,7 +17089,7 @@ a {
 		/*--FEATURED TAG--*/		
 		.featured-tag {
 			margin-bottom: 35px;
-			font-family: 'Inter', sans-serif;
+			font-family: 'Plus Jakarta Sans', sans-serif;
 			color: #a1a1a1;
 			font-size: 14px;
 			letter-spacing: 2px;
@@ -17896,7 +17896,7 @@ a {
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-	font-family: 'Inter', sans-serif;
+	font-family: 'Plus Jakarta Sans', sans-serif;
 	font-size: 11px;
 	text-align: right;
 	letter-spacing: 1px;
@@ -18022,7 +18022,7 @@ a {
 					padding-bottom: 3px;
 				}
 				#summary-title .summary-sub-heading {
-					font-family: 'Inter', sans-serif;
+					font-family: 'Plus Jakarta Sans', sans-serif;
 					color: #5d5d5d;
 					font-size: 14px;
 					line-height: 1em;
@@ -18045,7 +18045,7 @@ a {
 			display: none;
 		}
 			#sermon-summary-container .sermon-links a {
-				font-family: 'Inter', sans-serif;
+				font-family: 'Plus Jakarta Sans', sans-serif;
 				font-size: 11px;
 				text-align: right;
 				letter-spacing: 1px;
@@ -18326,7 +18326,7 @@ nav .textwidget a,
 	position: relative;
 	
 	display: inline-block;
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 	color: #a5c1c3;
 	font-size: 14px;
 	line-height: 22px;
@@ -18442,7 +18442,7 @@ nav .textwidget a,
 			margin-right: auto;
 			margin-left: auto;
 			padding-top: 0;
-			font-family: 'Inter', sans-serif;
+			font-family: 'Plus Jakarta Sans', sans-serif;
 			color: #333;
 			font-size: 14px;
 			font-weight: 600;
@@ -18580,7 +18580,7 @@ nav .textwidget a,
 }
 	h1 {
 		margin-bottom: 0;
-		font-family: 'Inter', 'Montserrat', sans-serif;
+		font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
     	font-size: 64px;
     	line-height: 70px;
    		font-weight: 500;
@@ -18606,7 +18606,7 @@ nav .textwidget a,
 	#main > h2 {
 	    margin-top: 0px;
 	    margin-bottom: 10px;
-	    font-family: 'Inter', 'Montserrat', sans-serif;
+	    font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 	    color: #333;
 	    font-size: 36px;
 	    line-height: 52px;
@@ -18624,7 +18624,7 @@ nav .textwidget a,
     width: 972px;
     max-width: 90%;
     margin: 29px auto 0px;
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
     font-size: 22px;
     line-height: 30px;
     
@@ -18648,7 +18648,7 @@ nav .textwidget a,
 	}
 	
 	#main > p.big {
-	    font-family: 'Inter', sans-serif;
+	    font-family: 'Plus Jakarta Sans', sans-serif;
 	    color: #333;
 	    font-size: 2.6vw;
 	    line-height: 48px;
@@ -18706,7 +18706,7 @@ nav .textwidget a,
     width: 972px;
     max-width: 90%;
     margin: 29px auto 0px;
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
     color: #7d7d7d;
     font-size: 22px;
     font-weight: 600;
@@ -18745,7 +18745,7 @@ nav .textwidget a,
 	width: 972px;
     max-width: 90%;
     margin: 29px auto 0px;
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
     color: #7d7d7d;
     font-size: 22px;
     line-height: 34px;
@@ -18920,7 +18920,7 @@ nav .textwidget a,
 				    /*width: 85%;
 				    max-width: 90%;*/
 				    margin-top: 40px;
-				    font-family: 'Inter', sans-serif;
+				    font-family: 'Plus Jakarta Sans', sans-serif;
 				    color: #7d7d7d;
 				    line-height: 30px;
 				    letter-spacing: 0.4px;
@@ -18955,7 +18955,7 @@ nav .textwidget a,
 		color: #a5c1c3;
 	    font-size: 32px;
 	    font-weight: 600;
-	    font-family: 'Inter', 'Montserrat', sans-serif;
+	    font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 	    margin: 0;
 	    display: inline-block;
 	    width: 50px;	
@@ -19193,7 +19193,7 @@ body.post-type-archive-sermon .footer {
 		margin-right: 30px;
 		padding-right: 30px;
 		padding-bottom: 7px;
-		font-family: 'Inter', sans-serif;
+		font-family: 'Plus Jakarta Sans', sans-serif;
 		color: #a1a1a1;
 		font-size: 14px;
 		line-height: 20px;
@@ -19364,7 +19364,7 @@ body.post-type-archive-sermon .footer {
     background-color: #2f2f2f;
     -webkit-transition: color 200ms ease, background-color 200ms ease;
     transition: color 200ms ease, background-color 200ms ease;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #a1a1a1;
     font-size: 14px;
     line-height: 16px;
@@ -20053,7 +20053,7 @@ body.post-type-archive-sermon .footer {
 		.slider-text {
 			margin-top: 30px;
 			margin-bottom: 30px;
-			font-family: 'Inter', sans-serif;
+			font-family: 'Plus Jakarta Sans', sans-serif;
 			color: #7d7d7d;
 			font-size: 16px;
 			line-height: 27px;
@@ -20176,7 +20176,7 @@ body.post-type-archive-sermon .footer {
 						.event-title {
 							margin-top: 0px;
 							margin-bottom: 9px;
-							font-family: 'Inter', sans-serif;
+							font-family: 'Plus Jakarta Sans', sans-serif;
 							color: #333;
 							font-weight: 500;
 							line-height: 30px;
@@ -20589,7 +20589,7 @@ body.post-type-archive-sermon .footer {
 			.series-parent-flex h1 {
 			    font-size: 36px;
 			    line-height: 1.2em;
-			    font-family: 'Inter', sans-serif;
+			    font-family: 'Plus Jakarta Sans', sans-serif;
 			    color: #fff;
 			    font-weight: 500;
 			}
@@ -21057,7 +21057,7 @@ body.post-type-archive-sermon .footer {
     background-position: right 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #fff;
     font-size: 12px;
     font-weight: 600;
@@ -21187,7 +21187,7 @@ body.post-type-archive-sermon .footer {
 				padding: 0;
 				font-weight: 600 !important;
 				text-transform: uppercase;
-				font-family: 'Inter', 'Montserrat', sans-serif;
+				font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 				letter-spacing: 1px;
 			}
 			
@@ -21264,7 +21264,7 @@ body.post-type-archive-sermon .footer {
 								padding: 0;
 								font-weight: 500;
 								transition: color .3s;
-								font-family: 'Inter', 'Montserrat', sans-serif;
+								font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
 							}
 								/*HOVER*/
 								#mega-menu-wrap-footer #mega-menu-footer > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover {
@@ -21313,7 +21313,7 @@ body.post-type-archive-sermon .footer {
 					    top: auto;
 					    right: auto;
 					    bottom: 0%;
-					    font-family: 'Inter', sans-serif;
+					    font-family: 'Plus Jakarta Sans', sans-serif;
 					    color: #fff;
 					    font-size: 36px;
 					    line-height: 65px;
@@ -24355,7 +24355,7 @@ body.form-loaded #mailchimp #newsletter-loading {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -24491,14 +24491,17 @@ body.form-loaded #mailchimp #newsletter-loading {
     pointer-events: auto !important;
 }
 
-/* ── Main text: Playfair Display Regular ── */
+/* ── Body text: Plus Jakarta Sans Medium 500 / 17 / 30 ── */
 body, p, li, td, blockquote, address,
 .slider-text, .activity-desc, .mild-grey-text,
 #hero-sub-title, .series-description,
 .play-list-item .play-list-description,
 .wp-block-media-text__content p,
 .has-medium-font-size, .tagline {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 17px !important;
+  line-height: 30px !important;
+  font-weight: 500 !important;
 }
 
 /* ================================================================
@@ -24748,7 +24751,7 @@ img {
   justify-content: space-between;
   padding: 18px 4px;
   cursor: pointer;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.375rem;
   font-weight: 600;
   color: #1c1c1c;
@@ -24783,7 +24786,7 @@ img {
   animation: ok-fade-in 0.25s ease;
 }
 .ok-toggle__body p {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.1rem;
   line-height: 1.85;
   color: #555;
@@ -24876,7 +24879,7 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
 
 /* Featured text widget (left column) */
 #mega-menu-wrap-main #mega-menu-main .widget_text .mega-block-title {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
   color: #1c1c1c !important;
@@ -24889,7 +24892,7 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
   color: #777 !important;
   line-height: 1.7 !important;
   margin-bottom: 14px !important;
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 #mega-menu-wrap-main #mega-menu-main .widget_text .textwidget a {
   font-size: 11px !important;
@@ -24950,7 +24953,7 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
   text-align: center;
 }
 .ok-wie-zijn-wij h2 {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-size: clamp(1.8rem, 3.5vw, 3rem) !important;
   font-weight: 400 !important;
   color: #1c1c1c !important;
@@ -24958,7 +24961,7 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
   letter-spacing: 0.02em !important;
 }
 .ok-wie-zijn-wij p {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-size: 1.1rem !important;
   line-height: 1.85 !important;
   color: #666 !important;
@@ -25078,7 +25081,7 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
   cursor: pointer;
   padding: 0 4px;
   height: 80px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -25118,7 +25121,7 @@ h1.all-caps, h2.all-caps, h3.all-caps, h4.all-caps {
 .lang-option {
   display: block;
   padding: 10px 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -25174,7 +25177,7 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
   }
   .lang-mobile-label {
     display: block;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -25196,7 +25199,7 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
     align-items: center;
     width: 100%;
     padding: 14px 18px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -25222,9 +25225,9 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
   }
 }
 
-/* ── Hero titel naar Playfair Display (gelijk aan 'Wie zijn wij') ── */
+/* ── Hero h1 → Plus Jakarta Sans (single-family site) ── */
 #page-hero-content h1 {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
 /* ================================================================
@@ -25264,7 +25267,7 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
   /* +/- indicator */
   .footer-nav-col > summary::after {
     content: '+';
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 20px;
     font-weight: 300;
     line-height: 1;
@@ -25322,7 +25325,7 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
 .activity-listing .activity-meta {
   display: block;
   margin-top: 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -25334,7 +25337,7 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
   margin-bottom: 0;
 }
 .activity-listing .location-slide-link span {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 22px;
   font-weight: 500;
   letter-spacing: 0;
@@ -25343,7 +25346,7 @@ nav #mega-menu-wrap-main #mega-menu-main > li.mega-menu-item:last-child > a.mega
 }
 .activity-listing .activity-desc {
   margin-top: 8px;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
   line-height: 1.7;
   color: #777;
@@ -25462,7 +25465,7 @@ html {
   padding: 64px 32px;
 }
 .live-offline__status {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -25471,7 +25474,7 @@ html {
   margin: 0 0 14px;
 }
 .live-offline__text {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   line-height: 1.6;
   color: #1c1c1c;
@@ -25509,7 +25512,7 @@ html {
 .camp-tab {
   cursor: pointer;
   padding: 16px 26px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -25558,7 +25561,7 @@ html {
 }
 .camp-banner__kicker {
   display: inline-block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -25567,7 +25570,7 @@ html {
   margin-bottom: 10px;
 }
 .camp-banner__title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 500;
   color: #fff !important;
@@ -25575,7 +25578,7 @@ html {
   line-height: 1.1;
 }
 .camp-banner__tagline {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-style: italic;
   font-size: 18px;
   color: rgba(255,255,255,0.9);
@@ -25599,7 +25602,7 @@ html {
   gap: 6px;
 }
 .camp-fact__label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -25607,7 +25610,7 @@ html {
   color: #b0b0b0;
 }
 .camp-fact__value {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 16px;
   color: #1c1c1c;
   line-height: 1.3;
@@ -25615,7 +25618,7 @@ html {
 
 /* ── Intro ── */
 .camp-intro {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   line-height: 1.8;
   color: #555;
@@ -25720,7 +25723,7 @@ html {
   flex-shrink: 0;
 }
 .form-modal__title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -25765,7 +25768,7 @@ html {
 .form-modal__placeholder {
   padding: 60px 32px;
   text-align: center;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   color: #555;
 }
@@ -25812,7 +25815,7 @@ html {
   padding: 28px 26px;
 }
 .bouw-fase__num {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -25820,7 +25823,7 @@ html {
   color: var(--brand-primary, #a5c1c3);
 }
 .bouw-fase__title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 22px;
   font-weight: 500;
   color: #1c1c1c;
@@ -25829,7 +25832,7 @@ html {
   letter-spacing: 0;
 }
 .bouw-fase p {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
   line-height: 1.7;
   color: #666;
@@ -25838,7 +25841,7 @@ html {
 .bouw-fase__plan {
   display: inline-block;
   margin-top: 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -25863,14 +25866,14 @@ html {
 }
 .tijdlijn-item:last-child { border-bottom: 1px solid var(--brand-primary, #a5c1c3); }
 .tijdlijn-jaar {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 26px;
   font-weight: 600;
   color: var(--brand-primary, #a5c1c3);
   line-height: 1.1;
 }
 .tijdlijn-tekst h4 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #1c1c1c;
@@ -25879,7 +25882,7 @@ html {
   letter-spacing: 0;
 }
 .tijdlijn-tekst p {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
   line-height: 1.7;
   color: #666;
@@ -25929,7 +25932,7 @@ html {
 }
 .geven-card__land {
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -25945,7 +25948,7 @@ html {
   column-gap: 16px;
 }
 .geven-card__list dt {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -25955,7 +25958,7 @@ html {
 }
 .geven-card__list dd {
   margin: 0;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   color: #1c1c1c;
 }
@@ -25982,7 +25985,7 @@ html {
   border-radius: 4px;
 }
 .geven-card__qr-label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -26008,7 +26011,7 @@ html {
 }
 .anbi-card__label {
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -26017,7 +26020,7 @@ html {
   margin-bottom: 14px;
 }
 .anbi-card p {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #1c1c1c;
@@ -26031,7 +26034,7 @@ html {
   column-gap: 14px;
 }
 .anbi-card__list dt {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -26041,7 +26044,7 @@ html {
 }
 .anbi-card__list dd {
   margin: 0;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
   color: #1c1c1c;
 }
@@ -26054,7 +26057,7 @@ html {
   padding-left: 20px;
 }
 .anbi-bestuur li {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 18px;
   line-height: 1.5;
   color: #444;
@@ -26101,13 +26104,13 @@ html {
 }
 .anbi-doc__text { flex: 1; display: flex; flex-direction: column; gap: 3px; }
 .anbi-doc__title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #1c1c1c;
 }
 .anbi-doc__desc {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
   color: #777;
 }
@@ -26156,7 +26159,7 @@ html {
 }
 .contact-card__label {
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -26165,7 +26168,7 @@ html {
   margin-bottom: 10px;
 }
 .contact-card__value {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #1c1c1c;
@@ -26229,13 +26232,12 @@ html {
 }
 
 /* ================================================================
-   HEADINGS — Inter (Google Fonts, free; swapped in for Maison Neue).
-   Body/running text stays Playfair Display (see "Main text" block
-   above). This block is last in source order so it wins over the
-   earlier Playfair heading rules.
+   HEADINGS — Plus Jakarta Sans (single font for the whole site).
+   This block is last in source order so it wins over the earlier
+   heading rules inherited from the Reality SF theme.
    ================================================================ */
 :root {
-  --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -26250,6 +26252,24 @@ h1, h2, h3, h4, h5, h6,
 #page-hero-content h1,
 #mega-menu-wrap-main #mega-menu-main .widget_text .mega-block-title {
   font-family: var(--font-heading) !important;
+}
+
+/* H1 / H2 spec (matches the theme builder values), with fluid scaling
+   via clamp() so mobile shrinks gracefully. Desktop targets:
+     H1 = Extra-Bold 800, 68 / 72,  -0.02em
+     H2 = Medium     500, 46 / 56,  -0.03em
+   Mobile floors picked so long titles stay within phone padding.
+   !important so these win over the dozens of upstream h1/h2 rules. */
+h1, #page-hero-content h1 {
+  font-size: clamp(36px, 7.5vw, 68px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 800 !important;
+}
+h2, .ok-wie-zijn-wij h2 {
+  font-size: clamp(28px, 5vw, 46px) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.03em !important;
   font-weight: 500 !important;
 }
 
