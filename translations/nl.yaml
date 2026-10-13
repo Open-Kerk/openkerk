@@ -43,7 +43,6 @@ footer:
   kinderkamp: Kinderkamp
   summercamp: Jong° Summer Camp
   realmencamp: Real Men Camp
-  live: Live
   contact: Contact
   geven: Geven
   anbi: ANBI
@@ -64,7 +63,6 @@ home:
   belief_1_title: God is liefde
   belief_1_body: Het belangrijkste dat een mens over God moet weten is dat Hij goed is. Je kunt op Hem en Zijn Woord vertrouwen. God heeft alles gemaakt en houdt van Zijn schepping. Het is voor jou en mij het beste om op Zijn manier te gaan leven. Het is daarom goed om te beseffen dat God van jou houdt en het beste met je voor heeft. Gods liefde is niet afhankelijk van wat jij presteert of hoe goed je het doet. Hij kent je volledig, met al je sterke en zwakke kanten, en toch kiest Hij ervoor om van je te houden. Door de hele Bijbel heen zien we een God die mensen opzoekt, vergeeft, herstelt en uitnodigt om dicht bij Hem te leven. Zijn liefde geeft hoop, rust en een stevig fundament voor het leven.
   belief_2_title: Jezus is God
-  belief_2_media_title: Jezus is God
   belief_2_body: De Bijbel beschrijft dat God zelf een Mens werd om de vriendschap tussen God en de mensen te herstellen. Door onze vrijheid hebben we naast veel goede dingen, ook veel slechte dingen gedaan. De Bijbel noemt dit zonde en door de zonde werd de vriendschap tussen God en mensen kapot gemaakt. Jezus heeft dit hersteld door voor te doen en te onderwijzen hoe een mens als kind van God kan leven. Jezus stierf voor jouw en mijn zonden aan een kruis, maar stond weer op uit de dood. Door in Hem te geloven krijgen jij en ik weer een nieuw leven; het échte leven, vrij van zonde en in vriendschap met God!
   belief_3_title: De Bijbel is het Woord van God
   belief_3_body: De Bijbel spreekt het eeuwige Woord en Waarheid. Een christen volgt het Woord van God nauwkeurig op. Die gehoorzaamheid zorgt voor een leven met God, in hoop en vrede. Door de Bijbel leert God ons wie Hij is en hoe wij mogen leven. Zijn Woord geeft richting in moeilijke tijden en helpt ons om goede keuzes te maken. De Bijbel is meer dan een verzameling oude verhalen; het is Gods levende boodschap voor mensen van vandaag. Wie de Bijbel leest met een open hart, ontdekt Gods liefde, wijsheid en plan voor zijn leven.
@@ -74,12 +72,6 @@ home:
   belief_5_body: God is één. Hij is de Schepper van alles wat bestaat en Heer over de schepping. God is een Vader omdat Hij ons maakt, leidt en beschermt. God is de Zoon omdat Hij een mens werd om de vriendschap tussen Hem en ons te herstellen. God is de Heilige Geest die in alle mensen woont die in Hem geloven. De Vader, de Zoon en de Heilige Geest zijn niet drie goden, maar één God die Zich op drie manieren aan ons bekendmaakt. Door de Heilige Geest mogen gelovigen elke dag de nabijheid, leiding en kracht van God ervaren.
   belief_6_title: De Grote Opdracht
   belief_6_body: 'Voordat Jezus terugkeerde naar de hemel, gaf Hij Zijn volgelingen een duidelijke opdracht: om het Evangelie bekend te maken en mensen te leren leven als Zijn discipelen. Deze opdracht noemen we de Grote Opdracht. Jezus roept Zijn kerk om Zijn liefde, waarheid en redding te delen met de wereld. Ook wij willen als Open Kerk onze plaats innemen in die opdracht. Hier in Lommel, in deze tijd, verlangen we ernaar dat mensen Jezus leren kennen, groeien in hun geloof en Hem gaan volgen. Daarom bouwen we aan een gemeente waar mensen God kunnen ontmoeten, toegerust worden in Zijn Woord en samen het verschil maken in hun omgeving.'
-  leaders_title: Ontmoet onze leiders
-  leaders_subtitle: Dit zijn de Voorgangers die ons discipelschap brengen.
-  leader_1_name: Tim Laurey
-  leader_1_role: Voorganger van OpenKerk.
-  leader_2_name: Vanessa Laurey
-  leader_2_role: Voorganger van OpenKerk.
 activiteiten:
   page_title: Activiteiten OPEN. Kerk
   hero_heading: Wat is er zoal te<br><span class="underline">doen in de kerk?</span>
@@ -115,18 +107,6 @@ activiteiten:
   kampen_desc: Elk jaar organiseren we zomerkampen voor de kinderen en jongeren in de zomervakantie. Voor de mannen van Open. Kerk organiseren we in september een avontuurlijk weekend in de Ardennen.
   app_title: Blijf op de hoogte
   app_text: We communiceren alle activiteiten in de app van Open. Kerk. Deze kun je downloaden met de QR-code die regelmatig op het scherm verschijnt tijdens de kerkdiensten van Open. Kerk.
-live:
-  page_title: Live OPEN. Kerk
-  hero_heading: <span class="underline">Live</span>
-  hero_subtitle: Kan je er niet bij zijn? Kijk live mee.<br>Iedere zondag om 10:30 uur.
-  hero_button: Bekijk de stream
-  stream_title: De dienst van vandaag
-  stream_text: Iedere zondag om 10:30u zenden we de kerkdienst live uit. Sluit je vanuit huis bij ons aan of bekijk een eerdere dienst terug.
-  offline_status: Op dit moment is er geen uitzending
-  offline_text: De volgende livestream is aanstaande zondag om 10:30u. Tot dan kun je eerdere diensten terugkijken.
-  offline_link: Bekijk eerdere diensten
-  welcome_title: Jij bent welkom
-  welcome_text: Het is belangrijk dat jij je thuis voelt en dat je er zo veel mogelijk bij bent. Online meekijken is fijn, maar je bent natuurlijk ook van harte welkom om langs te komen in Lommel. Open voor God, open voor jou.
 geven:
   title: Geven
   hero_heading: Manieren om <span class="underline">te geven</span>
@@ -366,34 +346,3 @@ kampen:
   questions_heading: Nog vragen?
   questions_paragraph: Heb je vragen over een van de kampen? Neem gerust contact met ons op we helpen je graag verder. Open voor God, open voor jou.
   questions_button: Neem contact op
-teachings:
-  title: Prediking
-  page_title: Prediking OPEN. Kerk
-  hero_heading: Predikingenarchief
-  hero_subtitle: Doorzoek elke preek met ondertiteling in vier talen. Deel deze link alstublieft niet, alleen voor mensen van OPEN. Kerk.
-  search_placeholder: Zoek in de preken…
-  search_button: Zoeken
-  search_results_title: Zoekresultaten
-  no_results: Geen resultaten gevonden.
-  empty_state: De preken worden binnenkort hier verzameld.
-  watch_from: Bekijk vanaf
-  back_to_list: Terug naar het overzicht
-  back_to_all: Terug naar alle predikingen
-  prev_page: Vorige
-  next_page: Volgende
-  speaker_label: Spreker
-  date_label: Datum
-  duration_label: Lengte
-  subtitles_label: Ondertitels
-  col_title: Titel
-  col_teacher: Spreker
-  col_summary: Samenvatting
-  col_date: Datum
-  col_duration: Lengte
-  watch_label: Bekijken
-  tab_current: Alles
-  tab_past: Eerdere reeksen
-  tab_essentials: Essenties
-  teachings_count: predikingen
-  intro_heading: Welkom in het predikingenarchief
-  intro_body: "Hier verzamelen we elke preek van OPEN. Kerk zodat je ze later opnieuw kunt beluisteren vanaf elk moment in de video, doorzoekbaar op woord of passage, en met ondertiteling in vier talen (Nederlands, Engels, Frans en Spaans). Of je nu een onderwerp wilt nakijken, een vriend in een andere taal wilt laten meekijken, of gewoon een dienst hebt gemist: alles staat klaar om terug te kijken."

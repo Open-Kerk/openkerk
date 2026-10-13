@@ -43,7 +43,6 @@ footer:
   kinderkamp: Children's Camp
   summercamp: Jong° Summer Camp
   realmencamp: Real Men Camp
-  live: Live
   contact: Contact
   geven: Give
   anbi: ANBI
@@ -64,7 +63,6 @@ home:
   belief_1_title: God is love
   belief_1_body: The most important thing a person can know about God is that He is good. You can trust Him and His Word. God made everything and loves His creation. It is best for you and me to live His way. That is why it is good to realize that God loves you and wants the best for you. God's love does not depend on what you achieve or how well you do. He knows you fully, with all your strengths and weaknesses, and yet He chooses to love you. Throughout the entire Bible we see a God who seeks people out, forgives them, restores them, and invites them to live close to Him. His love gives hope, rest, and a solid foundation for life.
   belief_2_title: Jesus is God
-  belief_2_media_title: Jesus is God
   belief_2_body: The Bible describes how God Himself became a Man to restore the friendship between God and people. Through our freedom we have, alongside many good things, also done many bad things. The Bible calls this sin, and through sin the friendship between God and people was broken. Jesus restored this by showing and teaching how a person can live as a child of God. Jesus died for your sins and mine on a cross, but rose again from the dead. By believing in Him, you and I receive new life again; the real life, free from sin and in friendship with God!
   belief_3_title: The Bible is the Word of God
   belief_3_body: The Bible speaks the eternal Word and Truth. A Christian follows the Word of God carefully. That obedience makes for a life with God, in hope and peace. Through the Bible God teaches us who He is and how we can live. His Word gives direction in difficult times and helps us make good choices. The Bible is more than a collection of old stories; it is God's living message for people today. Whoever reads the Bible with an open heart discovers God's love, wisdom, and plan for his life.
@@ -74,12 +72,6 @@ home:
   belief_5_body: God is one. He is the Creator of all that exists and Lord over creation. God is a Father because He makes, leads and protects us. God is the Son because He became a human to restore the friendship between Him and us. God is the Holy Spirit who dwells in all people who believe in Him. The Father, the Son, and the Holy Spirit are not three gods, but one God who reveals Himself to us in three ways. Through the Holy Spirit, believers may experience God's presence, guidance, and power every day.
   belief_6_title: The Great Commission
   belief_6_body: 'Before Jesus returned to heaven, He gave His followers a clear assignment: to proclaim the gospel and to teach people to live as His disciples. We call this assignment the Great Commission. Jesus calls His church to share His love, truth, and salvation with the world. We at Open Kerk also want to take our place in that mission. Here in Lommel, in this time, we long for people to come to know Jesus, grow in their faith, and follow Him. That is why we are building a church where people can meet God, be equipped in His Word, and together make a difference in their surroundings.'
-  leaders_title: Meet our leaders
-  leaders_subtitle: These are the pastors who bring us discipleship.
-  leader_1_name: Tim Laurey
-  leader_1_role: Pastor of OpenKerk.
-  leader_2_name: Vanessa Laurey
-  leader_2_role: Pastor of OpenKerk.
 activiteiten:
   page_title: Activities OPEN. Kerk
   hero_heading: What is there to<br><span class="underline">do at the church?</span>
@@ -115,18 +107,6 @@ activiteiten:
   kampen_desc: Every year we organise summer camps for children and young people during the summer holidays. For the men of Open. Kerk we organise an adventurous weekend in the Ardennes in September.
   app_title: Stay up to date
   app_text: We share all activities in the Open. Kerk app. You can download it using the QR code that regularly appears on screen during the church services of Open. Kerk.
-live:
-  page_title: Live OPEN. Kerk
-  hero_heading: <span class="underline">Live</span>
-  hero_subtitle: Can't be there in person? Watch along live.<br>Every Sunday at 10:30.
-  hero_button: Watch the stream
-  stream_title: Today's service
-  stream_text: Every Sunday at 10:30u we broadcast the church service live. Join us from home or watch a previous service again.
-  offline_status: There is no broadcast at the moment
-  offline_text: The next livestream is this coming Sunday at 10:30u. Until then you can watch previous services again.
-  offline_link: Watch previous services
-  welcome_title: You are welcome
-  welcome_text: It is important that you feel at home and that you are present as much as possible. Watching online is great, but of course you are also warmly welcome to come and visit us in Lommel. Open for God, open for you.
 geven:
   title: Giving
   hero_heading: Ways to <span class="underline">give</span>
@@ -366,34 +346,3 @@ kampen:
   questions_heading: Any questions?
   questions_paragraph: Do you have questions about one of the camps? Feel free to get in touch we're happy to help. Open for God, open for you.
   questions_button: Get in touch
-teachings:
-  title: Teachings
-  page_title: Teachings OPEN. Kerk
-  hero_heading: Sermons Archive
-  hero_subtitle: Browse every sermon, searchable and subtitled in four languages. Please do not share this link only for OPEN. Kerk people.
-  search_placeholder: Search the sermons…
-  search_button: Search
-  search_results_title: Search results
-  no_results: No results found.
-  empty_state: Sermons will appear here soon.
-  watch_from: Watch from
-  back_to_list: Back to the list
-  back_to_all: Back to all teachings
-  prev_page: Previous
-  next_page: Next
-  speaker_label: Speaker
-  date_label: Date
-  duration_label: Length
-  subtitles_label: Subtitles
-  col_title: Title
-  col_teacher: Speaker
-  col_summary: Summary
-  col_date: Date
-  col_duration: Length
-  watch_label: Watch
-  tab_current: All
-  tab_past: Past Series
-  tab_essentials: Essentials
-  teachings_count: Teachings
-  intro_heading: Welcome to the OPEN. Kerk sermon archive
-  intro_body: This is where every OPEN. Kerk sermon lives so you can revisit it whenever you like jump to any moment in the video, search across the talks for a word or passage, and follow along with subtitles in four languages (Dutch, English, French and Spanish). Whether you want to study a topic again, share a sermon with a friend in another language, or simply catch up on a service you missed, the whole archive is here for you.

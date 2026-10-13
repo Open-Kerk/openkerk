@@ -18,8 +18,3 @@ instance/
 
 # DigitalOcean App Platform spec (contains SECRET_KEY)
 .do/
-
-# SQLite transient WAL / shared-memory files — only sermons.db is the
-# committed snapshot; the -wal and -shm next to it are runtime state.
-*.db-wal
-*.db-shm

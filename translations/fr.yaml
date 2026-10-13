@@ -43,7 +43,6 @@ footer:
   kinderkamp: Camp d'enfants
   summercamp: Jong° Summer Camp
   realmencamp: Real Men Camp
-  live: Live
   contact: Contact
   geven: Donner
   anbi: ANBI
@@ -64,7 +63,6 @@ home:
   belief_1_title: Dieu est amour
   belief_1_body: La chose la plus importante qu'une personne puisse savoir au sujet de Dieu, c'est qu'Il est bon. Tu peux Lui faire confiance, ainsi qu'à Sa Parole. Dieu a tout créé et aime Sa création. Il est préférable pour toi et pour moi de vivre à Sa manière. C'est pourquoi il est bon de réaliser que Dieu t'aime et veut le meilleur pour toi. L'amour de Dieu ne dépend pas de ce que tu accomplis ni de ce que tu fais bien. Il te connaît entièrement, avec toutes tes forces et tes faiblesses, et pourtant Il choisit de t'aimer. À travers toute la Bible, nous voyons un Dieu qui va à la recherche des hommes, les pardonne, les restaure et les invite à vivre près de Lui. Son amour donne de l'espérance, du repos et un fondement solide pour la vie.
   belief_2_title: Jésus est Dieu
-  belief_2_media_title: Jésus est Dieu
   belief_2_body: La Bible décrit comment Dieu Lui-même s'est fait Homme pour rétablir l'amitié entre Dieu et les hommes. Par notre liberté, nous avons fait, à côté de beaucoup de bonnes choses, aussi beaucoup de mauvaises choses. La Bible appelle cela le péché, et par le péché l'amitié entre Dieu et les hommes a été brisée. Jésus l'a rétablie en montrant et en enseignant comment une personne peut vivre en tant qu'enfant de Dieu. Jésus est mort pour tes péchés et les miens sur une croix, mais Il est ressuscité d'entre les morts. En croyant en Lui, toi et moi recevons une nouvelle vie ; la vraie vie, libérée du péché et en amitié avec Dieu !
   belief_3_title: La Bible est la Parole de Dieu
   belief_3_body: La Bible énonce la Parole et la Vérité éternelles. Un chrétien suit scrupuleusement la Parole de Dieu. Cette obéissance permet une vie avec Dieu, dans l'espérance et la paix. À travers la Bible, Dieu nous apprend qui Il est et comment nous pouvons vivre. Sa Parole donne une direction dans les moments difficiles et nous aide à faire de bons choix. La Bible est bien plus qu'un recueil de vieilles histoires ; c'est le message vivant de Dieu pour les hommes d'aujourd'hui. Celui qui lit la Bible avec un cœur ouvert découvre l'amour, la sagesse et le plan de Dieu pour sa vie.
@@ -74,12 +72,6 @@ home:
   belief_5_body: Dieu est un. Il est le Créateur de tout ce qui existe et le Seigneur de la création. Dieu est un Père parce qu'Il nous crée, nous guide et nous protège. Dieu est le Fils parce qu'Il s'est fait homme pour rétablir l'amitié entre Lui et nous. Dieu est le Saint-Esprit qui habite en tous ceux qui croient en Lui. Le Père, le Fils et le Saint-Esprit ne sont pas trois dieux, mais un seul Dieu qui Se révèle à nous de trois manières. Par le Saint-Esprit, les croyants peuvent chaque jour expérimenter la présence, la direction et la puissance de Dieu.
   belief_6_title: Le Grand Mandat
   belief_6_body: 'Avant que Jésus ne retourne au ciel, Il a donné à Ses disciples une mission claire : faire connaître l''Évangile et apprendre aux hommes à vivre comme Ses disciples. Cette mission, nous l''appelons le Grand Mandat. Jésus appelle Son Église à partager Son amour, Sa vérité et Son salut avec le monde. Nous aussi, en tant qu''Open Kerk, voulons prendre notre place dans cette mission. Ici à Lommel, en ce temps, nous désirons ardemment que les gens apprennent à connaître Jésus, grandissent dans leur foi et Le suivent. C''est pourquoi nous bâtissons une église où les gens peuvent rencontrer Dieu, être équipés par Sa Parole et faire ensemble la différence dans leur entourage.'
-  leaders_title: Rencontrez nos responsables
-  leaders_subtitle: Voici les pasteurs qui nous accompagnent dans notre discipulat.
-  leader_1_name: Tim Laurey
-  leader_1_role: Pasteur d'OpenKerk.
-  leader_2_name: Vanessa Laurey
-  leader_2_role: Pasteur d'OpenKerk.
 activiteiten:
   page_title: Activités OPEN. Kerk
   hero_heading: Qu'y a-t-il à<br><span class="underline">faire à l'église ?</span>
@@ -115,18 +107,6 @@ activiteiten:
   kampen_desc: Chaque année, nous organisons des camps d'été pour les enfants et les jeunes pendant les vacances d'été. Pour les hommes d'Open. Kerk, nous organisons en septembre un week-end d'aventure dans les Ardennes.
   app_title: Reste informé
   app_text: Nous communiquons toutes les activités dans l'application Open. Kerk. Tu peux la télécharger à l'aide du code QR qui apparaît régulièrement à l'écran pendant les cultes d'Open. Kerk.
-live:
-  page_title: Live OPEN. Kerk
-  hero_heading: <span class="underline">Live</span>
-  hero_subtitle: Tu ne peux pas être présent ? Suis-nous en direct.<br>Chaque dimanche à 10:30.
-  hero_button: Voir le direct
-  stream_title: Le culte d'aujourd'hui
-  stream_text: Chaque dimanche à 10:30u, nous diffusons le culte en direct. Rejoins-nous depuis chez toi ou revois un culte précédent.
-  offline_status: Il n'y a pas de diffusion pour le moment
-  offline_text: Le prochain direct aura lieu dimanche prochain à 10:30u. D'ici là, tu peux revoir les cultes précédents.
-  offline_link: Voir les cultes précédents
-  welcome_title: Tu es le bienvenu
-  welcome_text: Il est important que tu te sentes chez toi et que tu sois présent autant que possible. Suivre en ligne, c'est bien, mais tu es bien sûr aussi chaleureusement invité à venir nous rendre visite à Lommel. Ouvert pour Dieu, ouvert pour toi.
 geven:
   title: Donner
   hero_heading: Façons de <span class="underline">donner</span>
@@ -366,34 +346,3 @@ kampen:
   questions_heading: D'autres questions ?
   questions_paragraph: Tu as des questions sur l'un des camps ? N'hésite pas à nous contacter nous t'aiderons volontiers. Ouverts pour Dieu, ouverts pour toi.
   questions_button: Nous contacter
-teachings:
-  title: Enseignements
-  page_title: Enseignements OPEN. Kerk
-  hero_heading: Archives des prédications
-  hero_subtitle: Parcourez chaque prédication, avec recherche et sous-titres en quatre langues. Merci de ne pas partager ce lien réservé aux membres d'OPEN. Kerk.
-  search_placeholder: Rechercher dans les sermons…
-  search_button: Rechercher
-  search_results_title: Résultats de recherche
-  no_results: Aucun résultat trouvé.
-  empty_state: Les sermons apparaîtront bientôt ici.
-  watch_from: Regarder à partir de
-  back_to_list: Retour à la liste
-  back_to_all: Retour à toutes les prédications
-  prev_page: Précédent
-  next_page: Suivant
-  speaker_label: Prédicateur
-  date_label: Date
-  duration_label: Durée
-  subtitles_label: Sous-titres
-  col_title: Titre
-  col_teacher: Prédicateur
-  col_summary: Résumé
-  col_date: Date
-  col_duration: Durée
-  watch_label: Regarder
-  tab_current: Tout
-  tab_past: Séries précédentes
-  tab_essentials: Essentiels
-  teachings_count: prédications
-  intro_heading: Bienvenue dans les archives des prédications d'OPEN. Kerk
-  intro_body: Vous trouverez ici toutes les prédications d'OPEN. Kerk pour pouvoir les revoir quand vous le souhaitez reprendre la lecture à n'importe quel moment de la vidéo, faire une recherche dans l'ensemble des messages par mot ou passage, et suivre avec des sous-titres en quatre langues (néerlandais, anglais, français et espagnol). Que vous souhaitiez approfondir un sujet, partager une prédication avec un proche dans une autre langue ou simplement rattraper un culte manqué, toutes les archives sont à votre disposition.
