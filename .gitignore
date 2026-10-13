@@ -18,3 +18,7 @@ instance/
 
 # DigitalOcean App Platform spec (contains SECRET_KEY)
 .do/
+
+# Self-hosting: server settings and the last commit that failed to deploy
+deploy/.env
+deploy/.failed-commit

@@ -1,0 +1,47 @@
+# Self-hosted stack: the Flask app behind Caddy, which terminates TLS and
+# gets/renews Let's Encrypt certificates automatically for DOMAIN.
+# Settings come from deploy/.env (see .env.example); deploy/update.sh
+# rebuilds and restarts this stack when main changes.
+name: openkerk
+
+services:
+  web:
+    build:
+      context: ..
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY in deploy/.env}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/', timeout=4)"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging: &logging
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  caddy:
+    image: caddy:2
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN in deploy/.env}
+      ACME_EMAIL: ${ACME_EMAIL:?set ACME_EMAIL in deploy/.env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"  # HTTP/3
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data  # certificates + ACME account; don't delete
+      - caddy_config:/config
+    restart: unless-stopped
+    logging: *logging
+
+volumes:
+  caddy_data:
+  caddy_config:

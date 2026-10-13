@@ -1,0 +1,10 @@
+# Caddy serves every hostname in DOMAIN over HTTPS, redirects HTTP to
+# HTTPS, and obtains/renews the Let's Encrypt certificates itself.
+{
+	email {$ACME_EMAIL}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy web:8080
+}

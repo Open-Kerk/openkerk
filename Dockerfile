@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# App Platform injects PORT (defaults to 8080); gunicorn binds to it.
+# gunicorn listens on PORT (default 8080); Caddy proxies to it (see deploy/).
 EXPOSE 8080
 CMD gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 4 --timeout 60 app:app

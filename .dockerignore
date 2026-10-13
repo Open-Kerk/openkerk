@@ -10,3 +10,4 @@ venv/
 .idea/
 .do/
 .github/
+deploy/
